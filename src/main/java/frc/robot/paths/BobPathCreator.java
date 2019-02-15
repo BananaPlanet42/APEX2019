@@ -16,9 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.team254.lib.trajectory.WaypointSequence.Waypoint;
-import frc.robot.paths.AbstractBobPathCreator;
-import frc.robot.paths.BobPath;
-import frc.robot.utils.SrxTrajectory;
+import com.team319.trajectory.AbstractBobPathCreator;
+import com.team319.trajectory.BobPath;
+import com.team319.trajectory.SrxTranslatorConfig;
 
 public class BobPathCreator extends AbstractBobPathCreator {
 
@@ -29,7 +29,7 @@ public class BobPathCreator extends AbstractBobPathCreator {
 	// Remember that paths should be generated from the center point of the robot
 	private static Waypoint startingPoint = new Waypoint(robotLengthInFeet / 2.0, 45.5 / 12.0, 0, 0, 0);
 	
-	private SrxTrajectory config = new SrxTrajectory();
+	private SrxTranslatorConfig config = new SrxTranslatorConfig();
     
 	public static void main(String[] args) {
 		new BobPathCreator().generatePaths();

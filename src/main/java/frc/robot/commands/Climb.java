@@ -1,7 +1,6 @@
 package frc.robot.commands;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
-import edu.wpi.first.*;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.RobotMap;
 import frc.robot.subsystems.*;
