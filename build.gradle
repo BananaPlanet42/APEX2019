@@ -55,7 +55,7 @@ dependencies {
     nativeZip wpi.deps.vendor.jni(wpi.platforms.roborio)
     nativeDesktopZip wpi.deps.vendor.jni(wpi.platforms.desktop)
     testCompile 'junit:junit:4.12'
-    implementation 'com.github.apex5803:bobtrajectory:Feb2019Testing-SNAPSHOT'
+    compile 'com.github.Team319:BobTrajectory:v1.0.1'
 }
 
 // Setting up my Jar File. In this case, adding all libraries into the main jar ('fat jar')

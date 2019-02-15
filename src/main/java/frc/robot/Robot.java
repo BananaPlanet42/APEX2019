@@ -31,12 +31,12 @@ import frc.robot.Booleans;
  */
 public class Robot extends TimedRobot {
   public static OI oi = new OI();
-  public static CargoIntake cargoIntake
-  public static Crossbow crossbow
-  public static DriveTrain driveTrain
-  public static Lift lift
-  public static Climber climber
-  public static Booleans booleans
+  public static CargoIntake cargoIntake;
+  public static Crossbow crossbow;
+  public static DriveTrain driveTrain;
+  public static Lift lift;
+  public static Climber climber;
+  public static Booleans booleans;
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
