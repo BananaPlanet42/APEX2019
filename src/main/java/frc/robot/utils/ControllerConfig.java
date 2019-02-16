@@ -1,15 +1,18 @@
 package frc.robot.utils;
 import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.*;
+
+import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.models.BobTalonSRX;
+import frc.robot.models.SRXGains;
 
 public class ControllerConfig{
     // configs victor to all default settings, then prepares all proper settings for driving
-    public static void setDriveLeader(TalonSRX leaderSRX, Boolean isInverted){
+    public static void setDriveLeader(BobTalonSRX leaderSRX, Boolean isInverted){
         leaderSRX.configFactoryDefault();
-        leaderSRX.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
         leaderSRX.setInverted(isInverted);
-        leaderSRX.setSensorPhase(true);
+        leaderSRX.setSensorPhase(false);
         leaderSRX.configNominalOutputForward(0.0);
         leaderSRX.configNominalOutputReverse(0.0);
         leaderSRX.configPeakOutputForward(1);
@@ -20,10 +23,30 @@ public class ControllerConfig{
         leaderSRX.configPeakCurrentDuration(0, 0);
         leaderSRX.enableCurrentLimit(true);
 
-        leaderSRX.config_kP(0, 1, 0);
-		leaderSRX.config_kI(0, 0, 0);
-		leaderSRX.config_kD(0, 0, 0);
-		leaderSRX.config_kF(0, 0, 0);
+        if (leaderSRX == RobotMap.L1){
+            leaderSRX.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
+            leaderSRX.setStatusFramePeriod(StatusFrame.Status_2_Feedback0, 5, 0);
+
+        }
+        if (leaderSRX == RobotMap.R1){
+            leaderSRX.configRemoteFeedbackFilter(RobotMap.L1.getDeviceID(), RemoteSensorSource.TalonSRX_SelectedSensor, 0, 0);
+            leaderSRX.configRemoteFeedbackFilter(Robot.driveTrain.pigeon.getDeviceID(), RemoteSensorSource.GadgeteerPigeon_Yaw, 1, 0);
+            
+            leaderSRX.configSensorTerm(SensorTerm.Sum0, FeedbackDevice.RemoteSensor0, 0);
+            leaderSRX.configSensorTerm(SensorTerm.Sum1, FeedbackDevice.CTRE_MagEncoder_Relative, 0);
+            leaderSRX.configSelectedFeedbackSensor(FeedbackDevice.SensorSum, 0, 0);
+            leaderSRX.configSelectedFeedbackCoefficient(0.5, 0, 0);
+
+            leaderSRX.configSelectedFeedbackSensor(FeedbackDevice.RemoteSensor1, 1, 0);
+            leaderSRX.configSelectedFeedbackCoefficient((3600.0 / 8192.0), 1, 0);
+        }
+
+        //Takes and sets: Slot, P, I, D, F, Izone
+        SRXGains highGearGains = new SRXGains(0, 1.4, 0.0, 8.0, 0.25, 0);
+        SRXGains rotationGains = new SRXGains(1, 1.6, 0.0, 50, 0.0, 0);
+            
+        leaderSRX.configPIDF(highGearGains);
+        leaderSRX.configPIDF(rotationGains);
     }
 
     public static void setDriveFollower(VictorSPX currentSPX, TalonSRX leaderSRX, Boolean isInverted) {
@@ -45,6 +68,7 @@ public class ControllerConfig{
             currentSRX.config_kI(0, 0, 0);
             currentSRX.config_kD(0, 0, 0);
             currentSRX.config_kF(0, 0, 0);
+            currentSRX.config_IntegralZone(0, 0, 0);
         }
         if (currentSRX == RobotMap.Lift2) {
             currentSRX.follow(RobotMap.Lift1);
