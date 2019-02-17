@@ -12,7 +12,7 @@ public class ControllerConfig{
     public static void setDriveLeader(BobTalonSRX leaderSRX, Boolean isInverted){
         leaderSRX.configFactoryDefault();
         leaderSRX.setInverted(isInverted);
-        leaderSRX.setSensorPhase(false);
+        leaderSRX.setSensorPhase(true);
         leaderSRX.configNominalOutputForward(0.0);
         leaderSRX.configNominalOutputReverse(0.0);
         leaderSRX.configPeakOutputForward(1);
@@ -21,6 +21,7 @@ public class ControllerConfig{
         leaderSRX.configContinuousCurrentLimit(25);
         leaderSRX.configPeakCurrentLimit(25);
         leaderSRX.configPeakCurrentDuration(0, 0);
+        leaderSRX.setNeutralMode(NeutralMode.Coast);
         leaderSRX.enableCurrentLimit(true);
 
         if (leaderSRX == RobotMap.L1){
@@ -42,8 +43,8 @@ public class ControllerConfig{
         }
 
         //Takes and sets: Slot, P, I, D, F, Izone
-        SRXGains highGearGains = new SRXGains(0, 1.4, 0.0, 8.0, 0.25, 0);
-        SRXGains rotationGains = new SRXGains(1, 1.6, 0.0, 50, 0.0, 0);
+        SRXGains highGearGains = new SRXGains(0, 1, 0.0, 0, 0, 0);
+        SRXGains rotationGains = new SRXGains(1, 0, 0.0, 0, 0.0, 0);
             
         leaderSRX.configPIDF(highGearGains);
         leaderSRX.configPIDF(rotationGains);

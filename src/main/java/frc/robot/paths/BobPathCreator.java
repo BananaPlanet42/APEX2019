@@ -36,14 +36,14 @@ public class BobPathCreator extends AbstractBobPathCreator {
 	}
 	
 	private BobPathCreator() {
-		config.max_acc = 10.0; // Maximum acceleration in FPS
+		config.max_acc = 2; // Maximum acceleration in FPS
 		config.max_vel = 4; // Maximum velocity in FPS
 		config.wheel_dia_inches = 6.0;
-		config.scale_factor = 0.1; // Used to adjust for a gear ratio and or distance tuning
+		config.scale_factor = 1.0; // Used to adjust for a gear ratio and or distance tuning
 		config.encoder_ticks_per_rev = 4096; // Count of ticks on your encoder
 		config.robotLength = 27.5; // Robot length in inches, used for drawing the robot
 		config.robotWidth = 22.3; // Robot width in inches, used for drawing the robot
-		config.max_jerk = 60.0;
+		config.max_jerk = 30.0;
 		config.dt = 0.01;
 		config.highGear = true;
 	}
@@ -99,12 +99,12 @@ public class BobPathCreator extends AbstractBobPathCreator {
 
 		BobPath turnScaling = new BobPath(config, "TurnScaling");
 		turnScaling.addWaypoint(new Waypoint(2, 13.5, 0, 0, 0));
-		turnScaling.addWaypointRelative(3, 3, 89.99, 0, 3);
+		turnScaling.addWaypointRelative(3, 12, 89.99, 0, 3);//divide all distanc values by six to get roughly apropriate distance to set in code
 
 		BobPath speedTesting = new BobPath(config, "SpeedTesting");
 		speedTesting.addWaypoint(new Waypoint(2, 13.5, 0, 0, 0));
 		speedTesting.addWaypointRelative(3, 3, 89.99, 1, 3);
-		speedTesting.addWaypointRelative(-3, 3, 89.99, 0, 1);
+		speedTesting.addWaypointRelative(3, 3, 89.99, 0, 1);
 
 		return asList(distanceScaling, turnScaling, speedTesting);
 	}

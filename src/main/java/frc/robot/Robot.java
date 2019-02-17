@@ -20,6 +20,9 @@ import frc.robot.commands.autoCommands.DistanceTuningArc;
 // import frc.robot.subsystems.Crossbow;
 // import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveTrain;
+
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+
 import edu.wpi.first.wpilibj.Compressor; 
 import frc.robot.Booleans;
 import frc.robot.commands.autoCommands.DistanceTuningArc;
@@ -104,6 +107,14 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
+    SmartDashboard.putNumber("RobotAngle", Robot.driveTrain.getAngle());
+    SmartDashboard.putNumber("L1 encoder distance", Robot.driveTrain.getLeftDriveLeadDistance());
+    SmartDashboard.putNumber("L1 encoder velocity", Robot.driveTrain.getLeftDriveLeadVelocity());
+
+    SmartDashboard.putNumber("R1 encoder distance", Robot.driveTrain.getRightDriveLeadDistance());
+    SmartDashboard.putNumber("R1 encoder velocity", Robot.driveTrain.getRightDriveLeadVelocity());
+
+
   }
 
   /**
@@ -124,6 +135,9 @@ public class Robot extends TimedRobot {
     // RobotMap.Lift1.setSelectedSensorPosition(0);
     RobotMap.R1.setSelectedSensorPosition(0);
     RobotMap.L1.setSelectedSensorPosition(0);
+    RobotMap.R1.setNeutralMode(NeutralMode.Brake);
+    RobotMap.L1.setNeutralMode(NeutralMode.Brake);
+
     driveTrain.pigeon.setYaw(0, 0);
 
     /*
@@ -145,6 +159,12 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
+    SmartDashboard.putNumber("RobotAngle", Robot.driveTrain.getAngle());
+    SmartDashboard.putNumber("L1 encoder distance", Robot.driveTrain.getLeftDriveLeadDistance());
+    SmartDashboard.putNumber("L1 encoder velocity", Robot.driveTrain.getLeftDriveLeadVelocity());
+
+    SmartDashboard.putNumber("R1 encoder distance", Robot.driveTrain.getRightDriveLeadDistance());
+    SmartDashboard.putNumber("R1 encoder velocity", Robot.driveTrain.getRightDriveLeadVelocity());
   }
 
   @Override
@@ -153,6 +173,9 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
+    RobotMap.R1.setNeutralMode(NeutralMode.Coast);
+    RobotMap.L1.setNeutralMode(NeutralMode.Coast);
+
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
@@ -169,6 +192,13 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    SmartDashboard.putNumber("RobotAngle", Robot.driveTrain.getAngle());
+    SmartDashboard.putNumber("L1 encoder distance", Robot.driveTrain.getLeftDriveLeadDistance());
+    SmartDashboard.putNumber("L1 encoder velocity", Robot.driveTrain.getLeftDriveLeadVelocity());
+
+    SmartDashboard.putNumber("R1 encoder distance", Robot.driveTrain.getRightDriveLeadDistance());
+    SmartDashboard.putNumber("R1 encoder velocity", Robot.driveTrain.getRightDriveLeadVelocity());
+
   }
 
   /**
@@ -177,5 +207,13 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {
     Scheduler.getInstance().run();
+    SmartDashboard.putNumber("RobotAngle", Robot.driveTrain.getAngle());
+
+    
+    SmartDashboard.putNumber("L1 encoder distance", Robot.driveTrain.getLeftDriveLeadDistance());
+    SmartDashboard.putNumber("L1 encoder velocity", Robot.driveTrain.getLeftDriveLeadVelocity());
+
+    SmartDashboard.putNumber("R1 encoder distance", Robot.driveTrain.getRightDriveLeadDistance());
+    SmartDashboard.putNumber("R1 encoder velocity", Robot.driveTrain.getRightDriveLeadVelocity());
   }
 }
