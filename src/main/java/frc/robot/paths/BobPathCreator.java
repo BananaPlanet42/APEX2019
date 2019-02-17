@@ -22,8 +22,8 @@ import com.team319.trajectory.SrxTranslatorConfig;
 
 public class BobPathCreator extends AbstractBobPathCreator {
 
-	private static double robotWidthInFeet = 33.0 / 12.0;
-	private static double robotLengthInFeet = 39.0 / 12.0;
+	private static double robotWidthInFeet = 22.3 / 12.0; //23 on real bot
+	private static double robotLengthInFeet = 27.5 / 12.0; //17.5 on real bot
 
 	// This point and points like it can be used when there are common starting locatons for the robot
 	// Remember that paths should be generated from the center point of the robot
@@ -36,13 +36,15 @@ public class BobPathCreator extends AbstractBobPathCreator {
 	}
 	
 	private BobPathCreator() {
-		config.max_acc = 8.0; // Maximum acceleration in FPS
-		config.max_vel = 10.0; // Maximum velocity in FPS
-		config.wheel_dia_inches = 4.0;
-		config.scale_factor = 1.0; // Used to adjust for a gear ratio and or distance tuning
+		config.max_acc = 10.0; // Maximum acceleration in FPS
+		config.max_vel = 4; // Maximum velocity in FPS
+		config.wheel_dia_inches = 6.0;
+		config.scale_factor = 0.1; // Used to adjust for a gear ratio and or distance tuning
 		config.encoder_ticks_per_rev = 4096; // Count of ticks on your encoder
-		config.robotLength = 39; // Robot length in inches, used for drawing the robot
-		config.robotWidth = 33; // Robot width in inches, used for drawing the robot
+		config.robotLength = 27.5; // Robot length in inches, used for drawing the robot
+		config.robotWidth = 22.3; // Robot width in inches, used for drawing the robot
+		config.max_jerk = 60.0;
+		config.dt = 0.01;
 		config.highGear = true;
 	}
 
@@ -144,7 +146,7 @@ public class BobPathCreator extends AbstractBobPathCreator {
 		RightFrontCargo.addWaypointRelative(4, -.5, 0, 0, 5);
 
 		BobPath RightFrontRocket = new BobPath(config, "RightSideRocket");
-		RightSideCargo.addWaypoint(new Waypoint(2, 13.5, 0, 0, 0));
+		RightFrontRocket.addWaypoint(new Waypoint(2, 13.5, 0, 0, 0));
 		RightFrontRocket.addWaypointRelative(5, -.5, 30, 3, 6);
 		RightFrontRocket.addWaypointRelative(2, -.5, 30, 0, 6);
 

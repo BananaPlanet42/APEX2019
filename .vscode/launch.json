@@ -9,6 +9,13 @@
       "name": "CodeLens (Launch) - BobPathCreator",
       "request": "launch",
       "mainClass": "frc.robot.paths.BobPathCreator",
+      "projectName": "robot"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - BobPathCreator",
+      "request": "launch",
+      "mainClass": "frc.robot.paths.BobPathCreator",
       "projectName": "fork_apex2019"
     },
     {

@@ -12,15 +12,17 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.Lift;
 import frc.robot.models.SRXGains;
 import frc.robot.RobotMap;
-import frc.robot.subsystems.CargoIntake;
-import frc.robot.subsystems.Crossbow;
-import frc.robot.subsystems.Climber;
+import frc.robot.commands.autoCommands.DistanceTuningArc;
+// import frc.robot.subsystems.Lift;
+// import frc.robot.subsystems.CargoIntake;
+// import frc.robot.subsystems.Crossbow;
+// import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.Compressor; 
 import frc.robot.Booleans;
+import frc.robot.commands.autoCommands.DistanceTuningArc;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,14 +33,16 @@ import frc.robot.Booleans;
  */
 public class Robot extends TimedRobot {
   public static OI oi = new OI();
-  public static CargoIntake cargoIntake;
-  public static Crossbow crossbow;
+  // public static CargoIntake cargoIntake;
+  // public static Crossbow crossbow;
+  // public static Lift lift;
+  // public static Climber climber;
   public static DriveTrain driveTrain;
-  public static Lift lift;
-  public static Climber climber;
   public static Booleans booleans;
+  
   Command m_autonomousCommand;
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
+  //SendableChooser<Command> m_chooser = new SendableChooser<>();
+  // SendableChooser<String> autoChooser;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -52,23 +56,27 @@ public class Robot extends TimedRobot {
     // cargoIntake = new CargoIntake();
     // crossbow = new Crossbow();
     driveTrain = new DriveTrain();
-    lift = new Lift();
-    climber = new Climber();
-    Robot.driveTrain.pigeon.setYaw(0, 0);
-    booleans.IsEndGame = false;
+    // lift = new Lift();
+    // climber = new Climber();
+    // Robot.driveTrain.pigeon.setYaw(0, 0);
+    // booleans.IsEndGame = false;
 
-    Compressor compressor = new Compressor (0);
+    // Compressor compressor = new Compressor (0);
 
     // m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     // SmartDashboard.putData("Auto mode", m_chooser);
 
-    compressor.setClosedLoopControl(true);
-
+    // compressor.setClosedLoopControl(true);
+// 
     // INITIALIZE ALL SENSORS TO START AT ZERO
     driveTrain.L1.setSelectedSensorPosition(0, 0, 0);
     driveTrain.R1.setSelectedSensorPosition(0, 0, 0);
     driveTrain.pigeon.setYaw(0,0);
+
+    // autoChooser = SendableChooser<String>();
+    // autoChooser.addDefault(name, object);
+
 
   }
 
@@ -111,9 +119,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
+    m_autonomousCommand = new DistanceTuningArc();
     // INITIALIZE ALL SENSORS TO START AT ZERO
-    RobotMap.Lift1.setSelectedSensorPosition(0);
+    // RobotMap.Lift1.setSelectedSensorPosition(0);
     RobotMap.R1.setSelectedSensorPosition(0);
     RobotMap.L1.setSelectedSensorPosition(0);
     driveTrain.pigeon.setYaw(0, 0);
@@ -148,7 +156,7 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-    RobotMap.Lift1.setSelectedSensorPosition(0);
+    // RobotMap.Lift1.setSelectedSensorPosition(0);
     RobotMap.R1.setSelectedSensorPosition(0);
     RobotMap.L1.setSelectedSensorPosition(0);
 
