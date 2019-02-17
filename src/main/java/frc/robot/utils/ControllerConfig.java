@@ -43,7 +43,7 @@ public class ControllerConfig{
         }
 
         //Takes and sets: Slot, P, I, D, F, Izone
-        SRXGains highGearGains = new SRXGains(0, 1, 0.0, 0, 0, 0);
+        SRXGains highGearGains = new SRXGains(0, 1.5, 0.0, 0, 0, 0);
         SRXGains rotationGains = new SRXGains(1, 0, 0.0, 0, 0.0, 0);
             
         leaderSRX.configPIDF(highGearGains);
