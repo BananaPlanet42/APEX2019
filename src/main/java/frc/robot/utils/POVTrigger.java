@@ -2,7 +2,7 @@ package frc.robot.utils;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.Trigger;
+// import edu.wpi.first.wpilibj.buttons.Trigger;
 
 public class POVTrigger extends Button{
 	private int PovID;

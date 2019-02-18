@@ -1,32 +1,31 @@
 package frc.robot.commands;
- 
-import frc.robot.subsystems.Lift;
+
+// import frc.robot.subsystems.Lift;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
+public class LockElevator extends Command {
+    public LockElevator() {
 
-public class LockElevator extends Command{
-    public LockElevator(){
-       
     }
 
-    protected void initialize(){
-       
+    protected void initialize() {
+
     }
 
-    protected void execute(){
+    protected void execute() {
         Robot.lift.lockLift();
     }
 
-    protected boolean isFinished(){
-        return false; 
+    protected boolean isFinished() {
+        return false;
     }
 
-    protected void end(){
-
+    protected void end() {
+        Robot.lift.releaseLift();
     }
 
-    protected void interrupted(){
+    protected void interrupted() {
         end();
     }
 }

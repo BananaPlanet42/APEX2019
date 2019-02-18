@@ -1,30 +1,28 @@
 package frc.robot.commands;
-
+ 
+// import frc.robot.subsystems.Lift;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-// import frc.robot.subsystems.Crossbow;
-// import frc.robot.RobotMap;
 
-public class ExtendClimber extends Command{
 
-    public ExtendClimber(){
-    
+public class ReleaseLift extends Command{
+    public ReleaseLift(){
+       
     }
 
     protected void initialize(){
-    
+       
     }
 
     protected void execute(){
-        Robot.climber.ExtendClimber();
+        Robot.lift.releaseLift();
     }
 
     protected boolean isFinished(){
-        return false;
+        return false; 
     }
 
     protected void end(){
-    Robot.climber.RetractClimber();
 
     }
 

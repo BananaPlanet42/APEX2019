@@ -7,7 +7,7 @@ import com.ctre.phoenix.motorcontrol.RemoteSensorSource;
 import com.ctre.phoenix.motorcontrol.SensorTerm;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
+// import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
 
 import frc.robot.utils.ControllerConfig;
 

@@ -8,17 +8,25 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Watchdog;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+// import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Lift;
+import frc.robot.models.SRXGains;
+import frc.robot.RobotMap;
 import frc.robot.subsystems.CargoIntake;
 import frc.robot.subsystems.Crossbow;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveTrain;
-import edu.wpi.first.wpilibj.Compressor; 
-import frc.robot.Booleans;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import frc.robot.utils.SmartDashConfig;
+import edu.wpi.first.cameraserver.*;
+// import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+// import frc.robot.commands.ReleaseLift;
+// import frc.robot.utils.Booleans;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,14 +36,14 @@ import frc.robot.Booleans;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static OI oi = new OI();
-  public static CargoIntake cargoIntake = new CargoIntake();
-  public static Crossbow crossbow = new Crossbow();
-  public static DriveTrain driveTrain = new DriveTrain();
-  public static Lift lift = new Lift();
-  public static Climber climber = new Climber();
-  public static Booleans booleans = new Booleans();
-
+  public static OI oi;
+  public static CargoIntake cargoIntake;
+  public static Crossbow crossbow;
+  public static DriveTrain driveTrain;
+  public static Lift lift;
+  public static Climber climber;
+  public static Boolean booleans;
+  public DoubleSolenoid LiftSolenoid1 = RobotMap.LiftSolenoid1;
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -45,15 +53,19 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-      RobotMap.init();
-    oi = new OI();
+    RobotMap.init();
+    // WatchDog = new Watchdog();
+    // Watchdog.suppressTimeoutMessage(true);
     cargoIntake = new CargoIntake();
     crossbow = new Crossbow();
     driveTrain = new DriveTrain();
     lift = new Lift();
     climber = new Climber();
-    booleans.IsEndGame = false;
-
+    oi = new OI();
+    // Watchdog.disabled();
+    // Robot.driveTrain.pigeon.setYaw(0, 0);
+    booleans= false;
+    //CameraServer.getInstance().startAutomaticCapture();
     Compressor compressor = new Compressor (0);
 
     // m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
@@ -61,6 +73,13 @@ public class Robot extends TimedRobot {
     // SmartDashboard.putData("Auto mode", m_chooser);
 
     compressor.setClosedLoopControl(true);
+
+    driveTrain.L1.setSelectedSensorPosition(0, 0, 0);
+    driveTrain.R1.setSelectedSensorPosition(0, 0, 0);
+    lift.Lift1.setSelectedSensorPosition(0);
+    // driveTrain.pigeon.setYaw(0,0);
+    // new ReleaseLift();
+
   }
 
   /**
@@ -73,6 +92,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    SmartDashConfig.Testing();
+
   }
 
   /**
@@ -82,11 +103,14 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
+    // new ReleaseLift();
   }
 
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
+    SmartDashConfig.Testing();
+
   }
 
   /**
@@ -103,6 +127,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_chooser.getSelected();
+    // Robot.driveTrain.pigeon.setYaw(0, 0);
 
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -123,6 +148,8 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
+    SmartDashConfig.Testing();
+
   }
 
   @Override
@@ -134,6 +161,11 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    RobotMap.Lift1.setSelectedSensorPosition(0);
+    RobotMap.R1.setSelectedSensorPosition(0);
+    RobotMap.L1.setSelectedSensorPosition(0);
+    // new ReleaseLift();
+    // Robot.driveTrain.pigeon.setYaw(0, 0);
   }
 
   /**
@@ -142,6 +174,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    SmartDashConfig.Testing();
   }
 
   /**
@@ -149,5 +182,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+    Scheduler.getInstance().run();
+    SmartDashConfig.Testing();
+
   }
 }

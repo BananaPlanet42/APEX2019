@@ -1,21 +1,21 @@
 package frc.robot.subsystems;
 
 import frc.robot.OI;
-import frc.robot.Robot;
+// import frc.robot.Robot;
 import frc.robot.models.*;
 import frc.robot.RobotMap;
 import frc.robot.commands.Drive;
-import frc.robot.commands.DriveVelocityPIDTest;
+// import frc.robot.commands.DriveVelocityPIDTest;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+// import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.sensors.PigeonIMU;
+// import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+// import com.ctre.phoenix.sensors.PigeonIMU;
 
 
 /**
@@ -25,7 +25,7 @@ import com.ctre.phoenix.sensors.PigeonIMU;
 public class DriveTrain extends Subsystem {
 	public BobTalonSRX L1 = RobotMap.L1;
 	public BobTalonSRX R1 = RobotMap.R1;
-	public static PigeonIMU pigeon = new PigeonIMU(0);
+	// public PigeonIMU pigeon = new PigeonIMU(0);
 	
 	public static int HIGH_GEAR_PROFILE = 0;
 	public static int ROTATION_PROFILE = 1;
@@ -38,29 +38,14 @@ public class DriveTrain extends Subsystem {
    
    
    public void initDefaultCommand() {
-       // et the default command for a subsystem here.
-//   	System.out.println("about to set default command to drive something");
 	   setDefaultCommand(new Drive());
-//   	System.out.println("drive something" + new Drive());
-   	//setDefaultCommand(new DrivetrainVelocityPIDTest());
    }
 
    public void configGains (SRXGains gains) {
 	   this.L1.setGains(gains);
 	   this.R1.setGains(gains);
    }
- /*  //use config gains instead
-    public void configPIDF(double p, double i, double d, double f) {
-    	this.L1.config_kP(0, p, 0);
-    	this.L1.config_kI(0, i, 0);
-    	this.L1.config_kD(0, d, 0);
-    	this.L1.config_kF(0, f, 0);
-    	this.R1.config_kP(0, p, 0);
-    	this.R1.config_kI(0, i, 0);
-    	this.R1.config_kD(0, d, 0);
-    	this.R1.config_kF(0, f, 0);
-    }
-   */ 
+
     public void drive(ControlMode controlMode, double left, double right){
     	this.L1.set(controlMode, left);
     	this.R1.set(controlMode, right);
@@ -175,7 +160,7 @@ public class DriveTrain extends Subsystem {
 
 	public double getAngle() {
 		double[] ypr = new double[3];
-		pigeon.getYawPitchRoll(ypr);
+		// pigeon.getYawPitchRoll(ypr);
 		return ypr[0];
 	}
 

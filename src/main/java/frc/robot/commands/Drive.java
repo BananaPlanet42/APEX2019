@@ -2,10 +2,12 @@ package frc.robot.commands;
 import frc.robot.OI;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+// import frc.robot.RobotMap;
 import frc.robot.models.DriveSignal;
 import frc.robot.utils.DriveHelper;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+// import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
@@ -34,14 +36,14 @@ public class Drive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    /*.out.println("Initialized drive train in coast mode");
+    System.out.println("Initialized drive train in coast mode");
     	RobotMap.L1.setNeutralMode(NeutralMode.Coast);
     	RobotMap.L2.setNeutralMode(NeutralMode.Coast);
     	RobotMap.L3.setNeutralMode(NeutralMode.Coast);
     	RobotMap.R1.setNeutralMode(NeutralMode.Coast);
     	RobotMap.R2.setNeutralMode(NeutralMode.Coast);
     	RobotMap.R3.setNeutralMode(NeutralMode.Coast);
-    	*/
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -53,7 +55,7 @@ public class Drive extends Command {
 		double move = OI.xbox1.getY(Hand.kLeft);
 		double rotate = OI.xbox1.getX(Hand.kRight);
 		boolean quickTurn = Robot.driveTrain.quickTurnController(); 
-		DriveSignal driveSignal = helper.cheesyDrive(1.0 * -move, 1.0 * rotate, quickTurn, false);
+		DriveSignal driveSignal = helper.cheesyDrive(1.0 * -move, 0.5 * rotate, quickTurn, false);
     	Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
         }
 

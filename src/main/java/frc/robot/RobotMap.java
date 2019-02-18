@@ -6,7 +6,6 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
-import com.ctre.phoenix.*;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -16,9 +15,11 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
  */
 import frc.robot.utils.ControllerConfig;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import frc.robot.models.*;
+import frc.robot.commands.ReleaseLift;
+
 public class RobotMap {
 
 //drive train stuff
@@ -31,7 +32,7 @@ public class RobotMap {
   public static VictorSPX L3;
 //lift stuff
   public static TalonSRX Lift1;
-  public static TalonSRX Lift2;
+  public static VictorSPX Lift2;
   public static DoubleSolenoid LiftSolenoid1;
   public static DoubleSolenoid LiftSolenoid2;
 //intake/eater stuff
@@ -41,20 +42,18 @@ public class RobotMap {
   public static DoubleSolenoid Crossbow1;
   public static DoubleSolenoid Crossbow2;
 
-//Ramp (climber) stuff
-public static DoubleSolenoid ClimberRamp1;
-public static DoubleSolenoid ClimberRamp2;
-public static TalonSRX Climber1;
-public static TalonSRX Climber2;
+  //Ramp (climber) stuff
+  public static DoubleSolenoid ClimberPneu1;
+  public static DoubleSolenoid ClimberPneu2;
+  public static TalonSRX Climber1;
+  public static VictorSPX Climber2;
 
+  public static void init(){
+    System.out.println("Initializing Speed Controllers");
 
-
-
-public static void init(){
-     System.out.println("Initializing Speed Controllers");
-//left side drive base
     //left side drive base
     L1 = new BobTalonSRX(PortMap.L1, false); //Create lead drive talon with inversion settings
+    ControllerConfig.setDriveLeader(L1, false);
     L2 = new VictorSPX(PortMap.L2);
     ControllerConfig.setDriveFollower(L2, L1, L1.getInverted());
     L3 = new VictorSPX(PortMap.L3);
@@ -62,28 +61,31 @@ public static void init(){
 
     //right side drive base
     R1 = new BobTalonSRX(PortMap.R1, true); //Create lead drive talon with inversion settings
+    ControllerConfig.setDriveLeader(R1, true);
     R2 = new VictorSPX(PortMap.R2);
     ControllerConfig.setDriveFollower(R2, R1, R1.getInverted());
     R3 = new VictorSPX(PortMap.R3);
     ControllerConfig.setDriveFollower(R3, R1, R1.getInverted());
 //lift stuff
 Lift1 = new TalonSRX(PortMap.Lift1);
-Lift2 = new TalonSRX(PortMap.Lift2);
-Lift2.follow(Lift1);
+ControllerConfig.setLiftLead(Lift1);
+Lift2 = new VictorSPX(PortMap.Lift2);
+ControllerConfig.setLiftFollower(Lift2, Lift1, false);
 LiftSolenoid1 = new DoubleSolenoid(PortMap.Lift_Solenoid1_Forward_Channel, PortMap.Lift_Solenoid1_Reverse_Channel);
-LiftSolenoid2 = new DoubleSolenoid(PortMap.Lift_Solenoid2_Forward_Channel, PortMap.Lift_Solenoid2_Reverse_Channel);
+// new ReleaseLift();
+
 //intake stuff
 Intake = new TalonSRX(PortMap.Intake);
-//crossbow stuff
+// //crossbow stuff
 Crossbow1 = new DoubleSolenoid(PortMap.Crossbow1_Forward_Channel, PortMap.Crossbow1_Reverse_Channel);
-Crossbow2 = new DoubleSolenoid(PortMap.Crossbow2_Forward_Channel, PortMap.Crossbow2_Reverse_Channel);
-//climber stuff
-ClimberRamp1 = new DoubleSolenoid(PortMap.ClimberSolenoid1_Forward_Channel, PortMap.ClimberSolenoid1_Reverse_Channel);
-ClimberRamp2 = new DoubleSolenoid(PortMap.ClimberSolenoid2_Forward_Channel, PortMap.ClimberSolenoid2_Reverse_Channel);
+// //climber stuff
+ClimberPneu1 = new DoubleSolenoid(PortMap.ClimberSolenoid1_Forward_Channel, PortMap.ClimberSolenoid1_Reverse_Channel);
 
 Climber1 = new TalonSRX(PortMap.Climber1);
-Climber2 = new TalonSRX(PortMap.Climber2);
-Climber2.follow(Climber1);
+ControllerConfig.setClimbLead(Climber1);
+Climber2 = new VictorSPX(PortMap.Climber2);
+ControllerConfig.setClimbFollower(Climber2, Climber1);
+// Climber2.setInverted(true);
 }
 
 
@@ -93,7 +95,7 @@ Climber2.follow(Climber1);
 
   // For example to map the left and right motors, you could define the
   // following variables to use with your drivetrain subsystem.
-  // public static int leftMotor = 1;
+// public static int leftMotor = 1;
   // public static int rightMotor = 2;
 
   // If you are using multiple modules, make sure to define both the port

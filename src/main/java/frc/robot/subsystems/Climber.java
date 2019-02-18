@@ -2,38 +2,50 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.OI;
 import frc.robot.RobotMap;
-import edu.wpi.first.*;
+
+import edu.wpi.first.wpilibj.GenericHID.Hand;
+
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 public class Climber extends Subsystem{
 
-    public DoubleSolenoid ClimberRamp1 = RobotMap.ClimberRamp1;
-    public DoubleSolenoid ClimberRamp2 = RobotMap.ClimberRamp2;
+    public DoubleSolenoid ClimberPneu = RobotMap.ClimberPneu1;
     public TalonSRX Climber1 = RobotMap.Climber1;
    
     public void ExtendClimber(){
-        ClimberRamp1.set(Value.kForward);
-        ClimberRamp2.set(Value.kForward);
+        ClimberPneu.set(Value.kForward);
     }
 
     public void RetractClimber(){
-        ClimberRamp1.set(Value.kReverse);
-        ClimberRamp2.set(Value.kReverse);
+        ClimberPneu.set(Value.kReverse);
     }
 
     public void ClimberForward(){
-        Climber1.set(ControlMode.PercentOutput, 0.7);
+        Climber1.set(ControlMode.PercentOutput, -0.7);
     }
 
     public void ClimberReverse(){
-        Climber1.set(ControlMode.PercentOutput, -0.7);
+        Climber1.set(ControlMode.PercentOutput, 0.7);
     }
 
     public void ClimberStop(){
         Climber1.set(ControlMode.PercentOutput, 0.0);
+    }
+
+    public void ClimberManualForward(){
+        
+            Climber1.set(ControlMode.PercentOutput, -0.5 * OI.xbox2.getTriggerAxis(Hand.kLeft));
+        
+        
+    }
+
+    public void ClimberManualBack(){
+            Climber1.set(ControlMode.PercentOutput, 0.5 * OI.xbox2.getTriggerAxis(Hand.kRight));
+        
     }
 
     @Override

@@ -1,9 +1,8 @@
 package frc.robot.commands;
-import edu.wpi.first.*;
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.RobotMap;
-import frc.robot.subsystems.*;
-import frc.robot.subsystems.CargoIntake;
+// import frc.robot.RobotMap;
+// import frc.robot.subsystems.*;
+// import frc.robot.subsystems.CargoIntake;
 import frc.robot.*;
 
 public class EatCargo extends Command {
@@ -13,7 +12,7 @@ public class EatCargo extends Command {
     }
 
     protected void execute() {
-     Robot.cargoIntake.Intake();
+     Robot.cargoIntake.IntakeManual();
     }
 
     public boolean isFinished(){
@@ -21,6 +20,7 @@ public class EatCargo extends Command {
     }
 
     protected void interrupted() {
+        end();
     }
 
     protected void end() {

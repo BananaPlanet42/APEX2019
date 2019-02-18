@@ -1,9 +1,8 @@
 package frc.robot.commands;
-import edu.wpi.first.*;
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.RobotMap;
-import frc.robot.subsystems.*;
-import frc.robot.subsystems.CargoIntake;
+// import frc.robot.RobotMap;
+// import frc.robot.subsystems.*;
+// import frc.robot.subsystems.CargoIntake;
 import frc.robot.*;
 
 public class SpitCargo extends Command {
@@ -13,7 +12,7 @@ public class SpitCargo extends Command {
     }
 
     protected void execute() {
-     Robot.cargoIntake.Expel();
+     Robot.cargoIntake.ExpelManual();
     }
 
     public boolean isFinished(){
@@ -21,6 +20,7 @@ public class SpitCargo extends Command {
     }
 
     protected void interrupted() {
+        end();
     }
 
     protected void end() {
