@@ -56,14 +56,14 @@ public class RobotMap {
     System.out.println("Initializing Speed Controllers");
 
     // left side drive base
-    L1 = new BobTalonSRX(PortMap.L1, false); // Create lead drive talon with inversion settings
+    L1 = new BobTalonSRX(PortMap.L1, false, "left"); // Create lead drive talon with inversion settings
     L2 = new VictorSPX(PortMap.L2);
     ControllerConfig.setDriveFollower(L2, L1, L1.getInverted());
     L3 = new VictorSPX(PortMap.L3);
     ControllerConfig.setDriveFollower(L3, L1, L1.getInverted());
 
     // right side drive base
-    R1 = new BobTalonSRX(PortMap.R1, true); // Create lead drive talon with inversion settings
+    R1 = new BobTalonSRX(PortMap.R1, true, "right"); // Create lead drive talon with inversion settings
     R2 = new VictorSPX(PortMap.R2);
     ControllerConfig.setDriveFollower(R2, R1, R1.getInverted());
     R3 = new VictorSPX(PortMap.R3);

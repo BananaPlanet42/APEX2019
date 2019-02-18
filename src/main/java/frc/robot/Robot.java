@@ -35,7 +35,7 @@ import frc.robot.commands.autoCommands.DistanceTuningArc;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static OI oi = new OI();
+  public static OI oi;
   // public static CargoIntake cargoIntake;
   // public static Crossbow crossbow;
   // public static Lift lift;
@@ -55,7 +55,6 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     RobotMap.init();
 
-    oi = new OI();
     // cargoIntake = new CargoIntake();
     // crossbow = new Crossbow();
     driveTrain = new DriveTrain();
@@ -63,6 +62,7 @@ public class Robot extends TimedRobot {
     // climber = new Climber();
     // Robot.driveTrain.pigeon.setYaw(0, 0);
     // booleans.IsEndGame = false;
+    oi = new OI();
 
     // Compressor compressor = new Compressor (0);
 

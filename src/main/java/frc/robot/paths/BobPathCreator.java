@@ -36,8 +36,8 @@ public class BobPathCreator extends AbstractBobPathCreator {
 	}
 	
 	private BobPathCreator() {
-		config.max_acc = 2; // Maximum acceleration in FPS
-		config.max_vel = 4; // Maximum velocity in FPS
+		config.max_acc = 8.0; // Maximum acceleration in FPS
+		config.max_vel = 11.5; // Maximum velocity in FPS
 		config.wheel_dia_inches = 6.0;
 		config.scale_factor = 1.0; // Used to adjust for a gear ratio and or distance tuning
 		config.encoder_ticks_per_rev = 4096; // Count of ticks on your encoder
@@ -95,11 +95,11 @@ public class BobPathCreator extends AbstractBobPathCreator {
 	private List<BobPath> getConfigArcs() {
 		BobPath distanceScaling = new BobPath(config, "DistanceScaling");
 		distanceScaling.addWaypoint(new Waypoint(2, 13.5, 0, 0, 0));
-		distanceScaling.addWaypointRelative(3, 0, 0, 0, 3);
+		distanceScaling.addWaypointRelative(3, 0, 0, 0, 11.5);
 
 		BobPath turnScaling = new BobPath(config, "TurnScaling");
-		turnScaling.addWaypoint(new Waypoint(2, 13.5, 0, 0, 0));
-		turnScaling.addWaypointRelative(3, 12, 89.99, 0, 3);//divide all distanc values by six to get roughly apropriate distance to set in code
+		turnScaling.addWaypoint(new Waypoint(2, 3, 0, 0, 0));
+		turnScaling.addWaypointRelative(3, -3, 89.9, 0, 3);//divide all distanc values by six to get roughly apropriate distance to set in code
 
 		BobPath speedTesting = new BobPath(config, "SpeedTesting");
 		speedTesting.addWaypoint(new Waypoint(2, 13.5, 0, 0, 0));

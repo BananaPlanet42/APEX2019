@@ -22,9 +22,14 @@ public class BobTalonSRX extends TalonSRX {
 	private FeedbackDevice primaryFeedbackDevice;
 	private FeedbackDevice secondaryFeedbackDevice;
 
-	public BobTalonSRX(int deviceNumber, Boolean isInverted) {
+	public BobTalonSRX(int deviceNumber, Boolean isInverted, String side) {
 		super(deviceNumber);
-		ControllerConfig.setDriveLeader(this, isInverted);
+		if(side == "left"){
+			ControllerConfig.setL1(this, isInverted);
+		}
+		if(side == "right"){
+			ControllerConfig.setR1(this, isInverted);
+		}
 	}
 
 	public int getPrimaryPidIndex() {
