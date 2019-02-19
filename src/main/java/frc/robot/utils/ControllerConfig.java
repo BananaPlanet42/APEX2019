@@ -62,8 +62,9 @@ public class ControllerConfig {
         leaderSRX.configSelectedFeedbackCoefficient((3600.0 / 8192.0), 1, 0);
 
         // Takes and sets: Slot, P, I, D, F, Izone
-        SRXGains highGearGains = new SRXGains(0, 2.0, 0.0, 0, 0.25, 0);
-        SRXGains rotationGains = new SRXGains(1, 1.5, 0.0, 0, 0.0, 0);
+        SRXGains highGearGains = new SRXGains(0, 1.0, 0.0, 10, 0.25, 0);
+        SRXGains rotationGains = new SRXGains(1, 2.8, 0.0, 35, .3, 0);//2.25, 0, 70, 
+
 
         leaderSRX.configPIDF(highGearGains);
         leaderSRX.configPIDF(rotationGains);

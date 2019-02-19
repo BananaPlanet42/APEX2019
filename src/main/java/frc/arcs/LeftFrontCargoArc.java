@@ -7,9 +7,9 @@ public class LeftFrontCargoArc extends SrxTrajectory {
 	
 	// WAYPOINTS:
 	// (X,Y,degrees)
-	// (2.00,13.50,0.00)
-	// (8.00,14.00,0.00)
-	// (12.00,14.50,0.00)
+	// (5.30,17.50,0.00)
+	// (11.30,18.00,0.00)
+	// (15.30,18.50,0.00)
 	
     public LeftFrontCargoArc() {
 		super();

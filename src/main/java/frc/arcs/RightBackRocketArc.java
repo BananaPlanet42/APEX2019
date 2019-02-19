@@ -7,9 +7,9 @@ public class RightBackRocketArc extends SrxTrajectory {
 	
 	// WAYPOINTS:
 	// (X,Y,degrees)
-	// (2.00,13.50,0.00)
-	// (8.00,13.00,30.00)
-	// (14.00,12.50,60.00)
+	// (5.30,10.50,0.00)
+	// (11.30,10.00,30.00)
+	// (17.30,9.50,60.00)
 	
     public RightBackRocketArc() {
 		super();

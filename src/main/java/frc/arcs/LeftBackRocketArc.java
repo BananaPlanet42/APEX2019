@@ -7,9 +7,9 @@ public class LeftBackRocketArc extends SrxTrajectory {
 	
 	// WAYPOINTS:
 	// (X,Y,degrees)
-	// (2.00,13.50,0.00)
-	// (8.00,14.00,30.00)
-	// (14.00,14.50,60.00)
+	// (5.30,17.50,0.00)
+	// (11.30,18.00,30.00)
+	// (17.30,18.50,60.00)
 	
     public LeftBackRocketArc() {
 		super();
