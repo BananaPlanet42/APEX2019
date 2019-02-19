@@ -21,12 +21,16 @@ import frc.robot.subsystems.Crossbow;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.Compressor;
+import frc.robot.commands.PrintAutos.PrintAuto1;
+import frc.robot.commands.PrintAutos.PrintAuto2;
+import frc.robot.commands.PrintAutos.PrintAuto3;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import frc.robot.utils.SmartDashConfig;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.cameraserver.*;
 // import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 // import frc.robot.commands.ReleaseLift;
-// import frc.robot.utils.Booleans;
+import frc.robot.utils.Booleans;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -42,10 +46,11 @@ public class Robot extends TimedRobot {
   public static DriveTrain driveTrain;
   public static Lift lift;
   public static Climber climber;
-  public static Boolean booleans;
+  public static Booleans booleans;
   public DoubleSolenoid LiftSolenoid1 = RobotMap.LiftSolenoid1;
   Command m_autonomousCommand;
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
+  SendableChooser<String> m_chooser = new SendableChooser<>();
+  String SelectedCommand;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -56,6 +61,7 @@ public class Robot extends TimedRobot {
     RobotMap.init();
     // WatchDog = new Watchdog();
     // Watchdog.suppressTimeoutMessage(true);
+    booleans = new Booleans();
     cargoIntake = new CargoIntake();
     crossbow = new Crossbow();
     driveTrain = new DriveTrain();
@@ -64,13 +70,14 @@ public class Robot extends TimedRobot {
     oi = new OI();
     // Watchdog.disabled();
     // Robot.driveTrain.pigeon.setYaw(0, 0);
-    booleans= false;
+    // booleans= false;
     //CameraServer.getInstance().startAutomaticCapture();
     Compressor compressor = new Compressor (0);
 
-    // m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-    // chooser.addOption("My Auto", new MyAutoCommand());
-    // SmartDashboard.putData("Auto mode", m_chooser);
+    m_chooser.setDefaultOption("Default Auto", "Default Auto");
+    m_chooser.addOption("Print Auto 2", "Print Auto 2");
+    m_chooser.addOption("Print Auto 3", "Print Auto 3");
+    SmartDashboard.putData("Auto mode", m_chooser);
 
     compressor.setClosedLoopControl(true);
 
@@ -109,7 +116,7 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
-    SmartDashConfig.Testing();
+    // SmartDashConfig.Testing();
 
   }
 
@@ -126,7 +133,24 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
+   String SelectedCommand = (String) m_chooser.getSelected();
+
+    switch (SelectedCommand)  {
+      case "DefaultAuto":
+            m_autonomousCommand = new PrintAuto1();
+            break;
+      case "Print Auto 2":
+            m_autonomousCommand = new PrintAuto2();
+            break;
+      case "Print Auto 3":
+            m_autonomousCommand = new PrintAuto3();
+            break;
+
+      default: 
+            m_autonomousCommand = new PrintAuto1();
+        
+
+    }
     // Robot.driveTrain.pigeon.setYaw(0, 0);
 
     /*
@@ -148,7 +172,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
-    SmartDashConfig.Testing();
+    // SmartDashConfig.Testing();
 
   }
 
@@ -174,7 +198,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    SmartDashConfig.Testing();
+    SmartDashConfig.commands();
   }
 
   /**
@@ -183,7 +207,7 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {
     Scheduler.getInstance().run();
-    SmartDashConfig.Testing();
+    // SmartDashConfig.Testing();
 
   }
 }

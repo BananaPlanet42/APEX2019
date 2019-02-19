@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class LockElevator extends Command {
+    
     public LockElevator() {
 
     }
@@ -15,6 +16,8 @@ public class LockElevator extends Command {
 
     protected void execute() {
         Robot.lift.lockLift();
+        Robot.booleans.IsLocked = true;
+
     }
 
     protected boolean isFinished() {
@@ -22,7 +25,9 @@ public class LockElevator extends Command {
     }
 
     protected void end() {
-        Robot.lift.releaseLift();
+        Robot.lift.endLiftLock();
+        // Robot.booleans.IsLocked = false;
+
     }
 
     protected void interrupted() {

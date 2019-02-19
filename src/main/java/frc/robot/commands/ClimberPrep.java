@@ -8,7 +8,8 @@ import frc.robot.commands.ExtendClimber;
 
 public class ClimberPrep extends CommandGroup{
     public ClimberPrep(){
-        Robot.booleans = true;
+        // Robot.booleans = true;
+        Robot.booleans.IsEndGame = true;
         addParallel(new ExtendClimber());
         addSequential(new MoveLift(20758));
         addSequential(new LockElevator());
