@@ -49,7 +49,8 @@ public class Robot extends TimedRobot {
   public static Booleans booleans;
   public DoubleSolenoid LiftSolenoid1 = RobotMap.LiftSolenoid1;
   Command m_autonomousCommand;
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
+  SendableChooser<String> m_chooser = new SendableChooser<>();
+  String SelectedCommand;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -73,9 +74,9 @@ public class Robot extends TimedRobot {
     //CameraServer.getInstance().startAutomaticCapture();
     Compressor compressor = new Compressor (0);
 
-    m_chooser.setDefaultOption("Default Auto", new PrintAuto1());
-    m_chooser.addOption("Print Auto 2", new PrintAuto2());
-    m_chooser.addOption("Print Auto 3", new PrintAuto3());
+    m_chooser.setDefaultOption("Default Auto", "Default Auto");
+    m_chooser.addOption("Print Auto 2", "Print Auto 2");
+    m_chooser.addOption("Print Auto 3", "Print Auto 3");
     SmartDashboard.putData("Auto mode", m_chooser);
 
     compressor.setClosedLoopControl(true);
@@ -132,7 +133,24 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
+   String SelectedCommand = (String) m_chooser.getSelected();
+
+    switch (SelectedCommand)  {
+      case "DefaultAuto":
+            m_autonomousCommand = new PrintAuto1();
+            break;
+      case "Print Auto 2":
+            m_autonomousCommand = new PrintAuto2();
+            break;
+      case "Print Auto 3":
+            m_autonomousCommand = new PrintAuto3();
+            break;
+
+      default: 
+            m_autonomousCommand = new PrintAuto1();
+        
+
+    }
     // Robot.driveTrain.pigeon.setYaw(0, 0);
 
     /*

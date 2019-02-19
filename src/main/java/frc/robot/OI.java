@@ -24,6 +24,7 @@ import frc.robot.commands.UnlockElevator;
 import frc.robot.commands.CrossbowBoop;
 import frc.robot.commands.MoveLift;
 import frc.robot.commands.MoveLiftManual;
+import frc.robot.commands.ReleaseLift;
 import frc.robot.commands.RetractClimber;
 import frc.robot.commands.CrossbowAcquire;
 import frc.robot.commands.SpitCargo;
@@ -47,7 +48,8 @@ public class OI {
          RPT2.whileHeld(new MoveLiftManual());
          //RPT2.whenInactive(new LiftHoldPosition());
       Button LPT2=new JoystickButton(xbox1, 2 );  // 2 is equal to B
-      LPT2.whenPressed(new LockElevator());
+      LPT2.whileHeld(new LockElevator());
+      LPT2.whenReleased(new ReleaseLift());
      // LPT2.whenInactive(new UnlockElevator());
       //  LPT2.whileHeld(new MoveLiftManual());
       Button RPB2=new JoystickButton(xbox2, 3); //3 = X
