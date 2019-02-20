@@ -110,51 +110,53 @@ public class BobPathCreator extends AbstractBobPathCreator {
 	}
 	//change the starting waypoint
 	private List<BobPath> getLevel1Left(){
-		BobPath LeftSideCargo = new BobPath(config, "LeftSideCargo");
-		LeftSideCargo.addWaypoint(new Waypoint(5.3, 17.5, 0, 0, 0));
-		LeftSideCargo.addWaypointRelative(8, 0, 30, 3, 6);
-		LeftSideCargo.addWaypointRelative(4,-1, 60, 0 , 4);
+		//this is a giant mess and idk why
+		//BobPath LeftSideCargo = new BobPath(config, "LeftSideCargo");
+		//LeftSideCargo.addWaypoint(new Waypoint(5.3, 17.5, 0, 0, 0));
+
 
 		BobPath LeftFrontCargo = new BobPath(config, "LeftFrontCargo");
 		LeftFrontCargo.addWaypoint(new Waypoint(5.3, 17.5, 0, 0, 0));
-		LeftFrontCargo.addWaypointRelative(6, .5, 0, 3, 6);
-		LeftFrontCargo.addWaypointRelative(4, .5, 0, 0, 5);
+		LeftFrontCargo.addWaypointRelative(6, -3, 0, 3, 6);
+		LeftFrontCargo.addWaypointRelative(6, 0, 0, 0, 5);
 
 		BobPath LeftFrontRocket = new BobPath(config, "LeftFrontRocket");
 		LeftFrontRocket.addWaypoint(new Waypoint(5.3, 17.5, 0, 0, 0));
-		LeftFrontRocket.addWaypointRelative(5, .5, 30, 3, 6);
-		LeftFrontRocket.addWaypointRelative(2, .5, 30, 0, 6);
+		LeftFrontRocket.addWaypointRelative(8, 3, 55, 3, 6);
+		LeftFrontRocket.addWaypointRelative(4, 4.5, -30, 0, 6);
 
 		//not done
 		BobPath LeftBackRocket = new BobPath(config, "LeftBackRocket");
 		LeftBackRocket.addWaypoint(new Waypoint(5.3, 17.5, 0, 0, 0));
-		LeftBackRocket.addWaypointRelative(6, .5, 30, 3, 6);
-		LeftBackRocket.addWaypointRelative(6, .5, 30, 3, 6);
+		LeftBackRocket.addWaypointRelative(9, 3, 30, 3, 6);
+		LeftBackRocket.addWaypointRelative(7.5, 4.6, 45, 3, 6);
 
-		return asList(LeftSideCargo, LeftFrontCargo, LeftFrontRocket, LeftBackRocket);
+		return asList(LeftFrontCargo, LeftFrontRocket, LeftBackRocket);
 
 	}
 	private List<BobPath> getLevel1Right(){
 		BobPath RightSideCargo = new BobPath(config, "RightSideCargo");
-		RightSideCargo.addWaypoint(new Waypoint(5.3, 10.5, 0, 0, 0));
+		RightSideCargo.addWaypoint(new Waypoint(5.3, 10, 0, 0, 0));
 		RightSideCargo.addWaypointRelative(8, 0, 30, 3, 6);
 		RightSideCargo.addWaypointRelative(4,-1, 60, 0 , 4);
 
 		BobPath RightFrontCargo = new BobPath(config, "RightFrontCargo");
-		RightFrontCargo.addWaypoint(new Waypoint(5.3, 10.5, 0, 0, 0));
-		RightFrontCargo.addWaypointRelative(6, -.5, 0, 3, 6);
-		RightFrontCargo.addWaypointRelative(4, -.5, 0, 0, 5);
+		RightFrontCargo.addWaypoint(new Waypoint(5.3, 10, 0, 0, 0));
+		RightFrontCargo.addWaypointRelative(6, 3, 0, 3, 6);
+		RightFrontCargo.addWaypointRelative(6, 0, 0, 0, 5);
 
-		BobPath RightFrontRocket = new BobPath(config, "RightSideRocket");
-		RightFrontRocket.addWaypoint(new Waypoint(5.3, 10.5, 0, 0, 0));
-		RightFrontRocket.addWaypointRelative(5, -.5, 30, 3, 6);
-		RightFrontRocket.addWaypointRelative(2, -.5, 30, 0, 6);
+		BobPath RightFrontRocket = new BobPath(config, "RightfrontRocket");
+		RightFrontRocket.addWaypoint(new Waypoint(5.3, 10, 0, 0, 0));
+		RightFrontRocket.addWaypointRelative(8, -3, -45, 3, 6);
+		RightFrontRocket.addWaypointRelative(4, -4.5, 30, 0, 6);
+
 
 		//not done
 		BobPath RightBackRocket = new BobPath(config, "RightBackRocket");
-		RightBackRocket.addWaypoint(new Waypoint(5.3, 10.5, 0, 0, 0));
-		RightBackRocket.addWaypointRelative(6, -.5, 30, 3, 6);
-		RightBackRocket.addWaypointRelative(6, -.5, 30, 3, 6);
+		RightBackRocket.addWaypoint(new Waypoint(5.3, 10, 0, 0, 0));
+		RightBackRocket.addWaypointRelative(9, -3, 30, 3, 6);
+		RightBackRocket.addWaypointRelative(7.5, -4.6, 45, 3, 6);
+
 
 		BobPath CenterSideCargo = new BobPath(config, "CenterSideCargo");
 		CenterSideCargo.addWaypoint(new Waypoint(5.3, 13.5, 0, 0, 0));
@@ -164,6 +166,7 @@ public class BobPathCreator extends AbstractBobPathCreator {
 		return asList(CenterSideCargo, RightSideCargo, RightFrontCargo, RightFrontRocket, RightBackRocket);
 
 	}
+	/*
 	private List<BobPath> getLevel1Center(){
 		BobPath CenterFrontCargo = new BobPath(config, "CenterFrontCargo");
 		CenterFrontCargo.addWaypoint(new Waypoint(5.3, 13.5, 0, 0, 0));
@@ -181,11 +184,12 @@ public class BobPathCreator extends AbstractBobPathCreator {
 		CenterFrontRocket.addWaypointRelative(2, -.5, 30, 0, 6);
 		
 		//not done
-		BobPath CenterBackRocket = new BobPath(config, "CenterBackRocket");
+		/*BobPath CenterBackRocket = new BobPath(config, "CenterBackRocket");
 		CenterFrontCargo.addWaypoint(new Waypoint(5.3, 13.5, 0, 0, 0));
 		CenterBackRocket.addWaypointRelative(6, -.5, 30, 3, 6);
 		CenterBackRocket.addWaypointRelative(6, -.5, 30, 3, 6);
-
+		//CenterSideCargo.addWaypoint(new Waypoint()
+		//CenterSideCargo));
 		return asList(CenterFrontCargo, CenterSideCargo, CenterFrontRocket, CenterBackRocket);
-}
+		*/
 }
