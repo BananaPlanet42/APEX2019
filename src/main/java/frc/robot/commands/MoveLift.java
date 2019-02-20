@@ -22,7 +22,7 @@ protected void initialize(){
 }
 protected void execute(){
     Robot.lift.lift(ControlMode.MotionMagic, GoalPosition);
-    System.out.println("Moving lift to" + GoalPosition);
+    //System.out.println("Moving lift to" + GoalPosition);
     
     
 }
@@ -38,13 +38,13 @@ protected boolean isFinished() {
 
 }
 protected void end() {
-    System.out.println("Going to Hold Position");
+    //System.out.println("Going to Hold Position");
     new LiftHoldPosition();
 
 }
 
 protected void interrupted(){
-    System.out.println("Interrupted");
+    //System.out.println("Interrupted");
     end();
 }
 

@@ -16,13 +16,13 @@ import frc.robot.commands.LockElevator;
 
 public class SmartDashConfig {
     public static void Testing() {
-        SmartDashboard.putNumber("Lift1 encoder position", RobotMap.Lift1.getSelectedSensorPosition(0));
+        //SmartDashboard.putNumber("Lift1 encoder position", RobotMap.Lift1.getSelectedSensorPosition(0));
         //SmartDashboard.putNumber("L1 encoder position", RobotMap.L1.getSelectedSensorPosition(0));
         //SmartDashboard.putNumber("R1 encoder position", RobotMap.R1.getSelectedSensorPosition(0));
         //SmartDashboard.putNumber("RobotAngle",  Robot.driveTrain.getAngle());
 
-        SmartDashboard.putData("ZeroLift", new ZeroLiftEncoder());
-        SmartDashboard.putBoolean("LiftLocked?", Robot.booleans.IsLocked);
+       // SmartDashboard.putData("ZeroLift", new ZeroLiftEncoder());
+        //SmartDashboard.putBoolean("LiftLocked?", Robot.booleans.IsLocked);
 
 
 
@@ -35,13 +35,13 @@ public class SmartDashConfig {
     }
 
     public static void commands(){
-        SmartDashboard.putData("MoveLift: Top", new MoveLift(19000));
-        SmartDashboard.putData("MoveLift: LV2", new MoveLift(16000));
-        SmartDashboard.putData("MoveLift: LV1", new MoveLift(7600));
-        SmartDashboard.putData("MoveLift: Bottom", new MoveLift(2100));
+        //SmartDashboard.putData("MoveLift: Top", new MoveLift(19000));
+        //SmartDashboard.putData("MoveLift: LV2", new MoveLift(16000));
+        //SmartDashboard.putData("MoveLift: LV1", new MoveLift(7600));
+       // SmartDashboard.putData("MoveLift: Bottom", new MoveLift(2100));
 
-        SmartDashboard.putData("LockLift", new LockElevator());
-        SmartDashboard.putData("Prep Climb", new ClimberPrep());
+       // SmartDashboard.putData("LockLift", new LockElevator());
+        //SmartDashboard.putData("Prep Climb", new ClimberPrep());
     }
     
     public static void Comp() {

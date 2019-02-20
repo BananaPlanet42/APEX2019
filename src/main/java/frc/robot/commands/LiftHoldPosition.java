@@ -26,7 +26,7 @@ public class LiftHoldPosition extends Command {
         // double angle = RobotMap.Arm1.getClosedLoopTarget(0);
         double liftPosition = Robot.lift.Lift1.getSelectedSensorPosition(0);
         Robot.lift.Lift1.set(ControlMode.MotionMagic, liftPosition);
-        System.out.println("Holding Lift position at" + liftPosition);
+        //System.out.println("Holding Lift position at" + liftPosition);
 
     }
 
