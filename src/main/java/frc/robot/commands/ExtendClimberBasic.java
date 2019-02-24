@@ -5,30 +5,29 @@ import frc.robot.Robot;
 // import frc.robot.subsystems.Crossbow;
 // import frc.robot.RobotMap;
 
-public class ExtendClimberBasic extends Command{
+public class ExtendClimberBasic extends Command {
 
-    public ExtendClimberBasic(){
-    
+    public ExtendClimberBasic() {
+
     }
 
-    protected void initialize(){
-    
+    protected void initialize() {
+
     }
 
-    protected void execute(){
+    protected void execute() {
         Robot.climber.ExtendClimber();
     }
 
-    protected boolean isFinished(){
+    protected boolean isFinished() {
         return false;
     }
 
-    protected void end(){
-    Robot.climber.RetractClimber();
-
+    protected void end() {
+        // Robot.climber.RetractClimber();
     }
 
-    protected void interrupted(){
+    protected void interrupted() {
         end();
     }
 }

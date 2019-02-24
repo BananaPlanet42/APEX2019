@@ -19,8 +19,8 @@ public static int L3 = 4;
 public static int Lift1 = 3;
 public static int Lift2 = 8;
 
-public static int Lift_Solenoid1_Forward_Channel = 5; //2, 5 for lift solenoid
-public static int Lift_Solenoid1_Reverse_Channel = 2;
+public static int Lift_Solenoid1_Forward_Channel = 2; //2, 5 for lift solenoid
+public static int Lift_Solenoid1_Reverse_Channel = 5;
 
 //eater (intake) id, TalonSRX
 public static int Intake = 5;

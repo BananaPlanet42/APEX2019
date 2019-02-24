@@ -10,8 +10,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class LiftLockUnlock extends Command {
-  public LiftLockUnlock() {
+public class LiftUnlock extends Command {
+  public LiftUnlock() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -24,16 +24,10 @@ public class LiftLockUnlock extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (Robot.booleans.LiftIsLocked == true){
       Robot.lift.releaseLift();
     }
-    else if (Robot.booleans.LiftIsLocked == false){
-      Robot.lift.lockLift();
-    }
-    else {
-      end();
-    }
-  }
+    
+  
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
@@ -44,12 +38,12 @@ public class LiftLockUnlock extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.lift.endLiftLock();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

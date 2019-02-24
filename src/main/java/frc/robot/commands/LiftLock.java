@@ -10,8 +10,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ClimberRelease extends Command {
-  public ClimberRelease() {
+public class LiftLock extends Command {
+  public LiftLock() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -24,26 +24,20 @@ public class ClimberRelease extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.climber.ClimberRelease();
-    Robot.booleans.ClimberIsLocked = false;
+
+    Robot.lift.lockLift();
+    Robot.booleans.LiftIsLocked = false;
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-     return false;
-    // if (Robot.booleans.ClimberIsLocked == false){
-    //   return true;
-    // }
-    // else {
-    //   return false;
-    // }
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-
   }
 
   // Called when another command which requires one or more of the same

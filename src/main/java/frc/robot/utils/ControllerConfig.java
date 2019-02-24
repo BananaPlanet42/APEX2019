@@ -93,7 +93,7 @@ public class ControllerConfig {
     public static void setLiftLead(TalonSRX currentSRX) {
         currentSRX.configFactoryDefault();
         currentSRX.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
-        currentSRX.config_kP(0, 10, 0);
+        currentSRX.config_kP(0, 0, 0);
         currentSRX.config_kI(0, 0, 0);
         currentSRX.config_kD(0, 0, 0);
         currentSRX.config_kF(0, 0, 0);
@@ -109,8 +109,8 @@ public class ControllerConfig {
         currentSRX.configReverseSoftLimitEnable(false, 0);
         // currentSRX.configForwardSoftLimitThreshold(30000,0);
         // currentSRX.configReverseSoftLimitThreshold(0, 0);
-        currentSRX.configContinuousCurrentLimit(40);
-        currentSRX.configPeakCurrentLimit(40);
+        currentSRX.configContinuousCurrentLimit(20);
+        currentSRX.configPeakCurrentLimit(20);
         currentSRX.configPeakCurrentDuration(0, 0);
         currentSRX.enableCurrentLimit(true);
         // currentSRX.configMotionAcceleration(500, 0); //TODO SET THESE
@@ -127,7 +127,7 @@ public class ControllerConfig {
     }
 
     public static void setClimbLead(TalonSRX currentSRX){
-        System.out.println("Configuring Climb Lead" + currentSRX.getInverted());
+        // System.out.println("Configuring Climb Lead" + currentSRX.getInverted());
         currentSRX.configFactoryDefault();
         currentSRX.setInverted(false);
         currentSRX.configNominalOutputForward(0.0);
@@ -138,12 +138,12 @@ public class ControllerConfig {
         currentSRX.configPeakCurrentLimit(40);
         currentSRX.configPeakCurrentDuration(0, 0);
         currentSRX.enableCurrentLimit(true);
-        System.out.println("Done Configuring Climb Lead" + currentSRX.getInverted());
+        // System.out.println("Done Configuring Climb Lead" + currentSRX.getInverted());
 
     }
 
     public static void setClimbFollower(VictorSPX currentSPX, TalonSRX leaderSRX) {
-        System.out.println("Configuring Climb Follower" + currentSPX.getInverted());
+        // System.out.println("Configuring Climb Follower" + currentSPX.getInverted());
         currentSPX.configFactoryDefault();
         currentSPX.follow(leaderSRX);
         currentSPX.setInverted(true);
@@ -151,7 +151,6 @@ public class ControllerConfig {
         currentSPX.configNominalOutputReverse(0.0);
         currentSPX.configPeakOutputForward(1);
         currentSPX.configPeakOutputReverse(-1);
-        System.out.println("Done Configuring Climb Follower, Inversion: " + currentSPX.getInverted());
-
+        // System.out.println("Done Configuring Climb Follower, Inversion: " + currentSPX.getInverted());
     }
 }

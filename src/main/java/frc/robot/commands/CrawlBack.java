@@ -16,8 +16,6 @@ public class CrawlBack extends Command{
 
     protected void execute(){
         Robot.climber.ClimberManualBack();
-        System.out.println("Climb Leader Inversion: " + RobotMap.Climber1.getInverted());
-        System.out.println("Climb Follower Inversion: " + RobotMap.Climber2.getInverted());
 
 
     }

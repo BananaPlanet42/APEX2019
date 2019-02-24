@@ -25,7 +25,6 @@ public class ReleaseLift extends Command{
     }
 
     protected void end(){
-        Robot.lift.endLiftLock();
     }
 
     protected void interrupted(){
