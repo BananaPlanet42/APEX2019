@@ -29,16 +29,16 @@ protected void execute(){
 
 
 protected boolean isFinished() {
-    // if (RobotMap.Lift1.getSelectedSensorPosition(0) <= GoalPosition + 10 && RobotMap.Lift1.getSelectedSensorPosition(0) >= GoalPosition - 10){
+    if (RobotMap.Lift1.getSelectedSensorPosition(0) <= GoalPosition + 10 && RobotMap.Lift1.getSelectedSensorPosition(0) >= GoalPosition - 10){
 
-    // return true;
-    // }
-    // else return false;
-    return false;
+    return true;
+    }
+    else return false;
+    // return alsfe;
 
 }
 protected void end() {
-    //System.out.println("Going to Hold Position");
+    System.out.println("Done moving lift");
     new LiftHoldPosition();
 
 }

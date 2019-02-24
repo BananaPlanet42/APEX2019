@@ -27,6 +27,7 @@ import frc.robot.commands.PrintAutos.PrintAuto3;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import frc.robot.utils.SmartDashConfig;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 import edu.wpi.first.cameraserver.*;
@@ -103,7 +104,7 @@ public class Robot extends TimedRobot {
     @Override
     public void robotPeriodic() {
         SmartDashConfig.Testing();
-
+        SmartDashConfig.commands();
     }
 
     /**
@@ -203,6 +204,7 @@ public class Robot extends TimedRobot {
         RobotMap.L1.setSelectedSensorPosition(0);
         new ReleaseLift();
         // Robot.driveTrain.pigeon.setYaw(0, 0);
+        lift.lift(ControlMode.PercentOutput,0); 
     }
 
     /**
@@ -212,7 +214,7 @@ public class Robot extends TimedRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         // SmartDashConfig.commands();
-        
+
     }
 
     /**

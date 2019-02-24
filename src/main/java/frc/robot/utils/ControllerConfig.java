@@ -46,14 +46,13 @@ public class ControllerConfig {
         leaderSRX.setNeutralMode(NeutralMode.Coast);
         leaderSRX.enableCurrentLimit(true);
 
-        // leaderSRX.configMotionAcceleration(500, 0); 
+        // leaderSRX.configMotionAcceleration(500, 0);
         leaderSRX.configOpenloopRamp(.4);
-        // currentSRX.configMotionCruiseVelocity(1000, 0); 
+        // currentSRX.configMotionCruiseVelocity(1000, 0);
 
         leaderSRX.configRemoteFeedbackFilter(RobotMap.L1.getDeviceID(), RemoteSensorSource.TalonSRX_SelectedSensor, 0,
                 0);
-        leaderSRX.configRemoteFeedbackFilter(0,
-                RemoteSensorSource.Pigeon_Yaw, 1, 0);
+        leaderSRX.configRemoteFeedbackFilter(0, RemoteSensorSource.Pigeon_Yaw, 1, 0);
         leaderSRX.setSensorPhase(true);
         System.out.println("yo im actually working R1");
 
@@ -67,17 +66,15 @@ public class ControllerConfig {
 
         // Takes and sets: Slot, P, I, D, F, Izone
         SRXGains highGearGains = new SRXGains(0, 1.0, 0.0, 10, 0.25, 0);
-        SRXGains rotationGains = new SRXGains(1, 2.8, 0.0, 35, .3, 0);//2.25, 0, 70, 
-
+        SRXGains rotationGains = new SRXGains(1, 2.8, 0.0, 35, .3, 0);// 2.25, 0, 70,
 
         leaderSRX.configPIDF(highGearGains);
         leaderSRX.configPIDF(rotationGains);
 
-
         // leaderSRX.config_kP(0, 1, 0);
-		// leaderSRX.config_kI(0, 0, 0);
-		// leaderSRX.config_kD(0, 0, 0);
-		// leaderSRX.config_kF(0, 0, 0);
+        // leaderSRX.config_kI(0, 0, 0);
+        // leaderSRX.config_kD(0, 0, 0);
+        // leaderSRX.config_kF(0, 0, 0);
     }
 
     public static void setDriveFollower(VictorSPX currentSPX, TalonSRX leaderSRX, Boolean isInverted) {
@@ -93,10 +90,10 @@ public class ControllerConfig {
     public static void setLiftLead(TalonSRX currentSRX) {
         currentSRX.configFactoryDefault();
         currentSRX.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
-        currentSRX.config_kP(0, 0, 0);
+        currentSRX.config_kP(0, 1.0, 0);
         currentSRX.config_kI(0, 0, 0);
-        currentSRX.config_kD(0, 0, 0);
-        currentSRX.config_kF(0, 0, 0);
+        currentSRX.config_kD(0, 10, 0);
+        currentSRX.config_kF(0, .9, 0);
         currentSRX.config_IntegralZone(0, 0, 0);
         currentSRX.setInverted(false);
         currentSRX.setSensorPhase(false);
@@ -104,18 +101,20 @@ public class ControllerConfig {
         currentSRX.configNominalOutputReverse(0.0);
         currentSRX.configPeakOutputForward(1);
         currentSRX.configPeakOutputReverse(-1);
-        currentSRX.configAllowableClosedloopError(0, 0, 0);
+        currentSRX.configAllowableClosedloopError(0, 50, 0);
         currentSRX.configForwardSoftLimitEnable(false, 0);
         currentSRX.configReverseSoftLimitEnable(false, 0);
         // currentSRX.configForwardSoftLimitThreshold(30000,0);
         // currentSRX.configReverseSoftLimitThreshold(0, 0);
-        currentSRX.configContinuousCurrentLimit(20);
-        currentSRX.configPeakCurrentLimit(20);
+        currentSRX.configContinuousCurrentLimit(15);
+        currentSRX.configPeakCurrentLimit(15);
         currentSRX.configPeakCurrentDuration(0, 0);
         currentSRX.enableCurrentLimit(true);
-        // currentSRX.configMotionAcceleration(500, 0); //TODO SET THESE
-        // currentSRX.configMotionCruiseVelocity(1000, 0); //TODO SET THESE
+        currentSRX.configMotionAcceleration(3000, 0); 
+        currentSRX.configMotionCruiseVelocity(3000, 0); 
+        currentSRX.setNeutralMode(NeutralMode.Coast);
     }
+
     public static void setLiftFollower(VictorSPX currentSPX, TalonSRX leaderSRX, Boolean isInverted) {
         currentSPX.configFactoryDefault();
         currentSPX.follow(leaderSRX);
@@ -124,9 +123,11 @@ public class ControllerConfig {
         currentSPX.configNominalOutputReverse(0.0);
         currentSPX.configPeakOutputForward(1);
         currentSPX.configPeakOutputReverse(-1);
+        currentSPX.setNeutralMode(NeutralMode.Coast);
+
     }
 
-    public static void setClimbLead(TalonSRX currentSRX){
+    public static void setClimbLead(TalonSRX currentSRX) {
         // System.out.println("Configuring Climb Lead" + currentSRX.getInverted());
         currentSRX.configFactoryDefault();
         currentSRX.setInverted(false);
@@ -151,6 +152,7 @@ public class ControllerConfig {
         currentSPX.configNominalOutputReverse(0.0);
         currentSPX.configPeakOutputForward(1);
         currentSPX.configPeakOutputReverse(-1);
-        // System.out.println("Done Configuring Climb Follower, Inversion: " + currentSPX.getInverted());
+        // System.out.println("Done Configuring Climb Follower, Inversion: " +
+        // currentSPX.getInverted());
     }
 }

@@ -30,9 +30,9 @@ public class SmartDashConfig {
     }
 
     public static void commands() {
-        SmartDashboard.putData("MoveLift: Top", new MoveLift(19000));
-        SmartDashboard.putData("MoveLift: LV2", new MoveLift(16000));
-        SmartDashboard.putData("MoveLift: LV1", new MoveLift(7600));
+        SmartDashboard.putData("MoveLift: Top", new MoveLift(10000));
+        SmartDashboard.putData("MoveLift: LV2", new MoveLift(8000));
+        SmartDashboard.putData("MoveLift: LV1", new MoveLift(5000));
         SmartDashboard.putData("MoveLift: Bottom", new MoveLift(2100));
 
         SmartDashboard.putData("LockLift", new LockElevator());
