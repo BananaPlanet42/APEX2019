@@ -51,6 +51,9 @@ public class OI {
          //RPT2.whenInactive(new LiftHoldPosition());
       Button LPT1=new JoystickButton(xbox1, 2 );  // 2 is equal to B
       LPT1.whenPressed(new LiftLockUnlock());
+
+      Button RPT1=new JoystickButton(xbox1, 1 );  // 2 is equal to A
+      RPT1.whenPressed(new ClimberPrep());
       // LPT1.whenReleased(new ReleaseLift());
      // LPT2.whenInactive(new UnlockElevator());
       //  LPT2.whileHeld(new MoveLiftManual());
