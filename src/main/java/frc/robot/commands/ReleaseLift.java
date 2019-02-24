@@ -16,7 +16,7 @@ public class ReleaseLift extends Command{
 
     protected void execute(){
         Robot.lift.releaseLift();
-        Robot.booleans.IsLocked = false;
+        // Robot.booleans.LiftIsLocked = false;
 
     }
 

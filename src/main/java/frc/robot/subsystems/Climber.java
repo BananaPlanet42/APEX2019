@@ -14,6 +14,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 public class Climber extends Subsystem{
 
     public DoubleSolenoid ClimberPneu = RobotMap.ClimberPneu1;
+    public DoubleSolenoid ClimberLock = RobotMap.ClimberLock1;
     public TalonSRX Climber1 = RobotMap.Climber1;
    
     public void ExtendClimber(){
@@ -34,6 +35,18 @@ public class Climber extends Subsystem{
 
     public void ClimberStop(){
         Climber1.set(ControlMode.PercentOutput, 0.0);
+    }
+
+    public void ClimberLock(){
+        ClimberLock.set(Value.kForward);
+    }
+
+    public void ClimberRelease(){
+        ClimberLock.set(Value.kReverse);
+    }
+
+    public void ClimberLockOff(){
+        ClimberLock.set(Value.kOff);
     }
 
     public void ClimberManualForward(){
