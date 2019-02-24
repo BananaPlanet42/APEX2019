@@ -46,4 +46,9 @@ public static int ClimberSolenoid1_Reverse_Channel = 3;
 //climber speed controller ids,1 is talon 2 is victor
 public static int Climber1 = 6;
 public static int Climber2 = 7;
+
+//climber lock solenoid ids
+public static int ClimberLockSolenoid1_Forward_Channel = 0;
+public static int ClimberLockSolenoid1_Reverse_Channel = 7;
+
 }

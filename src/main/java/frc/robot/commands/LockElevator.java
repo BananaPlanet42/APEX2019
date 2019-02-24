@@ -16,7 +16,7 @@ public class LockElevator extends Command {
 
     protected void execute() {
         Robot.lift.lockLift();
-        Robot.booleans.IsLocked = true;
+        // Robot.booleans.LiftIsLocked = true;
 
     }
 

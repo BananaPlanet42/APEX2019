@@ -5,9 +5,9 @@ import frc.robot.Robot;
 // import frc.robot.subsystems.Crossbow;
 // import frc.robot.RobotMap;
 
-public class ExtendClimber extends Command{
+public class ExtendClimberBasic extends Command{
 
-    public ExtendClimber(){
+    public ExtendClimberBasic(){
     
     }
 

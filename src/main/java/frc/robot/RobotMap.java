@@ -42,9 +42,9 @@ public class RobotMap {
   public static DoubleSolenoid Crossbow1;
   public static DoubleSolenoid Crossbow2;
 
-  //Ramp (climber) stuff
+  //climber stuff
   public static DoubleSolenoid ClimberPneu1;
-  public static DoubleSolenoid ClimberPneu2;
+  public static DoubleSolenoid ClimberLock1;
   public static TalonSRX Climber1;
   public static VictorSPX Climber2;
 
@@ -80,11 +80,12 @@ Intake = new TalonSRX(PortMap.Intake);
 Crossbow1 = new DoubleSolenoid(PortMap.Crossbow1_Forward_Channel, PortMap.Crossbow1_Reverse_Channel);
 // //climber stuff
 ClimberPneu1 = new DoubleSolenoid(PortMap.ClimberSolenoid1_Forward_Channel, PortMap.ClimberSolenoid1_Reverse_Channel);
-
+ClimberLock1 = new DoubleSolenoid(PortMap.ClimberLockSolenoid1_Forward_Channel, PortMap.ClimberLockSolenoid1_Reverse_Channel);
 Climber1 = new TalonSRX(PortMap.Climber1);
 ControllerConfig.setClimbLead(Climber1);
 Climber2 = new VictorSPX(PortMap.Climber2);
 ControllerConfig.setClimbFollower(Climber2, Climber1);
+
 // Climber2.setInverted(true);
 }
 

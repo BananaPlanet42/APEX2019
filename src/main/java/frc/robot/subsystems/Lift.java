@@ -16,8 +16,8 @@ import frc.robot.utils.Booleans;
 public class Lift extends Subsystem{
 // public boolean IsEndGame = Robot.booleans.IsEndGame;
 public boolean IsEndGame = Robot.booleans.IsEndGame;
-public boolean IsLocked = Robot.booleans.IsLocked;
-
+// public boolean IsLocked = Robot.booleans.LiftIsLocked;
+ 
 public TalonSRX Lift1 = RobotMap.Lift1;
 public DoubleSolenoid LiftSolenoid1 = RobotMap.LiftSolenoid1;
 
@@ -58,10 +58,11 @@ public DoubleSolenoid LiftSolenoid1 = RobotMap.LiftSolenoid1;
 
    public void lockLift(){
     LiftSolenoid1.set(Value.kForward);
-   }
+    Robot.booleans.LiftIsLocked = true;   }
 
    public void releaseLift(){
     LiftSolenoid1.set(Value.kReverse);
+    Robot.booleans.LiftIsLocked = false;
    }
 
    public void endLiftLock(){
