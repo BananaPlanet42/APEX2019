@@ -99,7 +99,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    SmartDashConfig.Testing();
+    // SmartDashConfig.Testing();
 
   }
 
@@ -198,7 +198,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    SmartDashConfig.commands();
+    // SmartDashConfig.commands();
   }
 
   /**

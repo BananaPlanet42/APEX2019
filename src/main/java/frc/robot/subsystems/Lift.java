@@ -33,7 +33,7 @@ public DoubleSolenoid LiftSolenoid1 = RobotMap.LiftSolenoid1;
         // Lift1.set(ControlMode.MotionMagic, TargetPosition);
       
     Lift1.set(controlmode, TargetPosition);
-    System.out.println("Moving to" + TargetPosition);
+    // System.out.println("Moving to" + TargetPosition);
    
    }
 

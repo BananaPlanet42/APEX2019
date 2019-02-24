@@ -28,7 +28,7 @@ protected void execute(){
 
     if (OI.xbox2.getY(Hand.kLeft) >= 0.2  || OI.xbox2.getY(Hand.kLeft) <= -0.2) {
         // Robot.lift.lift(ControlMode.MotionMagic, position + 10*OI.xbox2.getY(Hand.kLeft));
-        Robot.lift.lift(ControlMode.PercentOutput, -0.3 * OI.xbox2.getY(Hand.kLeft));
+        Robot.lift.lift(ControlMode.PercentOutput, -0.7 * OI.xbox2.getY(Hand.kLeft));
     }
    
     else {

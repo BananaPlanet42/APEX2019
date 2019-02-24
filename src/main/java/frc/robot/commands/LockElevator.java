@@ -25,9 +25,9 @@ public class LockElevator extends Command {
     }
 
     protected void end() {
-        Robot.lift.endLiftLock();
+        // Robot.lift.endLiftLock();
         // Robot.booleans.IsLocked = false;
-
+        Robot.lift.releaseLift();
     }
 
     protected void interrupted() {

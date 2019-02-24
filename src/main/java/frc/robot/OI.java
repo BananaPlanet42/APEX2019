@@ -48,8 +48,8 @@ public class OI {
          RPT2.whileHeld(new MoveLiftManual());
          //RPT2.whenInactive(new LiftHoldPosition());
       Button LPT1=new JoystickButton(xbox1, 2 );  // 2 is equal to B
-      LPT1.whenPressed(new LockElevator());
-      LPT1.whenReleased(new ReleaseLift());
+      LPT1.whileHeld(new LockElevator());
+      // LPT1.whenReleased(new ReleaseLift());
      // LPT2.whenInactive(new UnlockElevator());
       //  LPT2.whileHeld(new MoveLiftManual());
       Button RPB2=new JoystickButton(xbox2, 3); //3 = X
