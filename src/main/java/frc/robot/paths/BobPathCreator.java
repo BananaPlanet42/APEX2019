@@ -54,7 +54,7 @@ public class BobPathCreator extends AbstractBobPathCreator {
 		paths.addAll(getConfigArcs());
 		paths.addAll(generateTeamArcs());
 		paths.addAll(getLevel1Left());
-		paths.addAll(getLevel1Right());
+		// paths.addAll(getLevel1Right());
 		//paths.addAll(getLevel1Center()); 
 
 		return paths;
@@ -99,7 +99,7 @@ public class BobPathCreator extends AbstractBobPathCreator {
 
 		BobPath turnScaling = new BobPath(config, "TurnScaling");
 		turnScaling.addWaypoint(new Waypoint(2, 3, 0, 0, 0));
-		turnScaling.addWaypointRelative(3, 3, 89.9, 0, 3);//divide all distanc values by six to get roughly apropriate distance to set in code
+		turnScaling.addWaypointRelative(3, -3, 89.9, 0, 3);//divide all distanc values by six to get roughly apropriate distance to set in code
 
 		BobPath speedTesting = new BobPath(config, "SpeedTesting");
 		speedTesting.addWaypoint(new Waypoint(2, 13.5, 0, 0, 0));
@@ -109,63 +109,68 @@ public class BobPathCreator extends AbstractBobPathCreator {
 		return asList(distanceScaling, turnScaling, speedTesting);
 	}
 	//change the starting waypoint
+	//yo all the turns are switched so get ready for that ok cool
 	private List<BobPath> getLevel1Left(){
 		//this is a giant mess and idk why
 		//BobPath LeftSideCargo = new BobPath(config, "LeftSideCargo");
 		//LeftSideCargo.addWaypoint(new Waypoint(5.3, 17.5, 0, 0, 0));
 
+		BobPath LeftSideCloseCargo = new BobPath(config, "LeftSideCloseCargo");
+		LeftSideCloseCargo.addWaypoint(new Waypoint(5.3, 17.5, 0, 0, 0));
+		LeftSideCloseCargo.addWaypointRelative(9, 3, 30, 3, 5);
+		LeftSideCloseCargo.addWaypointRelative(7, -4, 89.9, 0, 5);
 
-		BobPath LeftFrontCargo = new BobPath(config, "LeftFrontCargo");
-		LeftFrontCargo.addWaypoint(new Waypoint(5.3, 17.5, 0, 0, 0));
-		LeftFrontCargo.addWaypointRelative(6, -3, 0, 3, 6);
-		LeftFrontCargo.addWaypointRelative(6, 0, 0, 0, 5);
-
-		BobPath LeftFrontRocket = new BobPath(config, "LeftFrontRocket");
-		LeftFrontRocket.addWaypoint(new Waypoint(5.3, 17.5, 0, 0, 0));
-		LeftFrontRocket.addWaypointRelative(8, 3, 55, 3, 6);
-		LeftFrontRocket.addWaypointRelative(4, 4.5, -30, 0, 6);
-
+		// BobPath LeftFrontCargo = new BobPath(config, "LeftFrontCargo");
+		// LeftFrontCargo.addWaypoint(new Waypoint(5.3, 17.5, 0, 0, 0));
+		// LeftFrontCargo.addWaypointRelative(6, -3, 0, 3, 6);
+		// LeftFrontCargo.addWaypointRelative(6, 0, 0, 0, 5);
+// 
+		// BobPath LeftFrontRocket = new BobPath(config, "LeftFrontRocket");
+		// LeftFrontRocket.addWaypoint(new Waypoint(5.3, 17.5, 0, 0, 0));
+		// LeftFrontRocket.addWaypointRelative(8, 3, 55, 3, 6);
+		// LeftFrontRocket.addWaypointRelative(4, 4.5, -30, 0, 6);
+// 
 		//not done
-		BobPath LeftBackRocket = new BobPath(config, "LeftBackRocket");
-		LeftBackRocket.addWaypoint(new Waypoint(5.3, 17.5, 0, 0, 0));
-		LeftBackRocket.addWaypointRelative(9, 3, 30, 3, 6);
-		LeftBackRocket.addWaypointRelative(7.5, 4.6, 45, 3, 6);
+		// BobPath LeftBackRocket = new BobPath(config, "LeftBackRocket");
+		// LeftBackRocket.addWaypoint(new Waypoint(5.3, 17.5, 0, 0, 0));
+		// LeftBackRocket.addWaypointRelative(9, 3, 30, 3, 6);
+		// LeftBackRocket.addWaypointRelative(7.5, 4.6, 45, 3, 6);
 
-		return asList(LeftFrontCargo, LeftFrontRocket, LeftBackRocket);
+		return asList(LeftSideCloseCargo);
 
 	}
-	private List<BobPath> getLevel1Right(){
-		BobPath RightSideCargo = new BobPath(config, "RightSideCargo");
-		RightSideCargo.addWaypoint(new Waypoint(5.3, 10, 0, 0, 0));
-		RightSideCargo.addWaypointRelative(8, 0, 30, 3, 6);
-		RightSideCargo.addWaypointRelative(4,-1, 60, 0 , 4);
-
-		BobPath RightFrontCargo = new BobPath(config, "RightFrontCargo");
-		RightFrontCargo.addWaypoint(new Waypoint(5.3, 10, 0, 0, 0));
-		RightFrontCargo.addWaypointRelative(6, 3, 0, 3, 6);
-		RightFrontCargo.addWaypointRelative(6, 0, 0, 0, 5);
-
-		BobPath RightFrontRocket = new BobPath(config, "RightfrontRocket");
-		RightFrontRocket.addWaypoint(new Waypoint(5.3, 10, 0, 0, 0));
-		RightFrontRocket.addWaypointRelative(8, -3, -45, 3, 6);
-		RightFrontRocket.addWaypointRelative(4, -4.5, 30, 0, 6);
-
-
-		//not done
-		BobPath RightBackRocket = new BobPath(config, "RightBackRocket");
-		RightBackRocket.addWaypoint(new Waypoint(5.3, 10, 0, 0, 0));
-		RightBackRocket.addWaypointRelative(9, -3, 30, 3, 6);
-		RightBackRocket.addWaypointRelative(7.5, -4.6, 45, 3, 6);
-
-
-		BobPath CenterSideCargo = new BobPath(config, "CenterSideCargo");
-		CenterSideCargo.addWaypoint(new Waypoint(5.3, 13.5, 0, 0, 0));
-		CenterSideCargo.addWaypointRelative(6, -.5, 0, 3, 3);
-		CenterSideCargo.addWaypointRelative(4, -.5, 0, 0, 5);
-
-		return asList(CenterSideCargo, RightSideCargo, RightFrontCargo, RightFrontRocket, RightBackRocket);
-
-	}
+	// private List<BobPath> getLevel1Right(){
+		// BobPath RightSideCargo = new BobPath(config, "RightSideCargo");
+		// RightSideCargo.addWaypoint(new Waypoint(5.3, 10, 0, 0, 0));
+		// RightSideCargo.addWaypointRelative(8, 0, 30, 3, 6);
+		// RightSideCargo.addWaypointRelative(4,-1, 60, 0 , 4);
+// 
+		// BobPath RightFrontCargo = new BobPath(config, "RightFrontCargo");
+		// RightFrontCargo.addWaypoint(new Waypoint(5.3, 10, 0, 0, 0));
+		// RightFrontCargo.addWaypointRelative(6, 3, 0, 3, 6);
+		// RightFrontCargo.addWaypointRelative(6, 0, 0, 0, 5);
+// 
+		// BobPath RightFrontRocket = new BobPath(config, "RightfrontRocket");
+		// RightFrontRocket.addWaypoint(new Waypoint(5.3, 10, 0, 0, 0));
+		// RightFrontRocket.addWaypointRelative(8, -3, -45, 3, 6);
+		// RightFrontRocket.addWaypointRelative(4, -4.5, 30, 0, 6);
+// 
+// 
+		// not done
+		// BobPath RightBackRocket = new BobPath(config, "RightBackRocket");
+		// RightBackRocket.addWaypoint(new Waypoint(5.3, 10, 0, 0, 0));
+		// RightBackRocket.addWaypointRelative(9, -3, 30, 3, 6);
+		// RightBackRocket.addWaypointRelative(7.5, -4.6, 45, 3, 6);
+// 
+// 
+		// BobPath CenterSideCargo = new BobPath(config, "CenterSideCargo");
+		// CenterSideCargo.addWaypoint(new Waypoint(5.3, 13.5, 0, 0, 0));
+		// CenterSideCargo.addWaypointRelative(6, -.5, 0, 3, 3);
+		// CenterSideCargo.addWaypointRelative(4, -.5, 0, 0, 5);
+// 
+		// return asList(CenterSideCargo, RightSideCargo, RightFrontCargo, RightFrontRocket, RightBackRocket);
+// 
+	// }
 	/*
 	private List<BobPath> getLevel1Center(){
 		BobPath CenterFrontCargo = new BobPath(config, "CenterFrontCargo");
