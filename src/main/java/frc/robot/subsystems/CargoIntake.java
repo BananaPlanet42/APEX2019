@@ -20,7 +20,7 @@ public class CargoIntake extends Subsystem {
     }
 
     public void IntakeManual() {
-        Intake.set(ControlMode.PercentOutput, .7 * OI.xbox2.getTriggerAxis(Hand.kLeft));
+        Intake.set(ControlMode.PercentOutput, 1.0 * OI.xbox2.getTriggerAxis(Hand.kLeft));
 
     }
 
@@ -35,7 +35,7 @@ public class CargoIntake extends Subsystem {
     }
 
     public void ExpelManual() {
-        Intake.set(ControlMode.PercentOutput, -1.0 * OI.xbox2.getTriggerAxis(Hand.kRight));
+        Intake.set(ControlMode.PercentOutput, -.7 * OI.xbox2.getTriggerAxis(Hand.kRight));
 
         // else if(OI.xbox2.getTriggerAxis(Hand.kRight) >= -0.2){
         // Intake.set(ControlMode.PercentOutput, -0.5 *
