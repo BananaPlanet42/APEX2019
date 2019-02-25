@@ -32,6 +32,7 @@ import frc.robot.commands.RetractClimberBasic;
 import frc.robot.commands.CrossbowAcquire;
 import frc.robot.commands.SpitCargo;
 import frc.robot.commands.CrawlForward;
+import frc.robot.commands.CargoIntakeCreep;
 import frc.robot.commands.ClimberLock;
 import frc.robot.commands.ClimberPrep;
 import frc.robot.commands.ClimberRelease;
@@ -52,7 +53,7 @@ public class OI {
 
     Button OpA = new JoystickButton(xbox2, 1); // 1 is equal to A
     OpA.whileHeld(new MoveLiftManual());
-    OpA.whenInactive(new LiftHoldPosition());
+    // OpA.whenInactive(new LiftHoldPosition());
 
     Button OpB = new JoystickButton(xbox2, 2); // 2 is equal to B
     OpB.whileHeld(new RetractClimberBasic());
@@ -92,23 +93,24 @@ public class OI {
     TriggerButton RT2 = new TriggerButton(xbox2, 3);
     RT2.whileActive(new SpitCargo());
     RT2.whileActive(new CrawlBack());
+    RT2.whenInactive(new CargoIntakeCreep());
 
     TriggerButton LT2 = new TriggerButton(xbox2, 2);
     LT2.whileActive(new EatCargo());
     LT2.whileActive(new CrawlForward());
+    LT2.whenInactive(new CargoIntakeCreep());
 
     POVTrigger DPAD_UP2 = new POVTrigger(xbox2, 0, 0);
-    DPAD_UP2.whenPressed(new MoveLift(10000));
+    DPAD_UP2.whenPressed(new MoveLift(21000));
 
     POVTrigger DPAD_RIGHT2 = new POVTrigger(xbox2, 0, 90);
-    DPAD_RIGHT2.whenPressed(new MoveLift(8000));
+    DPAD_RIGHT2.whenPressed(new MoveLift(15000));
 
     POVTrigger DPAD_LEFT2 = new POVTrigger(xbox2, 0, 270);
-    DPAD_LEFT2.whenPressed(new MoveLift(5000));
-
+    DPAD_LEFT2.whenPressed(new MoveLift(15000));
 
     POVTrigger DPAD_DOWN2 = new POVTrigger(xbox2, 0, 180);
-    DPAD_DOWN2.whenPressed(new MoveLift(2100));
+    DPAD_DOWN2.whenPressed(new MoveLift(0));
 
   }
 

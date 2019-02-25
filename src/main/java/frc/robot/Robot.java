@@ -71,7 +71,7 @@ public class Robot extends TimedRobot {
         oi = new OI();
         // Robot.driveTrain.pigeon.setYaw(0, 0);
         // booleans= false;
-        // CameraServer.getInstance().startAutomaticCapture();
+        CameraServer.getInstance().startAutomaticCapture();
         Compressor compressor = new Compressor(0);
 
         m_chooser.setDefaultOption("Default Auto", "Default Auto");
