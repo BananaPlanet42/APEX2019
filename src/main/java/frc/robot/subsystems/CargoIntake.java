@@ -20,7 +20,7 @@ public class CargoIntake extends Subsystem {
     }
 
     public void IntakeManual() {
-        Intake.set(ControlMode.PercentOutput, 1.0 * OI.xbox2.getTriggerAxis(Hand.kLeft));
+        Intake.set(ControlMode.PercentOutput, .7 * OI.xbox2.getTriggerAxis(Hand.kLeft));
 
     }
 
