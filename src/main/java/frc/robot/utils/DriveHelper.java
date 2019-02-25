@@ -12,7 +12,7 @@ import frc.robot.models.*;
 
 public class DriveHelper {
   private static final double kThrottleDeadband = 0.08; //.02
-  private static final double kWheelDeadband = 0.04; //0.02
+  private static final double kWheelDeadband = 0.02; //0.02
 
 
   // These factor determine how fast the wheel traverses the "non linear" sine curve.
@@ -32,7 +32,7 @@ public class DriveHelper {
 
   private static final double kQuickStopDeadband = 0.2; //.2
   private static final double kQuickStopWeight = 0.1; //.1
-  private static final double kQuickStopScalar = 1.0; //5.0
+  private static final double kQuickStopScalar = 5.0; //5.0
 
 
   private double mOldWheel = 0.0;

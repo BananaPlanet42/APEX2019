@@ -64,7 +64,7 @@ public class DriveTrain extends Subsystem implements FollowsArc{
 
 
     public boolean quickTurnController() {
-    if (OI.xbox1.getY(Hand.kLeft) < 0.2 && OI.xbox1.getY(Hand.kLeft) > -0.2) {
+    if (OI.xbox1.getY(Hand.kLeft) < 0.1 && OI.xbox1.getY(Hand.kLeft) > -0.1) {
 		return true;	
 	} else {
 		return false;
