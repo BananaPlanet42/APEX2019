@@ -104,7 +104,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotPeriodic() {
-        // SmartDashConfig.Testing();
+        SmartDashConfig.Testing();
         // SmartDashConfig.commands();
     }
 

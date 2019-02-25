@@ -104,14 +104,13 @@ public class OI {
     DPAD_UP2.whenPressed(new MoveLift(21000));
 
     POVTrigger DPAD_RIGHT2 = new POVTrigger(xbox2, 0, 90);
-    DPAD_RIGHT2.whenPressed(new MoveLift(15000));
+    DPAD_RIGHT2.whenPressed(new MoveLift(4000));
 
     POVTrigger DPAD_LEFT2 = new POVTrigger(xbox2, 0, 270);
     DPAD_LEFT2.whenPressed(new MoveLift(15000));
 
     POVTrigger DPAD_DOWN2 = new POVTrigger(xbox2, 0, 180);
     DPAD_DOWN2.whenPressed(new MoveLift(0));
-
   }
 
   public XboxController xbox1() {

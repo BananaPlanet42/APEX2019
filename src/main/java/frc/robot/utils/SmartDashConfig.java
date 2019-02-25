@@ -13,19 +13,19 @@ import frc.robot.commands.LockElevator;
 public class SmartDashConfig {
     public static void Testing() {
 
-        SmartDashboard.putNumber("RobotAngle", Robot.driveTrain.getAngle());
+        // SmartDashboard.putNumber("RobotAngle", Robot.driveTrain.getAngle());
 
-        SmartDashboard.putNumber("L1 encoder distance", Robot.driveTrain.getLeftDriveLeadDistance());
-        SmartDashboard.putNumber("L1 encoder velocity", Robot.driveTrain.getLeftDriveLeadVelocity());
+        // SmartDashboard.putNumber("L1 encoder distance", Robot.driveTrain.getLeftDriveLeadDistance());
+        // SmartDashboard.putNumber("L1 encoder velocity", Robot.driveTrain.getLeftDriveLeadVelocity());
 
-        SmartDashboard.putNumber("R1 encoder distance", Robot.driveTrain.getRightDriveLeadDistance());
-        SmartDashboard.putNumber("R1 encoder velocity", Robot.driveTrain.getRightDriveLeadVelocity());
+        // SmartDashboard.putNumber("R1 encoder distance", Robot.driveTrain.getRightDriveLeadDistance());
+        // SmartDashboard.putNumber("R1 encoder velocity", Robot.driveTrain.getRightDriveLeadVelocity());
 
-        SmartDashboard.putData("ZeroLift", new ZeroLiftEncoder());
+        // SmartDashboard.putData("ZeroLift", new ZeroLiftEncoder());
         SmartDashboard.putBoolean("LiftLocked?", Robot.booleans.LiftIsLocked);
 
         SmartDashboard.putNumber("Lift1 encoder position", RobotMap.Lift1.getSelectedSensorPosition(0));
-        SmartDashboard.putNumber("Lift 1 error", Robot.lift.Lift1.getClosedLoopError());
+        // SmartDashboard.putNumber("Lift 1 error", Robot.lift.Lift1.getClosedLoopError());
 
     }
 
