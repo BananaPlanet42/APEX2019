@@ -55,7 +55,7 @@ public class Drive extends Command {
 		double move = OI.xbox1.getY(Hand.kLeft);
 		double rotate = OI.xbox1.getX(Hand.kRight);
 		boolean quickTurn = Robot.driveTrain.quickTurnController(); 
-		DriveSignal driveSignal = helper.cheesyDrive(1.0 * -move, 0.5 * rotate, quickTurn, false);
+		DriveSignal driveSignal = helper.cheesyDrive(1.0 * -move, 0.3 * rotate, quickTurn, false);
     	Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
         }
 

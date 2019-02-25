@@ -5,9 +5,9 @@ import frc.robot.Robot;
 import frc.robot.subsystems.Crossbow;
 import frc.robot.RobotMap;
 
-public class RetractClimber extends Command{
+public class RetractClimberBasic extends Command{
 
-    public RetractClimber(){
+    public RetractClimberBasic(){
     
     }
 

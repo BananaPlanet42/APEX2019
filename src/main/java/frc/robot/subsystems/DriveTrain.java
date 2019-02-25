@@ -14,21 +14,22 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-// import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-// import com.ctre.phoenix.sensors.PigeonIMU;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.sensors.PigeonIMU;
+import com.team319.follower.FollowsArc;
 
 
 /**
  *
  */
 
-public class DriveTrain extends Subsystem {
+public class DriveTrain extends Subsystem implements FollowsArc{
 	public BobTalonSRX L1 = RobotMap.L1;
 	public BobTalonSRX R1 = RobotMap.R1;
-	// public PigeonIMU pigeon = new PigeonIMU(0);
-	
-	public static int HIGH_GEAR_PROFILE = 0;
-	public static int ROTATION_PROFILE = 1;
+	public PigeonIMU pigeon = RobotMap.pigeon;
+
+	// public static int HIGH_GEAR_PROFILE = 0;
+	// public static int ROTATION_PROFILE = 1;
 	
 	//public WPI_TalonSRX L1 = RobotMap.driveTrainDriveTrainL1;
     //public WPI_TalonSRX R1 = RobotMap.driveTrainDriveTrainR1;
@@ -41,10 +42,10 @@ public class DriveTrain extends Subsystem {
 	   setDefaultCommand(new Drive());
    }
 
-   public void configGains (SRXGains gains) {
-	   this.L1.setGains(gains);
-	   this.R1.setGains(gains);
-   }
+//    public void configGains (SRXGains gains) {
+// 	   this.L1.setGains(gains);
+// 	   this.R1.setGains(gains);
+//    }
 
     public void drive(ControlMode controlMode, double left, double right){
     	this.L1.set(controlMode, left);
@@ -63,7 +64,7 @@ public class DriveTrain extends Subsystem {
 
 
     public boolean quickTurnController() {
-    if (OI.xbox1.getY(Hand.kLeft) < 0.2 && OI.xbox1.getY(Hand.kLeft) > -0.2) {
+    if (OI.xbox1.getY(Hand.kLeft) < 0.1 && OI.xbox1.getY(Hand.kLeft) > -0.1) {
 		return true;	
 	} else {
 		return false;
@@ -217,12 +218,22 @@ public class DriveTrain extends Subsystem {
 	public double getDistance() {
 		return R1.getPrimarySensorPosition();
 	}
+	 // This should return the instance of your drive train
+	 @Override
+	 public Subsystem getRequiredSubsystem() {
+	   return this;
+	 }
 
 	public double getVelocity() {
 		return R1.getPrimarySensorVelocity();
 	}
+	public TalonSRX getLeft() {
+		return L1;
+	}
+	public TalonSRX getRight() {
+		return R1;
+	}
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-
 }

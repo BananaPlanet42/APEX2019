@@ -1,12 +1,13 @@
 package frc.robot.commands;
 
-// import frc.robot.subsystems.Lift;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+// import frc.robot.subsystems.Crossbow;
+// import frc.robot.RobotMap;
 
-public class LockElevator extends Command {
-    
-    public LockElevator() {
+public class ExtendClimberBasic extends Command {
+
+    public ExtendClimberBasic() {
 
     }
 
@@ -15,9 +16,7 @@ public class LockElevator extends Command {
     }
 
     protected void execute() {
-        Robot.lift.lockLift();
-        // Robot.booleans.LiftIsLocked = true;
-
+        Robot.climber.ExtendClimber();
     }
 
     protected boolean isFinished() {
@@ -25,9 +24,7 @@ public class LockElevator extends Command {
     }
 
     protected void end() {
-        // Robot.lift.endLiftLock();
-        // Robot.booleans.IsLocked = false;
-        Robot.lift.releaseLift();
+        // Robot.climber.RetractClimber();
     }
 
     protected void interrupted() {

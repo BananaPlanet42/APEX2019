@@ -16,6 +16,8 @@ public class ReleaseLift extends Command{
 
     protected void execute(){
         Robot.lift.releaseLift();
+        // Robot.booleans.LiftIsLocked = false;
+
     }
 
     protected boolean isFinished(){
@@ -23,7 +25,6 @@ public class ReleaseLift extends Command{
     }
 
     protected void end(){
-
     }
 
     protected void interrupted(){
