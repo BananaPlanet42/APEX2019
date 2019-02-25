@@ -30,7 +30,7 @@ public class MoveLiftManual extends Command {
 
         if (OI.xbox2.getY(Hand.kLeft) >= 0.2 || OI.xbox2.getY(Hand.kLeft) <= -0.2) {
             Robot.lift.lift(ControlMode.MotionMagic, targetPosition);
-            System.out.println("moving manual to " + targetPosition);
+            // System.out.println("moving manual to " + targetPosition);
             // Robot.lift.lift(ControlMode.PercentOutput, -0.7 * OI.xbox2.getY(Hand.kLeft));
         }
         else {

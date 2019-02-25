@@ -38,7 +38,7 @@ protected boolean isFinished() {
 
 }
 protected void end() {
-    System.out.println("Done moving lift");
+    // System.out.println("Done moving lift");
     new LiftHoldPosition();
 
 }
