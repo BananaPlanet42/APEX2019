@@ -33,6 +33,7 @@ import frc.robot.commands.CrossbowAcquire;
 import frc.robot.commands.SpitCargo;
 import frc.robot.commands.CrawlForward;
 import frc.robot.commands.CargoIntakeCreep;
+import frc.robot.commands.ClimberHookTiming;
 import frc.robot.commands.ClimberLock;
 import frc.robot.commands.ClimberPrep;
 import frc.robot.commands.ClimberRelease;
@@ -69,13 +70,14 @@ public class OI {
     Button DrA = new JoystickButton(xbox1, 1); // 1 is equal to A
     // DrA.whenPressed(new ClimberPrep());
     DrA.whileHeld(new ClimberLock());
+    //DrA.whileActive(new ClimberHookTiming());
 
     Button DrB = new JoystickButton(xbox1, 2); // 2 is equal to B
     DrB.whileHeld(new LiftLock());
 
     Button DrX = new JoystickButton(xbox1, 3); // 3 is equal to X
     // RPB2.whenPressed(new ClimberPrep());
-    DrX.whileHeld(new LiftUnlock());
+    DrX.whileHeld(new LiftUnlock());  
     // RPB2.whenInactive(new RetractClimber());
 
     Button DrY = new JoystickButton(xbox1, 4); // 4 is equal to Y
