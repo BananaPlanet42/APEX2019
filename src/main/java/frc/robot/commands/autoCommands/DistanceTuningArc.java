@@ -12,7 +12,7 @@ import frc.robot.Robot;
 
 public class DistanceTuningArc extends CommandGroup{
     public DistanceTuningArc(){
-        addSequential(new FollowArc(Robot.driveTrain, new LeftSideCloseCargoArc()));
+        addSequential(new FollowArc(Robot.driveTrain, new DistanceScalingArc()));
     }
 
 }

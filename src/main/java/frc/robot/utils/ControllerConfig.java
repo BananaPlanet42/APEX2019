@@ -4,6 +4,7 @@ package frc.robot.utils;
 import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.*;
 
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.models.BobTalonSRX;
 import frc.robot.models.SRXGains;
@@ -56,6 +57,7 @@ public class ControllerConfig {
         leaderSRX.setSensorPhase(true);
         System.out.println("yo im actually working R1");
 
+
         leaderSRX.configSensorTerm(SensorTerm.Sum0, FeedbackDevice.RemoteSensor0, 0);
         leaderSRX.configSensorTerm(SensorTerm.Sum1, FeedbackDevice.CTRE_MagEncoder_Relative, 0);
         leaderSRX.configSelectedFeedbackSensor(FeedbackDevice.SensorSum, 0, 0);
@@ -65,8 +67,9 @@ public class ControllerConfig {
         leaderSRX.configSelectedFeedbackCoefficient((3600.0 / 8192.0), 1, 0);
 
         // Takes and sets: Slot, P, I, D, F, Izone
-        SRXGains highGearGains = new SRXGains(0, 1.0, 0.0, 10, 0.25, 0);
-        SRXGains rotationGains = new SRXGains(1, 2.8, 0.0, 35, .3, 0);// 2.25, 0, 70,
+        SRXGains highGearGains = new SRXGains(0, 0, 0.0, 0, 0.25, 0);//1.0, 0, 10, 0.25
+        SRXGains rotationGains = new SRXGains(1, 0, 0.0, 0, 0, 0);//2.8, 0, 35, .3, 0
+
 
         leaderSRX.configPIDF(highGearGains);
         leaderSRX.configPIDF(rotationGains);

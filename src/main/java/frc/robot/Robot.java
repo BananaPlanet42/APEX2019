@@ -105,7 +105,7 @@ public class Robot extends TimedRobot {
     @Override
     public void robotPeriodic() {
         SmartDashConfig.Testing();
-        // SmartDashConfig.commands();
+         SmartDashConfig.commands();
     }
 
     /**
@@ -121,7 +121,7 @@ public class Robot extends TimedRobot {
     @Override
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
-        // SmartDashConfig.Testing();
+         SmartDashConfig.Testing();
     }
 
     /**
@@ -152,10 +152,9 @@ public class Robot extends TimedRobot {
             break;
 
         default:
-            m_autonomousCommand = new PrintAuto1();
+            m_autonomousCommand = new DistanceTuningArc();
 
         }
-        // Robot.driveTrain.pigeon.setYaw(0, 0);
         // m_autonomousCommand = new DistanceTuningArc();
         // INITIALIZE ALL SENSORS TO START AT ZERO
         // RobotMap.Lift1.setSelectedSensorPosition(0);
@@ -185,7 +184,7 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
-        // SmartDashConfig.Testing();
+         SmartDashConfig.Testing();
     }
 
     @Override
@@ -204,7 +203,7 @@ public class Robot extends TimedRobot {
         RobotMap.R1.setSelectedSensorPosition(0);
         RobotMap.L1.setSelectedSensorPosition(0);
         new ReleaseLift();
-        // Robot.driveTrain.pigeon.setYaw(0, 0);
+        Robot.driveTrain.pigeon.setYaw(0, 0);
         lift.lift(ControlMode.PercentOutput,0); 
     }
 
@@ -214,7 +213,7 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        // SmartDashConfig.commands();
+         SmartDashConfig.commands();
 
     }
 
@@ -224,6 +223,6 @@ public class Robot extends TimedRobot {
     @Override
     public void testPeriodic() {
         Scheduler.getInstance().run();
-        // SmartDashConfig.Testing();
+         SmartDashConfig.Testing();
     }
 }
