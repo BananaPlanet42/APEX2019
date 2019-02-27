@@ -58,11 +58,13 @@ public class OI {
 
     Button OpB = new JoystickButton(xbox2, 2); // 2 is equal to B
     OpB.whileHeld(new RetractClimberBasic());
+    //OpB.whileActive(new ClimberHookTiming());
 
     Button OpX = new JoystickButton(xbox2, 3); // 3 is equal to X
     // RPB2.whenPressed(new ClimberPrep());
     OpX.whileHeld(new ExtendClimberBasic());
     // RPB2.whenInactive(new RetractClimber());
+    //OpB.whileActive(new ClimberHookTiming());
 
     Button OpY = new JoystickButton(xbox2, 4); // 4 is equal to Y
     OpY.whileHeld(new CrossbowBoop());
@@ -70,7 +72,6 @@ public class OI {
     Button DrA = new JoystickButton(xbox1, 1); // 1 is equal to A
     // DrA.whenPressed(new ClimberPrep());
     DrA.whileHeld(new ClimberLock());
-    //DrA.whileActive(new ClimberHookTiming());
 
     Button DrB = new JoystickButton(xbox1, 2); // 2 is equal to B
     DrB.whileHeld(new LiftLock());
