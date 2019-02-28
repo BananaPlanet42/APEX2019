@@ -4,7 +4,6 @@ package frc.robot.utils;
 import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.*;
 
-import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.models.BobTalonSRX;
 import frc.robot.models.SRXGains;
@@ -67,8 +66,8 @@ public class ControllerConfig {
         leaderSRX.configSelectedFeedbackCoefficient((3600.0 / 8192.0), 1, 0);
 
         // Takes and sets: Slot, P, I, D, F, Izone
-        SRXGains highGearGains = new SRXGains(0, 0, 0.0, 0, 0.25, 0);//1.0, 0, 10, 0.25
-        SRXGains rotationGains = new SRXGains(1, 0, 0.0, 0, 0, 0);//2.8, 0, 35, .3, 0
+        SRXGains highGearGains = new SRXGains(0, .5, 0.0, 0, .1, 0);//1.0, 0, 10, 0.25
+        SRXGains rotationGains = new SRXGains(1, 1, 0.0, 0, .15, 0);//2.8, 0, 35, .3, 0
 
 
         leaderSRX.configPIDF(highGearGains);

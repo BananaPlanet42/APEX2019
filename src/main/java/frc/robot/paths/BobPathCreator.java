@@ -37,12 +37,12 @@ public class BobPathCreator extends AbstractBobPathCreator {
 	
 	private BobPathCreator() {
 		config.max_acc = 8.0; // Maximum acceleration in FPS
-		config.max_vel = 11.5; // Maximum velocity in FPS
-		config.wheel_dia_inches = 6.0;
-		config.scale_factor = 1.0; // Used to adjust for a gear ratio and or distance tuning
+		config.max_vel = 14; // Maximum velocity in FPS
+		config.wheel_dia_inches = 4.0;
+		config.scale_factor = 1; // Used to adjust for a gear ratio and or distance tuning
 		config.encoder_ticks_per_rev = 4096; // Count of ticks on your encoder
-		config.robotLength = 27.5; // Robot length in inches, used for drawing the robot
-		config.robotWidth = 22.3; // Robot width in inches, used for drawing the robot
+		config.robotLength = 29; // Robot length in inches, used for drawing the robot
+		config.robotWidth = 33; // Robot width in inches, used for drawing the robot
 		config.max_jerk = 30.0;
 		config.dt = 0.01;
 		config.highGear = true;
@@ -95,11 +95,11 @@ public class BobPathCreator extends AbstractBobPathCreator {
 	private List<BobPath> getConfigArcs() {
 		BobPath distanceScaling = new BobPath(config, "DistanceScaling");
 		distanceScaling.addWaypoint(new Waypoint(2, 13.5, 0, 0, 0));
-		distanceScaling.addWaypointRelative(3, 0, 0, 0, 11.5);
+		distanceScaling.addWaypointRelative(10, 0, 0, 0, 11.5);
 
 		BobPath turnScaling = new BobPath(config, "TurnScaling");
 		turnScaling.addWaypoint(new Waypoint(2, 3, 0, 0, 0));
-		turnScaling.addWaypointRelative(3, -3, 89.9, 0, 3);//divide all distanc values by six to get roughly apropriate distance to set in code
+		turnScaling.addWaypointRelative(5, 5, 89.9, 0, 3);//divide all distanc values by six to get roughly apropriate distance to set in code
 
 		BobPath speedTesting = new BobPath(config, "SpeedTesting");
 		speedTesting.addWaypoint(new Waypoint(2, 13.5, 0, 0, 0));
@@ -120,10 +120,10 @@ public class BobPathCreator extends AbstractBobPathCreator {
 		LeftSideCloseCargo.addWaypointRelative(9, 3, 30, 3, 5);
 		LeftSideCloseCargo.addWaypointRelative(7, -4, 89.9, 0, 5);
 
-		// BobPath LeftFrontCargo = new BobPath(config, "LeftFrontCargo");
-		// LeftFrontCargo.addWaypoint(new Waypoint(5.3, 17.5, 0, 0, 0));
-		// LeftFrontCargo.addWaypointRelative(6, -3, 0, 3, 6);
-		// LeftFrontCargo.addWaypointRelative(6, 0, 0, 0, 5);
+		BobPath LeftFrontCargo = new BobPath(config, "LeftFrontCargo");
+		LeftFrontCargo.addWaypoint(new Waypoint(5.3, 17.5, 0, 0, 0));
+		LeftFrontCargo.addWaypointRelative(6, -3, 0, 5, 6);
+		LeftFrontCargo.addWaypointRelative(6, 0, 0, 0, 5);
 // 
 		// BobPath LeftFrontRocket = new BobPath(config, "LeftFrontRocket");
 		// LeftFrontRocket.addWaypoint(new Waypoint(5.3, 17.5, 0, 0, 0));
@@ -136,7 +136,7 @@ public class BobPathCreator extends AbstractBobPathCreator {
 		// LeftBackRocket.addWaypointRelative(9, 3, 30, 3, 6);
 		// LeftBackRocket.addWaypointRelative(7.5, 4.6, 45, 3, 6);
 
-		return asList(LeftSideCloseCargo);
+		return asList(LeftSideCloseCargo,LeftFrontCargo);
 
 	}
 	// private List<BobPath> getLevel1Right(){

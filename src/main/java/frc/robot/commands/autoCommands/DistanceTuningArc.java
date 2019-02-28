@@ -5,6 +5,7 @@ import com.team319.follower.FollowArc;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.arcs.DistanceScalingArc;
 import frc.arcs.ExampleArc;
+import frc.arcs.LeftFrontCargoArc;
 import frc.arcs.LeftSideCloseCargoArc;
 import frc.arcs.TurnScalingArc;
 import frc.arcs.CenterSideCargoArc;
