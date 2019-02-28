@@ -17,27 +17,27 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 // import edu.wpi.first.wpilibj.buttons.Trigger;
 // import edu.wpi.first.wpilibj.command.Command;
 // import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.EatCargo;
-import frc.robot.commands.ExtendClimberBasic;
-import frc.robot.commands.LiftHoldPosition;
-import frc.robot.commands.LiftLock;
-import frc.robot.commands.LiftUnlock;
-import frc.robot.commands.LockElevator;
-import frc.robot.commands.UnlockElevator;
-import frc.robot.commands.CrossbowBoop;
-import frc.robot.commands.MoveLift;
-import frc.robot.commands.MoveLiftManual;
-import frc.robot.commands.ReleaseLift;
-import frc.robot.commands.RetractClimberBasic;
-import frc.robot.commands.CrossbowAcquire;
-import frc.robot.commands.SpitCargo;
-import frc.robot.commands.CrawlForward;
-import frc.robot.commands.CargoIntakeCreep;
-import frc.robot.commands.ClimberLock;
-import frc.robot.commands.ClimberPrep;
-import frc.robot.commands.ClimberRelease;
-import frc.robot.commands.CrawlForward;
-import frc.robot.commands.CrawlBack;
+// import frc.robot.commands.EatCargo;
+// import frc.robot.commands.ExtendClimberBasic;
+// import frc.robot.commands.LiftHoldPosition;
+// import frc.robot.commands.LiftLock;
+// import frc.robot.commands.LiftUnlock;
+// import frc.robot.commands.LockElevator;
+// import frc.robot.commands.UnlockElevator;
+// import frc.robot.commands.CrossbowBoop;
+// import frc.robot.commands.MoveLift;
+// import frc.robot.commands.MoveLiftManual;
+// import frc.robot.commands.ReleaseLift;
+// import frc.robot.commands.RetractClimberBasic;
+// import frc.robot.commands.CrossbowAcquire;
+// import frc.robot.commands.SpitCargo;
+// import frc.robot.commands.CrawlForward;
+// import frc.robot.commands.CargoIntakeCreep;
+// import frc.robot.commands.ClimberLock;
+// import frc.robot.commands.ClimberPrep;
+// import frc.robot.commands.ClimberRelease;
+// import frc.robot.commands.CrawlForward;
+// import frc.robot.commands.CrawlBack;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -52,34 +52,34 @@ public class OI {
     xbox2 = new XboxController(1);
 
     Button OpA = new JoystickButton(xbox2, 1); // 1 is equal to A
-    OpA.whileHeld(new MoveLiftManual());
+    // OpA.whileHeld(new MoveLiftManual());
     // OpA.whenInactive(new LiftHoldPosition());
 
-    Button OpB = new JoystickButton(xbox2, 2); // 2 is equal to B
-    OpB.whileHeld(new RetractClimberBasic());
+    //Button OpB = new JoystickButton(xbox2, 2); // 2 is equal to B
+    //OpB.whileHeld(new RetractClimberBasic());
 
     Button OpX = new JoystickButton(xbox2, 3); // 3 is equal to X
     // RPB2.whenPressed(new ClimberPrep());
-    OpX.whileHeld(new ExtendClimberBasic());
-    // RPB2.whenInactive(new RetractClimber());
+    // OpX.whileHeld(new ExtendClimberBasic());
+    // // RPB2.whenInactive(new RetractClimber());
 
-    Button OpY = new JoystickButton(xbox2, 4); // 4 is equal to Y
-    OpY.whileHeld(new CrossbowBoop());
+    // Button OpY = new JoystickButton(xbox2, 4); // 4 is equal to Y
+    // OpY.whileHeld(new CrossbowBoop());
 
-    Button DrA = new JoystickButton(xbox1, 1); // 1 is equal to A
-    // DrA.whenPressed(new ClimberPrep());
-    DrA.whileHeld(new ClimberLock());
+    // Button DrA = new JoystickButton(xbox1, 1); // 1 is equal to A
+    // // DrA.whenPressed(new ClimberPrep());
+    // DrA.whileHeld(new ClimberLock());
 
-    Button DrB = new JoystickButton(xbox1, 2); // 2 is equal to B
-    DrB.whileHeld(new LiftLock());
+    // Button DrB = new JoystickButton(xbox1, 2); // 2 is equal to B
+    // DrB.whileHeld(new LiftLock());
 
-    Button DrX = new JoystickButton(xbox1, 3); // 3 is equal to X
+    // Button DrX = new JoystickButton(xbox1, 3); // 3 is equal to X
     // RPB2.whenPressed(new ClimberPrep());
-    DrX.whileHeld(new LiftUnlock());
+    // DrX.whileHeld(new LiftUnlock());
     // RPB2.whenInactive(new RetractClimber());
 
     Button DrY = new JoystickButton(xbox1, 4); // 4 is equal to Y
-    DrY.whileHeld(new ClimberRelease());
+    // DrY.whileHeld(new ClimberRelease());
 
     // Y2.whileHeld(new CrawlForward());
     // Button LB2 = new JoystickButton(xbox2, 5);
@@ -90,27 +90,27 @@ public class OI {
     // Button RB2 = new JoystickButton(xbox2, 6);
     // RB2.whenPressed(new CrossbowBoop());
 
-    TriggerButton RT2 = new TriggerButton(xbox2, 3);
-    RT2.whileActive(new SpitCargo());
-    RT2.whileActive(new CrawlBack());
-    RT2.whenInactive(new CargoIntakeCreep());
+    // TriggerButton RT2 = new TriggerButton(xbox2, 3);
+    // RT2.whileActive(new SpitCargo());
+    // RT2.whileActive(new CrawlBack());
+    // RT2.whenInactive(new CargoIntakeCreep());
 
-    TriggerButton LT2 = new TriggerButton(xbox2, 2);
-    LT2.whileActive(new EatCargo());
-    LT2.whileActive(new CrawlForward());
-    LT2.whenInactive(new CargoIntakeCreep());
+    // TriggerButton LT2 = new TriggerButton(xbox2, 2);
+    // LT2.whileActive(new EatCargo());
+    // LT2.whileActive(new CrawlForward());
+    // LT2.whenInactive(new CargoIntakeCreep());
 
-    POVTrigger DPAD_UP2 = new POVTrigger(xbox2, 0, 0);
-    DPAD_UP2.whenPressed(new MoveLift(21000));
+    // POVTrigger DPAD_UP2 = new POVTrigger(xbox2, 0, 0);
+    // DPAD_UP2.whenPressed(new MoveLift(21000));
 
-    POVTrigger DPAD_RIGHT2 = new POVTrigger(xbox2, 0, 90);
-    DPAD_RIGHT2.whenPressed(new MoveLift(4000));
+    // POVTrigger DPAD_RIGHT2 = new POVTrigger(xbox2, 0, 90);
+    // DPAD_RIGHT2.whenPressed(new MoveLift(4000));
 
-    POVTrigger DPAD_LEFT2 = new POVTrigger(xbox2, 0, 270);
-    DPAD_LEFT2.whenPressed(new MoveLift(15000));
+    // POVTrigger DPAD_LEFT2 = new POVTrigger(xbox2, 0, 270);
+    // DPAD_LEFT2.whenPressed(new MoveLift(15000));
 
-    POVTrigger DPAD_DOWN2 = new POVTrigger(xbox2, 0, 180);
-    DPAD_DOWN2.whenPressed(new MoveLift(0));
+    // POVTrigger DPAD_DOWN2 = new POVTrigger(xbox2, 0, 180);
+    // DPAD_DOWN2.whenPressed(new MoveLift(0));
   }
 
   public XboxController xbox1() {

@@ -15,26 +15,32 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.commands.autoCommands.DistanceTuningArc;
-import frc.robot.subsystems.Lift;
-import frc.robot.subsystems.CargoIntake;
+import frc.robot.models.DriveSignal;
+//import frc.robot.subsystems.Lift;
+//import frc.robot.subsystems.CargoIntake;
 import frc.robot.subsystems.Crossbow;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.Compressor;
-import frc.robot.commands.ReleaseLift;
+import frc.robot.commands.Drive;
+//import frc.robot.commands.ReleaseLift;
 import frc.robot.commands.PrintAutos.PrintAuto1;
 import frc.robot.commands.PrintAutos.PrintAuto2;
 import frc.robot.commands.PrintAutos.PrintAuto3;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import frc.robot.utils.SmartDashConfig;
+//import frc.robot.utils.SmartDashConfig;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 import edu.wpi.first.cameraserver.*;
+import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.networktables.*;
+
 // import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 // import frc.robot.commands.ReleaseLift;
 import frc.robot.utils.Booleans;
+import frc.robot.utils.DriveHelper;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -44,17 +50,21 @@ import frc.robot.utils.Booleans;
  * project.
  */
 public class Robot extends TimedRobot {
-    public static OI oi;
-    public static CargoIntake cargoIntake;
-    public static Crossbow crossbow;
+     public static OI oi;
+    // public static CargoIntake cargoIntake;
+    // public static Crossbow crossbow;
     public static DriveTrain driveTrain;
-    public static Lift lift;
-    public static Climber climber;
-    public static Booleans booleans;
-    public DoubleSolenoid LiftSolenoid1 = RobotMap.LiftSolenoid1;
-    Command m_autonomousCommand;
-    SendableChooser<String> m_chooser = new SendableChooser<>();
-    String SelectedCommand;
+    // public static Lift lift;
+    // public static Climber climber;
+    // public static Booleans booleans;
+    // public DoubleSolenoid LiftSolenoid1 = RobotMap.LiftSolenoid1;
+     Command m_autonomousCommand;
+     SendableChooser<String> m_chooser = new SendableChooser<>();
+     String SelectedCommand;
+    private boolean m_LimeLightHasValidTarget = false;
+    private double m_LimeLightDriveCommand = 0.0;
+    private double m_LimeLightSteerComand = 0.0;
+    DriveHelper helper;
 
     /**
      * This function is run when the robot is first started up and should be used
@@ -63,28 +73,28 @@ public class Robot extends TimedRobot {
     @Override
     public void robotInit() {
         RobotMap.init();
-        booleans = new Booleans();
-        cargoIntake = new CargoIntake();
-        crossbow = new Crossbow();
+        // booleans = new Booleans();
+        // cargoIntake = new CargoIntake();
+        // crossbow = new Crossbow();
         driveTrain = new DriveTrain();
-        lift = new Lift();
-        climber = new Climber();
-        oi = new OI();
-        // Robot.driveTrain.pigeon.setYaw(0, 0);
+        // lift = new Lift();
+        // climber = new Climber();
+         oi = new OI();
+        Robot.driveTrain.pigeon.setYaw(0, 0);
         // booleans= false;
-        CameraServer.getInstance().startAutomaticCapture();
-        Compressor compressor = new Compressor(0);
+        // CameraServer.getInstance().startAutomaticCapture();
+        // Compressor compressor = new Compressor(0);
 
         m_chooser.setDefaultOption("Default Auto", "Default Auto");
         m_chooser.addOption("Print Auto 2", "Print Auto 2");
         m_chooser.addOption("Print Auto 3", "Print Auto 3");
         SmartDashboard.putData("Auto mode", m_chooser);
 
-        compressor.setClosedLoopControl(true);
+        // compressor.setClosedLoopControl(true);
 
         driveTrain.L1.setSelectedSensorPosition(0, 0, 0);
         driveTrain.R1.setSelectedSensorPosition(0, 0, 0);
-        lift.Lift1.setSelectedSensorPosition(0);
+        // lift.Lift1.setSelectedSensorPosition(0);
         driveTrain.pigeon.setYaw(0, 0);
         // new ReleaseLift();
 
@@ -104,8 +114,8 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotPeriodic() {
-        SmartDashConfig.Testing();
-         SmartDashConfig.commands();
+        // SmartDashConfig.Testing();
+        // SmartDashConfig.commands();
     }
 
     /**
@@ -121,7 +131,7 @@ public class Robot extends TimedRobot {
     @Override
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
-         SmartDashConfig.Testing();
+        // SmartDashConfig.Testing();
     }
 
     /**
@@ -184,7 +194,7 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
-         SmartDashConfig.Testing();
+        // SmartDashConfig.Testing();
     }
 
     @Override
@@ -199,12 +209,12 @@ public class Robot extends TimedRobot {
         if (m_autonomousCommand != null) {
             m_autonomousCommand.cancel();
         }
-        RobotMap.Lift1.setSelectedSensorPosition(0);
+        // RobotMap.Lift1.setSelectedSensorPosition(0);
         RobotMap.R1.setSelectedSensorPosition(0);
         RobotMap.L1.setSelectedSensorPosition(0);
-        new ReleaseLift();
+        // new ReleaseLift();
         Robot.driveTrain.pigeon.setYaw(0, 0);
-        lift.lift(ControlMode.PercentOutput,0); 
+        // lift.lift(ControlMode.PercentOutput, 0);
     }
 
     /**
@@ -212,9 +222,30 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void teleopPeriodic() {
-        Scheduler.getInstance().run();
-         SmartDashConfig.commands();
 
+        Scheduler.getInstance().run();
+        // SmartDashConfig.commands();
+        double steer = OI.xbox1.getX(Hand.kRight);
+        double drive = -OI.xbox1.getY(Hand.kLeft);
+        boolean auto = OI.xbox1.getAButton();
+        steer *= 0.7;
+        drive *= 0.7;
+        if (auto) {
+            if (m_LimeLightHasValidTarget) {
+                boolean quickTurn1 = driveTrain.quickTurnController();
+                DriveSignal driveSignal1 = helper.cheesyDrive(1.0 * -m_LimeLightDriveCommand,
+                        0.3 * m_LimeLightSteerComand, quickTurn1, false);
+                        System.out.println("targeting: " +m_LimeLightDriveCommand + "steer: " + m_LimeLightSteerComand);
+            } else {
+                driveTrain.drive(ControlMode.PercentOutput, 0, 0);
+            }
+        } else {
+            // DriveTrain.arcadeDrive(drive,steer);
+            // boolean quickTurn2 = driveTrain.quickTurnController();
+            // DriveSignal driveSignal2 = helper.cheesyDrive(1.0 * -drive, 0.3 * steer, quickTurn2, false);
+            // driveTrain.drive(ControlMode.PercentOutput, driveSignal2);
+            // new Drive();
+        }
     }
 
     /**
@@ -223,6 +254,42 @@ public class Robot extends TimedRobot {
     @Override
     public void testPeriodic() {
         Scheduler.getInstance().run();
-         SmartDashConfig.Testing();
+        //SmartDashConfig.Testing();
     }
+
+    public void Update_Limelight_Tracking() {
+        // These numbers must be tuned for your Robot! Be careful!
+        final double STEER_K = 0.03; // how hard to turn toward the target
+        final double DRIVE_K = 0.26; // how hard to drive fwd toward the target
+        final double DESIRED_TARGET_AREA = 13.0; // Area of the target when the robot reaches the wall
+        final double MAX_DRIVE = 0.7; // Simple speed limit so we don't drive too fast
+
+        double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
+        double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
+        double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
+        double ta = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0);
+
+        if (tv < 1.0) {
+            m_LimeLightHasValidTarget = false;
+            m_LimeLightDriveCommand = 0.0;
+            m_LimeLightSteerComand = 0.0;
+            return;
+        }
+
+        m_LimeLightHasValidTarget = true;
+
+        // Start with proportional steering
+        double steer_cmd = tx * STEER_K;
+        m_LimeLightSteerComand = steer_cmd;
+
+        // try to drive forward until the target area reaches our desired area
+        double drive_cmd = (DESIRED_TARGET_AREA - ta) * DRIVE_K;
+
+        // don't let the robot drive too fast into the goal
+        if (drive_cmd > MAX_DRIVE) {
+            drive_cmd = MAX_DRIVE;
+        }
+        m_LimeLightDriveCommand = drive_cmd;
+    }
+
 }
