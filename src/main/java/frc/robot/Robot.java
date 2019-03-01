@@ -36,10 +36,13 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import edu.wpi.first.cameraserver.*;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.networktables.*;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+
 
 // import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 // import frc.robot.commands.ReleaseLift;
-import frc.robot.utils.Booleans;
+// import frc.robot.utils.Booleans;
 import frc.robot.utils.DriveHelper;
 
 /**
