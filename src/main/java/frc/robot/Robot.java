@@ -14,7 +14,11 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
+import frc.robot.commands.autoCommands.CenterForward;
 import frc.robot.commands.autoCommands.DistanceTuningArc;
+import frc.robot.commands.autoCommands.LeftFrontCargo;
+import frc.robot.commands.autoCommands.NullCommand;
+import frc.robot.commands.autoCommands.RightFrontCargo;
 import frc.robot.subsystems.Lift;
 import frc.robot.subsystems.CargoIntake;
 import frc.robot.subsystems.Crossbow;
@@ -75,9 +79,10 @@ public class Robot extends TimedRobot {
         CameraServer.getInstance().startAutomaticCapture();
         Compressor compressor = new Compressor(0);
 
-        m_chooser.setDefaultOption("Default Auto", "Default Auto");
-        m_chooser.addOption("Print Auto 2", "Print Auto 2");
-        m_chooser.addOption("Print Auto 3", "Print Auto 3");
+        m_chooser.setDefaultOption("Null Command", "Null Command");
+        m_chooser.addOption("Forward 10", "Forward 10");
+        m_chooser.addOption("L to LC Cargo", "L to LC Cargo");
+        m_chooser.addOption("R to RC Cargo", "R to RC Cargo");
         SmartDashboard.putData("Auto mode", m_chooser);
 
         compressor.setClosedLoopControl(true);
@@ -141,18 +146,21 @@ public class Robot extends TimedRobot {
         String SelectedCommand = (String) m_chooser.getSelected();
 
         switch (SelectedCommand) {
-        case "DefaultAuto":
-            m_autonomousCommand = new PrintAuto1();
+        case "Null Command":
+            m_autonomousCommand = new NullCommand();
             break;
-        case "Print Auto 2":
-            m_autonomousCommand = new PrintAuto2();
+        case "L to LC Cargo":
+            m_autonomousCommand = new LeftFrontCargo();
             break;
-        case "Print Auto 3":
-            m_autonomousCommand = new PrintAuto3();
+        case "R to RC Cargo":
+            m_autonomousCommand = new RightFrontCargo();
             break;
+        case "Forward 10":
+              m_autonomousCommand = new CenterForward();
+        break;
 
         default:
-            m_autonomousCommand = new DistanceTuningArc();
+            m_autonomousCommand = new NullCommand();
 
         }
         // m_autonomousCommand = new DistanceTuningArc();
