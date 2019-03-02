@@ -5,8 +5,8 @@ import frc.robot.Robot;
 import frc.robot.commands.ClimberLock;
 import frc.robot.commands.ClimberRelease;
 
-public class ClimberHookTiming extends CommandGroup {
-    public ClimberHookTiming() {
+public class ClimberTimingExtend extends CommandGroup {
+    public ClimberTimingExtend() {
        // Robot.booleans.ClimberIsLocked = true;
         addSequential(new ClimberRelease());
         addSequential(new ExtendClimberBasic());

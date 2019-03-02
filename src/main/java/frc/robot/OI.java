@@ -33,12 +33,13 @@ import frc.robot.commands.CrossbowAcquire;
 import frc.robot.commands.SpitCargo;
 import frc.robot.commands.CrawlForward;
 import frc.robot.commands.CargoIntakeCreep;
-import frc.robot.commands.ClimberHookTiming;
 import frc.robot.commands.ClimberLock;
 import frc.robot.commands.ClimberPrep;
 import frc.robot.commands.ClimberRelease;
 import frc.robot.commands.CrawlForward;
 import frc.robot.commands.CrawlBack;
+import frc.robot.commands.ClimberTimingExtend;
+import frc.robot.commands.ClimberTimingRetract;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -58,13 +59,13 @@ public class OI {
 
     Button OpB = new JoystickButton(xbox2, 2); // 2 is equal to B
     OpB.whileHeld(new RetractClimberBasic());
-    //OpB.whileActive(new ClimberHookTiming());
+    //OpB.whileActive(new ClimberTimingRetract());
 
     Button OpX = new JoystickButton(xbox2, 3); // 3 is equal to X
     // RPB2.whenPressed(new ClimberPrep());
     OpX.whileHeld(new ExtendClimberBasic());
     // RPB2.whenInactive(new RetractClimber());
-    //OpB.whileActive(new ClimberHookTiming());
+    //OpX.whileActive(new ClimberTimingExtend());
 
     Button OpY = new JoystickButton(xbox2, 4); // 4 is equal to Y
     OpY.whileHeld(new CrossbowBoop());
