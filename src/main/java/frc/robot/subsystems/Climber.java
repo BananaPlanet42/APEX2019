@@ -18,11 +18,14 @@ public class Climber extends Subsystem {
     public TalonSRX Climber1 = RobotMap.Climber1;
 
     public void ExtendClimber() {
-        ClimberPneu.set(Value.kForward);
+        // ClimberPneu.set(Value.kForward);
+        ClimberPneu.set(Value.kReverse);
     }
 
     public void RetractClimber() {
-        ClimberPneu.set(Value.kReverse);
+        // ClimberPneu.set(Value.kReverse);
+        ClimberPneu.set(Value.kForward);
+
     }
 
     public void ClimberForward() {
@@ -38,11 +41,15 @@ public class Climber extends Subsystem {
     }
 
     public void ClimberLock() {
-        ClimberLock.set(Value.kForward);
+        // ClimberLock.set(Value.kForward);
+        ClimberLock.set(Value.kReverse);
+
     }
 
     public void ClimberRelease() {
-        ClimberLock.set(Value.kReverse);
+        // ClimberLock.set(Value.kReverse);
+        ClimberLock.set(Value.kForward);
+
     }
 
     public void ClimberManualForward() {
