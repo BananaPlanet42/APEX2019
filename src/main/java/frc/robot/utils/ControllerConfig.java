@@ -11,6 +11,11 @@ import frc.robot.models.SRXGains;
 public class ControllerConfig {
     // configs victor to all default settings, then prepares all proper settings for
     // driving
+
+    // takes and sets: Slot, P, I , D, F, Izone
+    public static SRXGains highGearGains = new SRXGains(0, .5, 0, 0, 1, 0); //1, 0, 10, 0.25
+    public static SRXGains rotationGains = new SRXGains(1, 1, 0, 0, .15, 0); //2.8, 0, 35, .3, 0
+
     public static void setL1(BobTalonSRX leaderSRX, Boolean isInverted) {
         leaderSRX.configFactoryDefault();
         leaderSRX.setInverted(isInverted);
@@ -25,10 +30,15 @@ public class ControllerConfig {
         leaderSRX.setNeutralMode(NeutralMode.Coast);
         leaderSRX.enableCurrentLimit(true);
 
+
+        leaderSRX.configPIDF(highGearGains);
+        leaderSRX.configPIDF(rotationGains);
+
         leaderSRX.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
         leaderSRX.setStatusFramePeriod(StatusFrame.Status_2_Feedback0, 5, 0);
         leaderSRX.setSensorPhase(true);
         System.out.println("yo im actually working L1");
+        
 
     }
 
@@ -56,6 +66,8 @@ public class ControllerConfig {
         leaderSRX.setSensorPhase(true);
         System.out.println("yo im actually working R1");
 
+        leaderSRX.configPIDF(highGearGains);
+        leaderSRX.configPIDF(rotationGains);
 
         leaderSRX.configSensorTerm(SensorTerm.Sum0, FeedbackDevice.RemoteSensor0, 0);
         leaderSRX.configSensorTerm(SensorTerm.Sum1, FeedbackDevice.CTRE_MagEncoder_Relative, 0);
@@ -66,13 +78,11 @@ public class ControllerConfig {
         leaderSRX.configSelectedFeedbackCoefficient((3600.0 / 8192.0), 1, 0);
 
         // Takes and sets: Slot, P, I, D, F, Izone
-        SRXGains highGearGains = new SRXGains(0, .5, 0.0, 0, .1, 0);//1.0, 0, 10, 0.25
-        SRXGains rotationGains = new SRXGains(1, 1, 0.0, 0, .15, 0);//2.8, 0, 35, .3, 0
+        // SRXGains highGearGains = new SRXGains(0, .5, 0.0, 0, .1, 0);//1.0, 0, 10, 0.25
+        // SRXGains rotationGains = new SRXGains(1, 1, 0.0, 0, .15, 0);//2.8, 0, 35, .3, 0
 
 
-        leaderSRX.configPIDF(highGearGains);
-        leaderSRX.configPIDF(rotationGains);
-
+      
         // leaderSRX.config_kP(0, 1, 0);
         // leaderSRX.config_kI(0, 0, 0);
         // leaderSRX.config_kD(0, 0, 0);
