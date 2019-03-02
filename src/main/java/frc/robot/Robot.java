@@ -170,7 +170,7 @@ public class Robot extends TimedRobot {
         driveTrain.L1.setSelectedSensorPosition(0);
         driveTrain.R1.setNeutralMode(NeutralMode.Brake);
         RobotMap.L1.setNeutralMode(NeutralMode.Brake);
-
+        RobotMap.Lift1.setSelectedSensorPosition(0);
         driveTrain.pigeon.setYaw(0, 0);
 
         /*
@@ -207,7 +207,7 @@ public class Robot extends TimedRobot {
         if (m_autonomousCommand != null) {
             m_autonomousCommand.cancel();
         }
-        RobotMap.Lift1.setSelectedSensorPosition(0);
+        // RobotMap.Lift1.setSelectedSensorPosition(0);
         driveTrain.R1.setSelectedSensorPosition(0);
         driveTrain.L1.setSelectedSensorPosition(0);
         new ReleaseLift();
