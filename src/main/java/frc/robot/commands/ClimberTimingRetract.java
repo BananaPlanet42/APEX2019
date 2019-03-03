@@ -8,9 +8,9 @@ import frc.robot.commands.ClimberRelease;
 public class ClimberTimingRetract extends CommandGroup {
     public ClimberTimingRetract() {
        // Robot.booleans.ClimberIsLocked = true;
-       addSequential(new ExtendClimberBasic(), 1);
-        addSequential(new ClimberRelease(), 1);
-        addSequential(new RetractClimberBasic(), 1);
-        addSequential(new ClimberLock(), 1);
+       addSequential(new ExtendClimberBasic(), .1);
+        addSequential(new ClimberRelease(), .3);
+        addSequential(new RetractClimberBasic(), .2);
+        // addSequential(new ClimberLock(), .1);
     }
 }

@@ -53,11 +53,11 @@ public class Climber extends Subsystem {
     }
 
     public void ClimberManualForward() {
-        Climber1.set(ControlMode.PercentOutput, -0.5 * OI.xbox2.getTriggerAxis(Hand.kLeft));
+        Climber1.set(ControlMode.PercentOutput, -1.0 * OI.xbox2.getTriggerAxis(Hand.kLeft));
     }
 
     public void ClimberManualBack() {
-        Climber1.set(ControlMode.PercentOutput, 0.5 * OI.xbox2.getTriggerAxis(Hand.kRight));
+        Climber1.set(ControlMode.PercentOutput, 1.0 * OI.xbox2.getTriggerAxis(Hand.kRight));
 
     }
 

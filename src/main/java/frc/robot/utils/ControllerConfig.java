@@ -122,8 +122,8 @@ public class ControllerConfig {
         currentSRX.configPeakCurrentLimit(15);
         currentSRX.configPeakCurrentDuration(0, 0);
         currentSRX.enableCurrentLimit(true);
-        currentSRX.configMotionAcceleration(3000, 0); 
-        currentSRX.configMotionCruiseVelocity(3000, 0); 
+        currentSRX.configMotionAcceleration(3500, 0); 
+        currentSRX.configMotionCruiseVelocity(3500, 0); 
         currentSRX.setNeutralMode(NeutralMode.Coast);
     }
 

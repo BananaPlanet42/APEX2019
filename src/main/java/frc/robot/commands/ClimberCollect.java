@@ -8,8 +8,8 @@ import frc.robot.commands.ClimberRelease;
 public class ClimberCollect extends CommandGroup {
     public ClimberCollect() {
        // Robot.booleans.ClimberIsLocked = true;
-        addSequential(new ClimberRelease(), .5);
-        addSequential(new ExtendClimberBasic(), .3);
+        addSequential(new ClimberRelease(), .1);
+        addSequential(new ExtendClimberBasic(), .1);
         addSequential(new ClimberLock(), .1);
     }
 }
