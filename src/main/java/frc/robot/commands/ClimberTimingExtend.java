@@ -9,7 +9,7 @@ public class ClimberTimingExtend extends CommandGroup {
     public ClimberTimingExtend() {
        // Robot.booleans.ClimberIsLocked = true;
         addSequential(new ClimberRelease(), .1);
-        addSequential(new ExtendClimberBasic(), .3);
+        addSequential(new ExtendClimberBasic(), .7);
         addSequential(new ClimberLock(), .1);
     }
 }

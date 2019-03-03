@@ -24,14 +24,14 @@ public class MoveLiftManual extends Command {
 
     protected void execute() {
         int position = RobotMap.Lift1.getSelectedSensorPosition(0);
-        // double targetPosition=position+(-450*OI.xbox2.getY(Hand.kLeft));
+        double targetPosition=position+(-450*OI.xbox2.getY(Hand.kLeft));
         // Robot.lift.lift(ControlMode.PercentOutput, 0.5);
         // Robot.lift.lift();
 
         if (OI.xbox2.getY(Hand.kLeft) >= 0.2 || OI.xbox2.getY(Hand.kLeft) <= -0.2) {
-            // Robot.lift.lift(ControlMode.MotionMagic, targetPosition);
+            Robot.lift.lift(ControlMode.MotionMagic, targetPosition);
             // System.out.println("moving manual to " + targetPosition);
-            Robot.lift.lift(ControlMode.PercentOutput, -0.7 * OI.xbox2.getY(Hand.kLeft));
+            // Robot.lift.lift(ControlMode.PercentOutput, -0.7 * OI.xbox2.getY(Hand.kLeft));
         }
         else {
             end();
@@ -44,7 +44,7 @@ public class MoveLiftManual extends Command {
     }
 
     protected void end() {
-        Robot.lift.lift(ControlMode.PercentOutput, 0.0);
+        //Robot.lift.lift(ControlMode.PercentOutput, 0.0);
         new LiftHoldPosition();
     }
 
