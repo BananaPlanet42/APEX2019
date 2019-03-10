@@ -83,6 +83,7 @@ public class Robot extends TimedRobot {
         // lift = new Lift();
         // climber = new Climber();
          oi = new OI();
+         helper = new DriveHelper();
         Robot.driveTrain.pigeon.setYaw(0, 0);
         // booleans= false;
         // CameraServer.getInstance().startAutomaticCapture();
@@ -224,7 +225,7 @@ public class Robot extends TimedRobot {
         // These numbers must be tuned for your Robot! Be careful!
         final double STEER_K = 0.09; // how hard to turn toward the target
         final double DRIVE_K = 0.26; // how hard to drive fwd toward the target
-        final double DESIRED_TARGET_AREA = 13.0; // Area of the target when the robot reaches the wall
+        final double DESIRED_TARGET_AREA = 4.6; // Area of the target when the robot reaches the wall
         final double MAX_DRIVE = 0.7; // Simple speed limit so we don't drive too fast
 
         double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
@@ -266,18 +267,17 @@ public class Robot extends TimedRobot {
         double steer = OI.xbox1.getX(Hand.kRight);
         double drive = -OI.xbox1.getY(Hand.kLeft);
         boolean auto = OI.xbox1.getAButton();
+        System.out.println("targeting: " +m_LimeLightDriveCommand + "steer: " + m_LimeLightSteerComand);
         steer *= 0.7;
         drive *= 0.7;
-        if (auto) {
-        if (m_LimeLightHasValidTarget) {
+        if (auto == true) {
+            if (m_LimeLightHasValidTarget == true) {
                 boolean quickTurn = driveTrain.quickTurnController();
-                DriveSignal driveSignal = helper.cheesyDrive(0.0, 0.3 * m_LimeLightSteerComand, false, false);
-
-                // DriveSignal driveSignal = helper.cheesyDrive(-1.0 * m_LimeLightDriveCommand, 0.3 * m_LimeLightSteerComand, false, false);
+                // DriveSignal driveSignal = helper.cheesyDrive(0.0, 0.3 * m_LimeLightSteerComand, false, false);
+                DriveSignal driveSignal = helper.cheesyDrive(1.0 * m_LimeLightDriveCommand, 0.3 * m_LimeLightSteerComand, false, false);
                 Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
-
-                        System.out.println("targeting: " +m_LimeLightDriveCommand + "steer: " + m_LimeLightSteerComand); } 
-        else {
+                         } 
+         else {
                 driveTrain.drive(ControlMode.PercentOutput, 0, 0);
             }
         } 
