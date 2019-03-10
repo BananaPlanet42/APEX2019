@@ -29,7 +29,7 @@ public class ControllerConfig {
         leaderSRX.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
         leaderSRX.setStatusFramePeriod(StatusFrame.Status_2_Feedback0, 5, 0);
         leaderSRX.setSensorPhase(true);
-        System.out.println("yo im actually working L1");
+        // System.out.println("yo im actually working L1");
 
     }
 
@@ -55,7 +55,7 @@ public class ControllerConfig {
                 0);
         leaderSRX.configRemoteFeedbackFilter(0, RemoteSensorSource.Pigeon_Yaw, 1, 0);
         leaderSRX.setSensorPhase(true);
-        System.out.println("yo im actually working R1");
+        // System.out.println("yo im actually working R1");
 
 
         leaderSRX.configSensorTerm(SensorTerm.Sum0, FeedbackDevice.RemoteSensor0, 0);
