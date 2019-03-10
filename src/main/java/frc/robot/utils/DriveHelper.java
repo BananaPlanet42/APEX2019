@@ -26,7 +26,7 @@ public class DriveHelper {
   private static final double kLowNegInertiaTurnScalar = 3.5; //3.5
   private static final double kLowNegInertiaCloseScalar = 4.0; //4.0
   private static final double kLowNegInertiaFarScalar = 5.0; //5.0
-  private static final double kHighSensitivity = 1.5; //0.95
+  private static final double kHighSensitivity = 1.2; //0.95
   private static final double kLowSensitiity = .3; //1.3
 
 
