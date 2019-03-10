@@ -161,7 +161,7 @@ public class DriveTrain extends Subsystem implements FollowsArc{
 
 	public double getAngle() {
 		double[] ypr = new double[3];
-		// pigeon.getYawPitchRoll(ypr);
+		pigeon.getYawPitchRoll(ypr);
 		return ypr[0];
 	}
 

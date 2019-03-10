@@ -38,6 +38,9 @@ import frc.robot.commands.ClimberPrep;
 import frc.robot.commands.ClimberRelease;
 import frc.robot.commands.CrawlForward;
 import frc.robot.commands.CrawlBack;
+import frc.robot.commands.ClimberTimingExtend;
+import frc.robot.commands.ClimberTimingRetract;
+import frc.robot.commands.ClimberCollect;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -56,30 +59,35 @@ public class OI {
     // OpA.whenInactive(new LiftHoldPosition());
 
     Button OpB = new JoystickButton(xbox2, 2); // 2 is equal to B
-    OpB.whileHeld(new RetractClimberBasic());
+    // OpB.whileHeld(new RetractClimberBasic());
+    OpB.whenPressed(new ClimberTimingRetract());
 
     Button OpX = new JoystickButton(xbox2, 3); // 3 is equal to X
     // RPB2.whenPressed(new ClimberPrep());
-    OpX.whileHeld(new ExtendClimberBasic());
+    // OpX.whileHeld(new ExtendClimberBasic());
     // RPB2.whenInactive(new RetractClimber());
+    //OpX.whenPressed(new ClimberTimingExtend());
+    OpX.whenPressed(new ClimberCollect());
+    OpX.whenReleased(new ClimberTimingRetract());
 
     Button OpY = new JoystickButton(xbox2, 4); // 4 is equal to Y
     OpY.whileHeld(new CrossbowBoop());
 
     Button DrA = new JoystickButton(xbox1, 1); // 1 is equal to A
     // DrA.whenPressed(new ClimberPrep());
-    DrA.whileHeld(new ClimberLock());
+    //DrA.whileHeld(new ClimberLock());
+    DrA.whenPressed(new ClimberTimingExtend());
 
     Button DrB = new JoystickButton(xbox1, 2); // 2 is equal to B
     DrB.whileHeld(new LiftLock());
 
     Button DrX = new JoystickButton(xbox1, 3); // 3 is equal to X
     // RPB2.whenPressed(new ClimberPrep());
-    DrX.whileHeld(new LiftUnlock());
+    DrX.whileHeld(new LiftUnlock());  
     // RPB2.whenInactive(new RetractClimber());
 
     Button DrY = new JoystickButton(xbox1, 4); // 4 is equal to Y
-    DrY.whileHeld(new ClimberRelease());
+    //DrY.whileHeld(new ClimberRelease());
 
     // Y2.whileHeld(new CrawlForward());
     // Button LB2 = new JoystickButton(xbox2, 5);

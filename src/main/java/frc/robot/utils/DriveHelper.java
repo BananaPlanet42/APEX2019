@@ -26,8 +26,8 @@ public class DriveHelper {
   private static final double kLowNegInertiaTurnScalar = 3.5; //3.5
   private static final double kLowNegInertiaCloseScalar = 4.0; //4.0
   private static final double kLowNegInertiaFarScalar = 5.0; //5.0
-  private static final double kHighSensitivity = 0.95; //0.95
-  private static final double kLowSensitiity = 1.3; //1.3
+  private static final double kHighSensitivity = 1.2; //0.95
+  private static final double kLowSensitiity = .3; //1.3
 
 
   private static final double kQuickStopDeadband = 0.2; //.2
@@ -106,10 +106,13 @@ public class DriveHelper {
                       + alpha * HelperFunctions.limit(wheel, 1.0) * kQuickStopScalar;
           }
           overPower = 1.0;
-          angularPower = wheel;
+        //   angularPower = wheel;
+        angularPower = wheel*kLowSensitiity;
+
       } else {
           overPower = 0.0;
-          angularPower = Math.abs(throttle) * wheel * sensitivity - mQuickStopAccumlator;
+        //   angularPower = Math.abs(throttle) * wheel * sensitivity - mQuickStopAccumlator;
+        angularPower = Math.abs(throttle) * wheel * kHighSensitivity - mQuickStopAccumlator;
           if (mQuickStopAccumlator > 1) {
               mQuickStopAccumlator -= 1;
           } else if (mQuickStopAccumlator < -1) {

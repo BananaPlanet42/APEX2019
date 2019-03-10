@@ -7,12 +7,13 @@ import frc.arcs.DistanceScalingArc;
 import frc.arcs.ExampleArc;
 import frc.arcs.LeftFrontCargoArc;
 import frc.arcs.LeftSideCloseCargoArc;
+import frc.arcs.RightfrontRocketArc;
 import frc.arcs.TurnScalingArc;
 import frc.arcs.CenterSideCargoArc;
 import frc.robot.Robot;
 
-public class DistanceTuningArc extends CommandGroup{
-    public DistanceTuningArc(){
+public class CenterForward extends CommandGroup{
+    public CenterForward(){
         addSequential(new FollowArc(Robot.driveTrain, new DistanceScalingArc()));
     }
 

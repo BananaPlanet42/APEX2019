@@ -44,7 +44,7 @@ public class MoveLiftManual extends Command {
     }
 
     protected void end() {
-        // Robot.lift.lift(ControlMode.PercentOutput, 0.0);
+        //Robot.lift.lift(ControlMode.PercentOutput, 0.0);
         new LiftHoldPosition();
     }
 
