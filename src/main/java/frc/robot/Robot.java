@@ -32,13 +32,8 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import frc.robot.LimelightStuff;
 
-import edu.wpi.first.cameraserver.*;
-import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.networktables.*;
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableEntry;
-import frc.robot.models.DriveSignal;
 
 // import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 // import frc.robot.commands.ReleaseLift;
@@ -64,10 +59,11 @@ public class Robot extends TimedRobot {
      Command m_autonomousCommand;
      SendableChooser<String> m_chooser = new SendableChooser<>();
      String SelectedCommand;
-    private boolean m_LimeLightHasValidTarget = false;
-    private double m_LimeLightDriveCommand = 0.0;
-    private double m_LimeLightSteerComand = 0.0;
+    // private boolean m_LimeLightHasValidTarget = false;
+    // private double m_LimeLightDriveCommand = 0.0;
+    // private double m_LimeLightSteerComand = 0.0;
     DriveHelper helper;
+    LimelightStuff limelightStuff;
 
     /**
      * This function is run when the robot is first started up and should be used
@@ -85,10 +81,11 @@ public class Robot extends TimedRobot {
          oi = new OI();
          helper = new DriveHelper();
         Robot.driveTrain.pigeon.setYaw(0, 0);
+        limelightStuff = new LimelightStuff();
         // booleans= false;
         // CameraServer.getInstance().startAutomaticCapture();
         // Compressor compressor = new Compressor(0);
-    NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+    
 
         m_chooser.setDefaultOption("Default Auto", "Default Auto");
         m_chooser.addOption("Print Auto 2", "Print Auto 2");
@@ -211,6 +208,7 @@ public class Robot extends TimedRobot {
         RobotMap.R1.setNeutralMode(NeutralMode.Coast);
         RobotMap.L1.setNeutralMode(NeutralMode.Coast);
 
+        
         if (m_autonomousCommand != null) {
             m_autonomousCommand.cancel();
         }
@@ -221,40 +219,7 @@ public class Robot extends TimedRobot {
         Robot.driveTrain.pigeon.setYaw(0, 0);
         // lift.lift(ControlMode.PercentOutput, 0);
     }
-    public void Update_Limelight_Tracking() {
-        // These numbers must be tuned for your Robot! Be careful!
-        final double STEER_K = 0.09; // how hard to turn toward the target
-        final double DRIVE_K = 0.26; // how hard to drive fwd toward the target
-        final double DESIRED_TARGET_AREA = 4.6; // Area of the target when the robot reaches the wall
-        final double MAX_DRIVE = 0.7; // Simple speed limit so we don't drive too fast
 
-        double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
-        double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
-        double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
-        double ta = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0);
-
-        if (tv == 0) {
-            m_LimeLightHasValidTarget = false;
-            m_LimeLightDriveCommand = 0.0;
-            m_LimeLightSteerComand = 0.0;
-            return;
-        }
-        else  {
-             m_LimeLightHasValidTarget = true;
-        } 
-        // Start with proportional steering
-        double steer_cmd = tx * STEER_K;
-        m_LimeLightSteerComand = steer_cmd;
-
-        // try to drive forward until the target area reaches our desired area
-        double drive_cmd = (DESIRED_TARGET_AREA - ta) * DRIVE_K;
-
-        // don't let the robot drive too fast into the goal
-        if (drive_cmd > MAX_DRIVE) {
-            drive_cmd = MAX_DRIVE;
-        }
-        m_LimeLightDriveCommand = drive_cmd;
-    }
     /**
      * This function is called periodically during operator control.
      */
@@ -263,31 +228,9 @@ public class Robot extends TimedRobot {
 
         Scheduler.getInstance().run();
         // SmartDashConfig.commands();
-        Update_Limelight_Tracking();
-        double steer = OI.xbox1.getX(Hand.kRight);
-        double drive = -OI.xbox1.getY(Hand.kLeft);
-        boolean auto = OI.xbox1.getAButton();
-        System.out.println("targeting: " +m_LimeLightDriveCommand + "steer: " + m_LimeLightSteerComand);
-        steer *= 0.7;
-        drive *= 0.7;
-        if (auto == true) {
-            if (m_LimeLightHasValidTarget == true) {
-                boolean quickTurn = driveTrain.quickTurnController();
-                // DriveSignal driveSignal = helper.cheesyDrive(0.0, 0.3 * m_LimeLightSteerComand, false, false);
-                DriveSignal driveSignal = helper.cheesyDrive(1.0 * m_LimeLightDriveCommand, 0.3 * m_LimeLightSteerComand, false, false);
-                Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
-                         } 
-         else {
-                driveTrain.drive(ControlMode.PercentOutput, 0, 0);
-            }
-        } 
-        // else {
-            // DriveTrain.arcadeDrive(drive,steer);
-            // boolean quickTurn2 = driveTrain.quickTurnController();
-            // DriveSignal driveSignal2 = helper.cheesyDrive(1.0 * -drive, 0.3 * steer, quickTurn2, false);
-            // driveTrain.drive(ControlMode.PercentOutput, driveSignal2);
-            // new Drive();
-        // }
+        if (OI.xbox1.getAButton() == true){
+            limelightStuff.DriveByLimelight();
+        }
     }
 
     /**
