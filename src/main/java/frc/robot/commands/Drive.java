@@ -27,9 +27,9 @@ public class Drive extends Command {
 
     public Drive() {
         helper = new DriveHelper();
-        System.out.println("gonna define subsystem");
+        // System.out.println("gonna define subsystem");
         requires(Robot.driveTrain);
-        System.out.println("required subsystem");
+        // System.out.println("required subsystem");
 
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -72,7 +72,6 @@ public class Drive extends Command {
         }
 
     }
-
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;

@@ -21,7 +21,7 @@ import com.ctre.phoenix.sensors.PigeonIMU;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import frc.robot.models.*;
-import frc.robot.commands.ReleaseLift;
+//import frc.robot.commands.ReleaseLift;
 
 public class RobotMap {
 
@@ -94,7 +94,7 @@ public class RobotMap {
     Climber2 = new VictorSPX(PortMap.Climber2);
     ControllerConfig.setClimbFollower(Climber2, Climber1);
 
-    // Climber2.setInverted(true);
+    Climber2.setInverted(true);
     pigeon = new PigeonIMU(PortMap.Pidgeon);
   }
 

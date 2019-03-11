@@ -21,10 +21,12 @@ import frc.robot.commands.autoCommands.NullCommand;
 import frc.robot.commands.autoCommands.RightFrontCargo;
 import frc.robot.subsystems.Lift;
 import frc.robot.subsystems.CargoIntake;
+import frc.robot.models.DriveSignal;
 import frc.robot.subsystems.Crossbow;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.Compressor;
+import frc.robot.commands.Drive;
 import frc.robot.commands.ReleaseLift;
 import frc.robot.commands.PrintAutos.PrintAuto1;
 import frc.robot.commands.PrintAutos.PrintAuto2;
@@ -34,11 +36,14 @@ import frc.robot.utils.SmartDashConfig;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import frc.robot.LimelightStuff;
+
 
 import edu.wpi.first.cameraserver.*;
 // import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 // import frc.robot.commands.ReleaseLift;
 import frc.robot.utils.Booleans;
+import frc.robot.utils.DriveHelper;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -48,17 +53,24 @@ import frc.robot.utils.Booleans;
  * project.
  */
 public class Robot extends TimedRobot {
-    public static OI oi;
+     public static OI oi;
     public static CargoIntake cargoIntake;
     public static Crossbow crossbow;
     public static DriveTrain driveTrain;
     public static Lift lift;
     public static Climber climber;
     public static Booleans booleans;
-    public DoubleSolenoid LiftSolenoid1 = RobotMap.LiftSolenoid1;
     Command m_autonomousCommand;
     SendableChooser<String> m_chooser = new SendableChooser<>();
-    String SelectedCommand;
+    // public DoubleSolenoid LiftSolenoid1 = RobotMap.LiftSolenoid1;
+     Command m_autonomousCommand;
+     SendableChooser<String> m_chooser = new SendableChooser<>();
+     String SelectedCommand;
+    // private boolean m_LimeLightHasValidTarget = false;
+    // private double m_LimeLightDriveCommand = 0.0;
+    // private double m_LimeLightSteerComand = 0.0;
+    DriveHelper helper;
+    LimelightStuff limelightStuff;
 
     /**
      * This function is run when the robot is first started up and should be used
@@ -73,11 +85,15 @@ public class Robot extends TimedRobot {
         driveTrain = new DriveTrain();
         lift = new Lift();
         climber = new Climber();
-        oi = new OI();
-        // Robot.driveTrain.pigeon.setYaw(0, 0);
+         oi = new OI();
+         helper = new DriveHelper();
+        Robot.driveTrain.pigeon.setYaw(0, 0);
+        limelightStuff = new LimelightStuff();
         // booleans= false;
-        CameraServer.getInstance().startAutomaticCapture();
+        // CameraServer.getInstance().startAutomaticCapture();
         Compressor compressor = new Compressor(0);
+        booleans.LiftIsLocked = false;
+    
 
         m_chooser.setDefaultOption("Null Command", "Null Command");
         m_chooser.addOption("Forward 10", "Forward 10");
@@ -86,6 +102,7 @@ public class Robot extends TimedRobot {
         SmartDashboard.putData("Auto mode", m_chooser);
 
         compressor.setClosedLoopControl(true);
+        // compressor.setClosedLoopControl(true);
 
         driveTrain.L1.setSelectedSensorPosition(0, 0, 0);
         driveTrain.R1.setSelectedSensorPosition(0, 0, 0);
@@ -194,6 +211,9 @@ public class Robot extends TimedRobot {
         Scheduler.getInstance().run();
         // SmartDashConfig.Testing();
         SmartDashConfig.Comp();
+        if (OI.xbox1.getBButton() == true){
+            limelightStuff.DriveByLimelight();
+        }
     }
 
     @Override
@@ -224,7 +244,15 @@ public class Robot extends TimedRobot {
         Scheduler.getInstance().run();
         // SmartDashConfig.commands();
         SmartDashConfig.Comp();
+        SmartDashboard.putNumber("L1 power", RobotMap.L1.getSelectedSensorVelocity());
+        SmartDashboard.putNumber("R1 power", RobotMap.R1.getSelectedSensorVelocity());
 
+        if (OI.xbox1.getStartButton() == true){
+            limelightStuff.DriveByLimelight();
+        }
+        Scheduler.getInstance().run();
+        // SmartDashConfig.commands();
+        
     }
 
     /**
