@@ -13,8 +13,8 @@ public class ControllerConfig {
     // driving
 
     // takes and sets: Slot, P, I , D, F, Izone
-    public static SRXGains highGearGains = new SRXGains(0, .5, 0, 0, 1, 0); //1, 0, 10, 0.25
-    public static SRXGains rotationGains = new SRXGains(1, 1, 0, 0, .15, 0); //2.8, 0, 35, .3, 0
+    public static SRXGains highGearGains = new SRXGains(0, 1.4, 0, 10, .13, 0); //1, 0, 10, 0.25
+    public static SRXGains rotationGains = new SRXGains(1, 1.1, 0, 13, .1, 0); //2.8, 0, 35, .3, 0
 
     public static void setL1(BobTalonSRX leaderSRX, Boolean isInverted) {
         leaderSRX.configFactoryDefault();

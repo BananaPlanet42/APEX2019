@@ -98,8 +98,8 @@ public class BobPathCreator extends AbstractBobPathCreator {
 		distanceScaling.addWaypointRelative(10, 0, 0, 0, 11.5);
 
 		BobPath turnScaling = new BobPath(config, "TurnScaling");
-		turnScaling.addWaypoint(new Waypoint(2, 3, 0, 0, 0));
-		turnScaling.addWaypointRelative(5, 5, 89.9, 0, 3);//divide all distanc values by six to get roughly apropriate distance to set in code
+		turnScaling.addWaypoint(new Waypoint(0, 0, 0, 0, 0));
+		turnScaling.addWaypointRelative(5, -5, 89.9, 0, 3);//divide all distanc values by six to get roughly apropriate distance to set in code
 
 		BobPath speedTesting = new BobPath(config, "SpeedTesting");
 		speedTesting.addWaypoint(new Waypoint(2, 13.5, 0, 0, 0));
@@ -116,14 +116,19 @@ public class BobPathCreator extends AbstractBobPathCreator {
 		//LeftSideCargo.addWaypoint(new Waypoint(5.3, 17.5, 0, 0, 0));
 
 		BobPath LeftSideCloseCargo = new BobPath(config, "LeftSideCloseCargo");
+		// LeftSideCloseCargo.addWaypoint(new Waypoint(5.3, 17.5, 0, 0, 0));
+		// LeftSideCloseCargo.addWaypointRelative(9, 3, 30, 3, 5);
+		// LeftSideCloseCargo.addWaypointRelative(7, 4, 89.9, 0, 5);
 		LeftSideCloseCargo.addWaypoint(new Waypoint(5.3, 17.5, 0, 0, 0));
-		LeftSideCloseCargo.addWaypointRelative(9, 3, 30, 3, 5);
-		LeftSideCloseCargo.addWaypointRelative(7, -4, 89.9, 0, 5);
+		LeftSideCloseCargo.addWaypointRelative(9, 0, 30, 3, 5);
+		LeftSideCloseCargo.addWaypointRelative(8, -3, 89.9, 0, 5);
 
 		BobPath LeftFrontCargo = new BobPath(config, "LeftFrontCargo");
 		LeftFrontCargo.addWaypoint(new Waypoint(5.3, 17.5, 0, 0, 0));
 		LeftFrontCargo.addWaypointRelative(6, -3, 0, 5, 6);
 		LeftFrontCargo.addWaypointRelative(6, 0, 0, 0, 5);
+		
+	
 // 
 		// BobPath LeftFrontRocket = new BobPath(config, "LeftFrontRocket");
 		// LeftFrontRocket.addWaypoint(new Waypoint(5.3, 17.5, 0, 0, 0));
@@ -136,7 +141,7 @@ public class BobPathCreator extends AbstractBobPathCreator {
 		// LeftBackRocket.addWaypointRelative(9, 3, 30, 3, 6);
 		// LeftBackRocket.addWaypointRelative(7.5, 4.6, 45, 3, 6);
 
-		return asList(LeftSideCloseCargo,LeftFrontCargo);
+		return asList(LeftSideCloseCargo,LeftFrontCargo );
 
 	}
 	// private List<BobPath> getLevel1Right(){
