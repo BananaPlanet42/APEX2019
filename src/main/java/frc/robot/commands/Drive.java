@@ -55,21 +55,25 @@ public class Drive extends Command {
          * Robot.driveTrain.drivedriveSignal);
          */
 
+
+
+    if (OI.xbox1.getYButton() == false){
         if (OI.xbox1.getBumper(Hand.kLeft) == true || OI.xbox1.getBumper(Hand.kRight) == true) {
-            double move = OI.xbox1.getY(Hand.kLeft);
-            double rotate = OI.xbox1.getX(Hand.kRight);
-            boolean quickTurn = Robot.driveTrain.quickTurnController();
-            // DriveSignal driveSignal = helper.cheesyDrive(1.0 * -move, 0.15 * rotate, quickTurn, false);
-            DriveSignal driveSignal = helper.cheesyDrive(0.5 * -move, 0.5 * rotate, quickTurn, false);
-            Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
-        } else {
-            double move = OI.xbox1.getY(Hand.kLeft);
-            double rotate = OI.xbox1.getX(Hand.kRight);
-            boolean quickTurn = Robot.driveTrain.quickTurnController();
-            // DriveSignal driveSignal = helper.cheesyDrive(1.0 * -move, 0.3 * rotate, quickTurn, false);
-            DriveSignal driveSignal = helper.cheesyDrive(1.0 * -move, rotate, quickTurn, false);
-            Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
-        }
+        double move = OI.xbox1.getY(Hand.kLeft);
+        double rotate = OI.xbox1.getX(Hand.kRight);
+        boolean quickTurn = Robot.driveTrain.quickTurnController();
+        // DriveSignal driveSignal = helper.cheesyDrive(1.0 * -move, 0.15 * rotate, quickTurn, false);
+        DriveSignal driveSignal = helper.cheesyDrive(0.5 * -move, 0.5 * rotate, quickTurn, false);
+        Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
+    } else {
+        double move = OI.xbox1.getY(Hand.kLeft);
+        double rotate = OI.xbox1.getX(Hand.kRight);
+        boolean quickTurn = Robot.driveTrain.quickTurnController();
+        // DriveSignal driveSignal = helper.cheesyDrive(1.0 * -move, 0.3 * rotate, quickTurn, false);
+        DriveSignal driveSignal = helper.cheesyDrive(1.0 * -move, rotate, quickTurn, false);
+        Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
+    }}
+        
 
     }
     // Make this return true when this Command no longer needs to run execute()
