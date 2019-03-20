@@ -93,6 +93,7 @@ public class Robot extends TimedRobot {
         // CameraServer.getInstance().startAutomaticCapture();
         Compressor compressor = new Compressor(0);
         booleans.LiftIsLocked = false;
+        
     
 
         m_chooser.setDefaultOption("Null Command", "Null Command");
@@ -211,7 +212,7 @@ public class Robot extends TimedRobot {
         Scheduler.getInstance().run();
         // SmartDashConfig.Testing();
         SmartDashConfig.Comp();
-        if (OI.xbox1.getYButton() == true){
+        if (OI.xbox1.getYButton() == true || OI.xbox1.getStartButton() == true){
             limelightStuff.DriveByLimelight();
         }
     }
@@ -247,7 +248,7 @@ public class Robot extends TimedRobot {
         SmartDashboard.putNumber("L1 power", RobotMap.L1.getSelectedSensorVelocity());
         SmartDashboard.putNumber("R1 power", RobotMap.R1.getSelectedSensorVelocity());
 
-        if (OI.xbox1.getYButton() == true){
+        if (OI.xbox1.getYButton() == true || OI.xbox1.getStartButton() == true ){
             limelightStuff.DriveByLimelight();
         }
         Scheduler.getInstance().run();
