@@ -37,8 +37,8 @@ public class LimelightStuff {
         // These numbers must be tuned for your Robot! Be careful!
         final double STEER_K = 0.20; // how hard to turn toward the target
         final double DRIVE_K = 0.5; // how hard to drive fwd toward the target
-        final double DESIRED_TARGET_AREA_CARGO = 12.07; // Area of the target when the robot reaches the wall for cargo
-        final double DESIRED_TARGET_AREA_ROCKET = 9.08;// Area of the target when the robot reaches the wall for rocket
+        final double DESIRED_TARGET_AREA_CARGO = 11.73; // Area of the target when the robot reaches the wall for cargo - 12.07 works
+        final double DESIRED_TARGET_AREA_ROCKET = 13.87;// Area of the target when the robot reaches the wall for rocket - 9.08 might work
         final double MAX_DRIVE = 0.5; // Simple speed limit so we don't drive too fast
         double Kp = -0.1;
         double min_command = 0.5;
@@ -94,6 +94,7 @@ public class LimelightStuff {
         drive *= 0.7;
         if (OI.xbox1.getYButton()){
             autoCargo = true;
+            Robot.booleans.AutoCargo = true;
         }
         else if (Robot.booleans.AutoCargo == true){
             autoCargo = true;
@@ -104,6 +105,7 @@ public class LimelightStuff {
 
         if (OI.xbox1.getStartButton()){
             autoRocket = true;
+            Robot.booleans.AutoRocket = true;
         }
         else if (Robot.booleans.AutoRocket == true){
             autoRocket = true;
