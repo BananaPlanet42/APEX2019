@@ -6,6 +6,6 @@ public class Booleans{
     public boolean ClimberIsLocked;
     public boolean IsLocked;
     public boolean HasVisionTarget;
-    public boolean AutoCargo;
-    public boolean AutoRocket;
+    public boolean AutoVision;
+    // public boolean AutoRocket;
 }

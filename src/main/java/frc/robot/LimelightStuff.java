@@ -26,8 +26,8 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 public class LimelightStuff {
     NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
     boolean m_LimeLightHasValidTarget = false;
-    double m_LimeLightDriveCommandCargo = 0.0;
-    double m_LimeLightDriveCommandRocket = 0.0;
+    double m_LimeLightDriveCommand = 0.0;
+    // double m_LimeLightDriveCommandRocket = 0.0;
     double m_LimeLightSteerComand = 0.0;
     DriveHelper helper = new DriveHelper();
     
@@ -37,8 +37,8 @@ public class LimelightStuff {
         // These numbers must be tuned for your Robot! Be careful!
         final double STEER_K = 0.20; // how hard to turn toward the target
         final double DRIVE_K = 0.5; // how hard to drive fwd toward the target
-        final double DESIRED_TARGET_AREA_CARGO = 11.73; // Area of the target when the robot reaches the wall for cargo - 12.07 works
-        final double DESIRED_TARGET_AREA_ROCKET = 13.87;// Area of the target when the robot reaches the wall for rocket - 9.08 might work
+        final double DESIRED_TARGET_AREA = 13.90; // Area of the target when the robot reaches the wall for cargo - 12.07 works
+        // final double DESIRED_TARGET_AREA_ROCKET = 13.87;// Area of the target when the robot reaches the wall for rocket - 9.08 might work
         final double MAX_DRIVE = 0.5; // Simple speed limit so we don't drive too fast
         double Kp = -0.1;
         double min_command = 0.5;
@@ -50,8 +50,8 @@ public class LimelightStuff {
 
         if (tv == 0) {
             m_LimeLightHasValidTarget = false;
-            m_LimeLightDriveCommandRocket = 0.0;
-            m_LimeLightDriveCommandCargo = 0.0;
+            // m_LimeLightDriveCommandRocket = 0.0;
+            m_LimeLightDriveCommand = 0.0;
             m_LimeLightSteerComand = 0.0;
             return;
         }
@@ -63,22 +63,22 @@ public class LimelightStuff {
         m_LimeLightSteerComand = steer_cmd;
 
         // try to drive forward until the target area reaches our desired area
-        double drive_cmd_cargo = (DESIRED_TARGET_AREA_CARGO - ta) * DRIVE_K;
+        double drive_cmd = (DESIRED_TARGET_AREA - ta) * DRIVE_K;
 
 
 
-        double drive_cmd_rocket = (DESIRED_TARGET_AREA_ROCKET - ta) * DRIVE_K;
+        // double drive_cmd_rocket = (DESIRED_TARGET_AREA_ROCKET - ta) * DRIVE_K;
 
         // don't let the robot drive too fast into the goal
 
-        if (drive_cmd_rocket > MAX_DRIVE) {
-            drive_cmd_rocket = MAX_DRIVE;
+        // if (drive_cmd_rocket > MAX_DRIVE) {
+        //     drive_cmd_rocket = MAX_DRIVE;
+        // }
+        // m_LimeLightDriveCommandRocket = drive_cmd_rocket;
+        if (drive_cmd > MAX_DRIVE) {
+            drive_cmd = MAX_DRIVE;
         }
-        m_LimeLightDriveCommandRocket = drive_cmd_rocket;
-        if (drive_cmd_cargo > MAX_DRIVE) {
-            drive_cmd_cargo = MAX_DRIVE;
-        }
-        m_LimeLightDriveCommandCargo = drive_cmd_cargo;
+        m_LimeLightDriveCommand = drive_cmd;
        
     }
 
@@ -87,56 +87,59 @@ public class LimelightStuff {
         Update_Limelight_Tracking();
         double steer = OI.xbox1.getX(Hand.kRight);
         double drive = -OI.xbox1.getY(Hand.kLeft);
-        boolean autoCargo = false;
-        boolean autoRocket = false;
+        double Drive_Percentage = 0.5;
+        boolean auto = false;
+        // boolean auto = false;
         // System.out.println("targeting: " +m_LimeLightDriveCommand + "steer: " + m_LimeLightSteerComand);
         steer *= 0.7;
         drive *= 0.7;
         if (OI.xbox1.getYButton()){
-            autoCargo = true;
-            Robot.booleans.AutoCargo = true;
+            // autoCargo = true;
+            Robot.booleans.AutoVision = true;
         }
-        else if (Robot.booleans.AutoCargo == true){
-            autoCargo = true;
+         
+        
+        if (Robot.booleans.AutoVision == true){
+            auto = true;
         }
         else {
-            autoCargo = false;
+            auto = false;
         }
 
-        if (OI.xbox1.getStartButton()){
-            autoRocket = true;
-            Robot.booleans.AutoRocket = true;
-        }
-        else if (Robot.booleans.AutoRocket == true){
-            autoRocket = true;
-        }
-        else {
-            autoRocket = false;
-        }
+        // if (OI.xbox1.getStartButton()){
+        //     autoRocket = true;
+        //     Robot.booleans.AutoRocket = true;
+        // }
+        // else if (Robot.booleans.AutoRocket == true){
+        //     autoRocket = true;
+        // }
+        // else {
+        //     autoRocket = false;
+        // }
         
-        if (autoCargo == true) {
+        if (auto == true) {
             if (m_LimeLightHasValidTarget == true) {
                 boolean quickTurn = Robot.driveTrain.quickTurnController();
                 // DriveSignal driveSignal = helper.cheesyDrive(0.0, 0.3 * m_LimeLightSteerComand, false, false);
-                DriveSignal driveSignal = helper.cheesyDrive(0.65 * m_LimeLightDriveCommandCargo, 0.3 * m_LimeLightSteerComand, false, false); 
+                DriveSignal driveSignal = helper.cheesyDrive(Drive_Percentage * m_LimeLightDriveCommand, 0.3 * m_LimeLightSteerComand, false, false); 
                    Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
                          } 
              else {
                 Robot.driveTrain.drive(ControlMode.PercentOutput, 0, 0);
             }
         } 
-        else if (autoRocket == true) {
-            if (m_LimeLightHasValidTarget == true) {
-                boolean quickTurn = Robot.driveTrain.quickTurnController();
-                // DriveSignal driveSignal = helper.cheesyDrive(0.0, 0.3 * m_LimeLightSteerComand, false, false);
-                DriveSignal driveSignal = helper.cheesyDrive(0.65 * m_LimeLightDriveCommandRocket, 0.3 * m_LimeLightSteerComand, false, false); 
-                   Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
-                         } 
-                else {
-                    Robot.driveTrain.drive(ControlMode.PercentOutput, 0, 0);
-                    }
+        // else if (autoRocket == true) {
+        //     if (m_LimeLightHasValidTarget == true) {
+        //         boolean quickTurn = Robot.driveTrain.quickTurnController();
+        //         // DriveSignal driveSignal = helper.cheesyDrive(0.0, 0.3 * m_LimeLightSteerComand, false, false);
+        //         DriveSignal driveSignal = helper.cheesyDrive(0.65 * m_LimeLightDriveCommandRocket, 0.3 * m_LimeLightSteerComand, false, false); 
+        //            Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
+        //                  } 
+        //         else {
+        //             Robot.driveTrain.drive(ControlMode.PercentOutput, 0, 0);
+        //             }
          
-        } 
+        // } 
         // else {
             // DriveTrain.arcadeDrive(drive,steer);
             // boolean quickTurn2 = driveTrain.quickTurnController();
