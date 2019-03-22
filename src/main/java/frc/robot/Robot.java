@@ -70,7 +70,7 @@ public class Robot extends TimedRobot {
     // private double m_LimeLightDriveCommand = 0.0;
     // private double m_LimeLightSteerComand = 0.0;
     DriveHelper helper;
-    LimelightStuff limelightStuff;
+    public static LimelightStuff limelightStuff;
 
     /**
      * This function is run when the robot is first started up and should be used
@@ -93,6 +93,7 @@ public class Robot extends TimedRobot {
         // CameraServer.getInstance().startAutomaticCapture();
         Compressor compressor = new Compressor(0);
         booleans.LiftIsLocked = false;
+        booleans.AutoVision = false;
         
     
 
@@ -129,6 +130,7 @@ public class Robot extends TimedRobot {
     public void robotPeriodic() {
         SmartDashConfig.Testing();
         SmartDashConfig.commands();
+        System.out.println("AutoVision bool " + booleans.AutoVision);
         
     }
 
@@ -213,7 +215,8 @@ public class Robot extends TimedRobot {
         Scheduler.getInstance().run();
         // SmartDashConfig.Testing();
         SmartDashConfig.Comp();
-        if (OI.xbox1.getYButton() == true){
+        
+        if (booleans.AutoVision == true){
             limelightStuff.DriveByLimelight();
         }
     }
@@ -236,6 +239,7 @@ public class Robot extends TimedRobot {
         new ReleaseLift();
         Robot.driveTrain.pigeon.setYaw(0, 0);
         lift.lift(ControlMode.PercentOutput, 0);
+        booleans.AutoVision = false;
     }
 
     /**
@@ -250,8 +254,15 @@ public class Robot extends TimedRobot {
         SmartDashboard.putNumber("R1 power", RobotMap.R1.getSelectedSensorVelocity());
 
         if (OI.xbox1.getYButton() == true ){
+            // limelightStuff.DriveByLimelight();
+            booleans.AutoVision = true;
+        }
+        if (booleans.AutoVision == true){
             limelightStuff.DriveByLimelight();
         }
+       if (OI.xbox1.getYButtonReleased()) {
+           booleans.AutoVision = false;
+       }
         Scheduler.getInstance().run();
         // SmartDashConfig.commands();
         

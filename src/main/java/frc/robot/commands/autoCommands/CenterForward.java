@@ -11,10 +11,16 @@ import frc.arcs.RightfrontRocketArc;
 import frc.arcs.TurnScalingArc;
 import frc.arcs.CenterSideCargoArc;
 import frc.robot.Robot;
+import frc.robot.commands.AutoVision.StartAutoCargo;
+import frc.robot.commands.AutoVision.EndAutoCargo;;
+
 
 public class CenterForward extends CommandGroup{
     public CenterForward(){
         addSequential(new FollowArc(Robot.driveTrain, new DistanceScalingArc()));
+        addSequential(new StartAutoCargo(), 6);
+        addSequential(new EndAutoCargo(), 0.1);
+
     }
 
 }
