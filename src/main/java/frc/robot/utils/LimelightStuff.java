@@ -82,7 +82,7 @@ public class LimelightStuff {
             if (m_LimeLightHasValidTarget == true) {
                 boolean quickTurn = frc.robot.Robot.driveTrain.quickTurnController();
                 // DriveSignal driveSignal = helper.cheesyDrive(0.0, 0.3 * m_LimeLightSteerComand, false, false);
-                DriveSignal driveSignal = helper.cheesyDrive(0.65 * m_LimeLightDriveCommand, 0.3 * m_LimeLightSteerComand, false, false); 
+                DriveSignal driveSignal = helper.cheesyDrive(0.57 * m_LimeLightDriveCommand, 0.3 * m_LimeLightSteerComand, false, false); 
                    frc.robot.Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
                          } 
          else {
