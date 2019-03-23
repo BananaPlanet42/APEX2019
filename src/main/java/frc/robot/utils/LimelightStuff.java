@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.utils;
 
 import edu.wpi.first.cameraserver.*;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -80,13 +80,13 @@ public class LimelightStuff {
         drive *= 0.7;
         if (auto == true) {
             if (m_LimeLightHasValidTarget == true) {
-                boolean quickTurn = Robot.driveTrain.quickTurnController();
+                boolean quickTurn = frc.robot.Robot.driveTrain.quickTurnController();
                 // DriveSignal driveSignal = helper.cheesyDrive(0.0, 0.3 * m_LimeLightSteerComand, false, false);
                 DriveSignal driveSignal = helper.cheesyDrive(0.65 * m_LimeLightDriveCommand, 0.3 * m_LimeLightSteerComand, false, false); 
-                   Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
+                   frc.robot.Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
                          } 
          else {
-                Robot.driveTrain.drive(ControlMode.PercentOutput, 0, 0);
+                frc.robot.Robot.driveTrain.drive(ControlMode.PercentOutput, 0, 0);
             }
         } 
         // else {

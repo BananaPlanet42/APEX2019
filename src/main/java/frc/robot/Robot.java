@@ -36,7 +36,7 @@ import frc.robot.utils.SmartDashConfig;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-import frc.robot.LimelightStuff;
+import frc.robot.utils.LimelightStuff;
 
 
 import edu.wpi.first.cameraserver.*;
