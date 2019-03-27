@@ -70,7 +70,7 @@ public class Robot extends TimedRobot {
     // private double m_LimeLightDriveCommand = 0.0;
     // private double m_LimeLightSteerComand = 0.0;
     DriveHelper helper;
-    LimelightStuff limelightStuff;
+    public static LimelightStuff limelightStuff;
 
     /**
      * This function is run when the robot is first started up and should be used
@@ -93,6 +93,8 @@ public class Robot extends TimedRobot {
         // CameraServer.getInstance().startAutomaticCapture();
         Compressor compressor = new Compressor(0);
         booleans.LiftIsLocked = false;
+        booleans.AutoVision = false;
+        
     
 
         m_chooser.setDefaultOption("Null Command", "Null Command");
@@ -128,6 +130,17 @@ public class Robot extends TimedRobot {
     public void robotPeriodic() {
         SmartDashConfig.Testing();
         SmartDashConfig.commands();
+        // System.out.println("AutoVision bool " + booleans.AutoVision);
+        if (OI.xbox1.getYButton() == true ){
+            // limelightStuff.DriveByLimelight();
+            booleans.AutoVision = true;
+        }
+        if (OI.xbox1.getYButtonReleased()) {
+            booleans.AutoVision = false;
+        }
+        if (booleans.AutoVision == true){
+            limelightStuff.DriveByLimelight();
+        }
     }
 
     /**
@@ -137,6 +150,8 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void disabledInit() {
+        booleans.AutoVision = false;
+
         // new ReleaseLift();
     }
 
@@ -211,9 +226,11 @@ public class Robot extends TimedRobot {
         Scheduler.getInstance().run();
         // SmartDashConfig.Testing();
         SmartDashConfig.Comp();
-        if (OI.xbox1.getYButton() == true){
-            limelightStuff.DriveByLimelight();
-        }
+        
+        // if (booleans.AutoVision == true){
+        //     System.out.println("In Vision Mode");
+        //     limelightStuff.DriveByLimelight();
+        // }
     }
 
     @Override
@@ -234,6 +251,7 @@ public class Robot extends TimedRobot {
         new ReleaseLift();
         Robot.driveTrain.pigeon.setYaw(0, 0);
         lift.lift(ControlMode.PercentOutput, 0);
+        booleans.AutoVision = false;
     }
 
     /**
@@ -247,9 +265,12 @@ public class Robot extends TimedRobot {
         SmartDashboard.putNumber("L1 power", RobotMap.L1.getSelectedSensorVelocity());
         SmartDashboard.putNumber("R1 power", RobotMap.R1.getSelectedSensorVelocity());
 
-        if (OI.xbox1.getYButton() == true){
-            limelightStuff.DriveByLimelight();
-        }
+       
+        // if (booleans.AutoVision == true){
+        //     System.out.println("In Vision Mode");
+        //     limelightStuff.DriveByLimelight();
+        // }
+      
         Scheduler.getInstance().run();
         // SmartDashConfig.commands();
         

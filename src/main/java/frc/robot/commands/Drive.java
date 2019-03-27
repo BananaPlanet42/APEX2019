@@ -57,7 +57,7 @@ public class Drive extends Command {
 
 
 
-    if (OI.xbox1.getYButton() == false){
+    if (OI.xbox1.getYButton() == false && Robot.booleans.AutoVision == false){
         if (OI.xbox1.getBumper(Hand.kLeft) == true || OI.xbox1.getBumper(Hand.kRight) == true) {
         double move = OI.xbox1.getY(Hand.kLeft);
         double rotate = OI.xbox1.getX(Hand.kRight);
