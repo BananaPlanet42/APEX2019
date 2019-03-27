@@ -93,10 +93,10 @@ public class LimelightStuff {
         // System.out.println("targeting: " +m_LimeLightDriveCommand + "steer: " + m_LimeLightSteerComand);
         steer *= 0.7;
         drive *= 0.7;
-        if (OI.xbox1.getYButton()){
-            // autoCargo = true;
-            Robot.booleans.AutoVision = true;
-        }
+        // if (OI.xbox1.getYButton()){
+        //     // autoCargo = true;
+        //     Robot.booleans.AutoVision = true;
+        // }
          
         
         // if (Robot.booleans.AutoVision == true){
@@ -123,7 +123,7 @@ public class LimelightStuff {
                 // DriveSignal driveSignal = helper.cheesyDrive(0.0, 0.3 * m_LimeLightSteerComand, false, false);
                 DriveSignal driveSignal = helper.cheesyDrive(Drive_Percentage * m_LimeLightDriveCommand, 0.3 * m_LimeLightSteerComand, false, false); 
                    Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
-                   System.out.println("Targeting" + 0.3 * m_LimeLightSteerComand + "Driving" + Drive_Percentage * m_LimeLightDriveCommand);
+                //    System.out.println("Targeting" + 0.3 * m_LimeLightSteerComand + "Driving" + Drive_Percentage * m_LimeLightDriveCommand);
                          } 
              else {
                 Robot.driveTrain.drive(ControlMode.PercentOutput, 0, 0);

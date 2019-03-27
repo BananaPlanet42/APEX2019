@@ -18,8 +18,9 @@ import frc.robot.commands.AutoVision.EndAutoCargo;;
 public class CenterForward extends CommandGroup{
     public CenterForward(){
         addSequential(new FollowArc(Robot.driveTrain, new DistanceScalingArc()));
-        addSequential(new StartAutoCargo(), 6);
+        addSequential(new StartAutoCargo(), 2);
         addSequential(new EndAutoCargo(), 0.1);
+        // Robot.booleans.AutoVision = true;
 
     }
 

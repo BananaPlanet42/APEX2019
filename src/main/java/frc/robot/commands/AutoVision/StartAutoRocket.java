@@ -27,7 +27,7 @@ public class StartAutoRocket extends Command {
   protected void execute() {
     
     Robot.booleans.AutoVision = true;
-    Robot.limelightStuff.DriveByLimelight();
+    // Robot.limelightStsuff.DriveByLimelight();
 
   }
 

@@ -130,8 +130,17 @@ public class Robot extends TimedRobot {
     public void robotPeriodic() {
         SmartDashConfig.Testing();
         SmartDashConfig.commands();
-        System.out.println("AutoVision bool " + booleans.AutoVision);
-        
+        // System.out.println("AutoVision bool " + booleans.AutoVision);
+        if (OI.xbox1.getYButton() == true ){
+            // limelightStuff.DriveByLimelight();
+            booleans.AutoVision = true;
+        }
+        if (OI.xbox1.getYButtonReleased()) {
+            booleans.AutoVision = false;
+        }
+        if (booleans.AutoVision == true){
+            limelightStuff.DriveByLimelight();
+        }
     }
 
     /**
@@ -141,6 +150,8 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void disabledInit() {
+        booleans.AutoVision = false;
+
         // new ReleaseLift();
     }
 
@@ -216,9 +227,10 @@ public class Robot extends TimedRobot {
         // SmartDashConfig.Testing();
         SmartDashConfig.Comp();
         
-        if (booleans.AutoVision == true){
-            limelightStuff.DriveByLimelight();
-        }
+        // if (booleans.AutoVision == true){
+        //     System.out.println("In Vision Mode");
+        //     limelightStuff.DriveByLimelight();
+        // }
     }
 
     @Override
@@ -253,16 +265,12 @@ public class Robot extends TimedRobot {
         SmartDashboard.putNumber("L1 power", RobotMap.L1.getSelectedSensorVelocity());
         SmartDashboard.putNumber("R1 power", RobotMap.R1.getSelectedSensorVelocity());
 
-        if (OI.xbox1.getYButton() == true ){
-            // limelightStuff.DriveByLimelight();
-            booleans.AutoVision = true;
-        }
-        if (booleans.AutoVision == true){
-            limelightStuff.DriveByLimelight();
-        }
-       if (OI.xbox1.getYButtonReleased()) {
-           booleans.AutoVision = false;
-       }
+       
+        // if (booleans.AutoVision == true){
+        //     System.out.println("In Vision Mode");
+        //     limelightStuff.DriveByLimelight();
+        // }
+      
         Scheduler.getInstance().run();
         // SmartDashConfig.commands();
         
