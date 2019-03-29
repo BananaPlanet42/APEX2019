@@ -43,4 +43,8 @@ public static int ClimberLockSolenoid1_Forward_Channel = 0;//0, 7 for limber loc
 public static int ClimberLockSolenoid1_Reverse_Channel = 7;
 public static int Pidgeon = 0;
 
+//level 2 rocket
+public static int LiftActuatorSolenoid1_Forward_Channel = 8;//need to change
+public static int LiftActuatorSolenoid1_Reverse_Channel = 9;
+
 }

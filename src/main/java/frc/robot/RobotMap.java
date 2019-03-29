@@ -38,6 +38,8 @@ public class RobotMap {
   public static VictorSPX Lift2;
   public static DoubleSolenoid LiftSolenoid1;
   public static DoubleSolenoid LiftSolenoid2;
+  public static DoubleSolenoid LiftActuatorSolenoid1;
+
   // intake/eater stuff
   public static TalonSRX Intake;
 
@@ -79,6 +81,9 @@ public class RobotMap {
     ControllerConfig.setLiftFollower(Lift2, Lift1, false);
     LiftSolenoid1 = new DoubleSolenoid(PortMap.Lift_Solenoid1_Forward_Channel, PortMap.Lift_Solenoid1_Reverse_Channel);
     // new ReleaseLift();
+
+    //lift rocket
+    LiftActuatorSolenoid1 = new DoubleSolenoid(PortMap.LiftActuatorSolenoid1_Forward_Channel, PortMap.LiftActuatorSolenoid1_Reverse_Channel)
 
     // intake stuff
     Intake = new TalonSRX(PortMap.Intake);
