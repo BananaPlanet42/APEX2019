@@ -41,6 +41,9 @@ import frc.robot.commands.CrawlBack;
 import frc.robot.commands.ClimberTimingExtend;
 import frc.robot.commands.ClimberTimingRetract;
 import frc.robot.commands.ClimberCollect;
+import frc.robot.commands.LiftSetPointsActuationDown;
+import frc.robot.commands.LiftSetPointsActuationUp;
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -109,16 +112,16 @@ public class OI {
     LT2.whenInactive(new CargoIntakeCreep());
 
     POVTrigger DPAD_UP2 = new POVTrigger(xbox2, 0, 0);
-    DPAD_UP2.whenPressed(new MoveLift(21000));
+    DPAD_UP2.whenPressed(new LiftSetPointsActuationDown(21000));
 
     POVTrigger DPAD_RIGHT2 = new POVTrigger(xbox2, 0, 90);
-    DPAD_RIGHT2.whenPressed(new MoveLift(4000));
+    DPAD_RIGHT2.whenPressed(new LiftSetPointsActuationUp(21000));
 
     POVTrigger DPAD_LEFT2 = new POVTrigger(xbox2, 0, 270);
-    DPAD_LEFT2.whenPressed(new MoveLift(15000));
+    DPAD_LEFT2.whenPressed(new LiftSetPointsActuationDown(15000));
 
     POVTrigger DPAD_DOWN2 = new POVTrigger(xbox2, 0, 180);
-    DPAD_DOWN2.whenPressed(new MoveLift(0));
+    DPAD_DOWN2.whenPressed(new LiftSetPointsActuationDown(0));
   }
 
   public XboxController xbox1() {

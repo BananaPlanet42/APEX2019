@@ -6,4 +6,5 @@ public class Booleans{
     public boolean ClimberIsLocked;
     public boolean IsLocked;
     public boolean HasVisionTarget;
+    public boolean CanScore;
 }

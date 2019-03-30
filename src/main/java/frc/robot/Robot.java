@@ -43,6 +43,7 @@ import edu.wpi.first.cameraserver.*;
 // import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 // import frc.robot.commands.ReleaseLift;
 import frc.robot.utils.Booleans;
+import frc.robot.utils.CanScore;
 import frc.robot.utils.DriveHelper;
 
 /**
@@ -70,7 +71,8 @@ public class Robot extends TimedRobot {
     // private double m_LimeLightDriveCommand = 0.0;
     // private double m_LimeLightSteerComand = 0.0;
     DriveHelper helper;
-    LimelightStuff limelightStuff;
+    public static LimelightStuff limelightStuff;
+    public static CanScore canScore;
 
     /**
      * This function is run when the robot is first started up and should be used
@@ -89,6 +91,7 @@ public class Robot extends TimedRobot {
          helper = new DriveHelper();
         Robot.driveTrain.pigeon.setYaw(0, 0);
         limelightStuff = new LimelightStuff();
+        canScore = new CanScore();
         // booleans= false;
         // CameraServer.getInstance().startAutomaticCapture();
         Compressor compressor = new Compressor(0);
@@ -214,6 +217,7 @@ public class Robot extends TimedRobot {
         if (OI.xbox1.getYButton() == true){
             limelightStuff.DriveByLimelight();
         }
+        canScore.Scoreable();
     }
 
     @Override
@@ -251,6 +255,7 @@ public class Robot extends TimedRobot {
             limelightStuff.DriveByLimelight();
         }
         Scheduler.getInstance().run();
+        canScore.Scoreable();
         // SmartDashConfig.commands();
         
     }

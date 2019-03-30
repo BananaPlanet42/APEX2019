@@ -83,7 +83,7 @@ public class RobotMap {
     // new ReleaseLift();
 
     //lift rocket
-    LiftActuatorSolenoid1 = new DoubleSolenoid(PortMap.LiftActuatorSolenoid1_Forward_Channel, PortMap.LiftActuatorSolenoid1_Reverse_Channel)
+    LiftActuatorSolenoid1 = new DoubleSolenoid(PortMap.LiftActuatorSolenoid1_Forward_Channel, PortMap.LiftActuatorSolenoid1_Reverse_Channel);
 
     // intake stuff
     Intake = new TalonSRX(PortMap.Intake);

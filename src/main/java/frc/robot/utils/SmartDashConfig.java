@@ -44,5 +44,7 @@ public class SmartDashConfig {
         SmartDashboard.putData("ZeroLift", new ZeroLiftEncoder());
         // SmartDashboard.putBoolean("LiftLocked?", Robot.booleans.LiftIsLocked);
         SmartDashboard.putNumber("Lift1 encoder position", RobotMap.Lift1.getSelectedSensorPosition(0));
+        SmartDashboard.putBoolean("Centered?", Robot.booleans.CanScore);
+
     }
 }
