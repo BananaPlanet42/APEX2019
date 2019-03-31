@@ -89,6 +89,7 @@ public class Robot extends TimedRobot {
         driveTrain = new DriveTrain();
         lift = new Lift();
         climber = new Climber();
+        tipper = new Tipper();
          oi = new OI();
          helper = new DriveHelper();
         Robot.driveTrain.pigeon.setYaw(0, 0);

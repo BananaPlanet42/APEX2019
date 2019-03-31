@@ -6,9 +6,29 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
+import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import frc.robot.Robot;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- * Add your docs here.
- */
-public class Tipper {
+
+public class Tipper extends Subsystem{
+
+    public DoubleSolenoid TipperSolenoid1 = RobotMap.TipperSolenoid1;
+   
+    public void TipperUp(){
+        TipperSolenoid1.set(Value.kForward);
+    }
+
+    public void TipperDown(){
+        TipperSolenoid1.set(Value.kReverse);
+    }
+
+
+    @Override
+    public void initDefaultCommand(){
+
+    
+    }
 }

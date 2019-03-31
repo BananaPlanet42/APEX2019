@@ -31,6 +31,8 @@ import frc.robot.commands.ReleaseLift;
 import frc.robot.commands.RetractClimberBasic;
 import frc.robot.commands.CrossbowAcquire;
 import frc.robot.commands.SpitCargo;
+import frc.robot.commands.TipperDown;
+import frc.robot.commands.TipperUp;
 import frc.robot.commands.CrawlForward;
 import frc.robot.commands.CargoIntakeCreep;
 import frc.robot.commands.ClimberLock;
@@ -43,6 +45,7 @@ import frc.robot.commands.ClimberTimingRetract;
 import frc.robot.commands.ClimberCollect;
 import frc.robot.commands.LiftSetPointsActuationDown;
 import frc.robot.commands.LiftSetPointsActuationUp;
+
 
 
 /**
@@ -93,13 +96,13 @@ public class OI {
     //DrY.whileHeld(new ClimberRelease());
 
     // Y2.whileHeld(new CrawlForward());
-    // Button LB2 = new JoystickButton(xbox2, 5);
-    // LB2.whenPressed(new CrawlForward());
+    Button LB2 = new JoystickButton(xbox2, 5);
+    LB2.whenPressed(new TipperDown());
 
     // Button RB1=new JoystickButton(xbox2,6);
     // RB1.whileHeld(new SpitCargo());
-    // Button RB2 = new JoystickButton(xbox2, 6);
-    // RB2.whenPressed(new CrossbowBoop());
+    Button RB2 = new JoystickButton(xbox2, 6);
+    RB2.whenPressed(new TipperUp());
 
     TriggerButton RT2 = new TriggerButton(xbox2, 3);
     RT2.whileActive(new SpitCargo());
@@ -115,13 +118,15 @@ public class OI {
     DPAD_UP2.whenPressed(new LiftSetPointsActuationDown(21000));
 
     POVTrigger DPAD_RIGHT2 = new POVTrigger(xbox2, 0, 90);
-    DPAD_RIGHT2.whenPressed(new LiftSetPointsActuationUp(21000));
+    DPAD_RIGHT2.whenPressed(new LiftSetPointsActuationDown(15000));
 
     POVTrigger DPAD_LEFT2 = new POVTrigger(xbox2, 0, 270);
     DPAD_LEFT2.whenPressed(new LiftSetPointsActuationDown(15000));
 
     POVTrigger DPAD_DOWN2 = new POVTrigger(xbox2, 0, 180);
     DPAD_DOWN2.whenPressed(new LiftSetPointsActuationDown(0));
+
+  
   }
 
   public XboxController xbox1() {
