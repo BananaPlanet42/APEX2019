@@ -20,7 +20,6 @@ public boolean IsEndGame = Robot.booleans.IsEndGame;
  
 public TalonSRX Lift1 = RobotMap.Lift1;
 public DoubleSolenoid LiftSolenoid1 = RobotMap.LiftSolenoid1;
-public DoubleSolenoid LiftActuatorSolenoid1= RobotMap.LiftActuatorSolenoid1;
    
     public void lift(ControlMode controlmode, double TargetPosition){
     // if (IsEndGame == false && position <= 0){
@@ -78,14 +77,6 @@ public DoubleSolenoid LiftActuatorSolenoid1= RobotMap.LiftActuatorSolenoid1;
         // setDefaultCommand(new MoveLift(0));
 
     }
-    
-    public void ActuateLiftUp (){
-        LiftActuatorSolenoid1.set(Value.kForward);
-     }
-    
-    public void ActuateLiftDown(){
-        LiftActuatorSolenoid1.set(Value.kReverse);
-       }
 
                 
 }

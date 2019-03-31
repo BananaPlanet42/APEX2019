@@ -9,10 +9,11 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
+import frc.robot.subsystems.Tipper;
 
-public class ActuateLiftUp extends Command {
-  public ActuateLiftUp() {
+
+public class TipperDown extends Command {
+  public TipperDown() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -25,14 +26,9 @@ public class ActuateLiftUp extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(RobotMap.Lift1.getSelectedSensorPosition() >= 20000){
-      Robot.lift.ActuateLiftUp();
-    }
-
-   
+    Robot.tipper.TipperDown();
   }
 
-  
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {

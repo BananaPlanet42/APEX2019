@@ -38,7 +38,7 @@ public class RobotMap {
   public static VictorSPX Lift2;
   public static DoubleSolenoid LiftSolenoid1;
   public static DoubleSolenoid LiftSolenoid2;
-  public static DoubleSolenoid LiftActuatorSolenoid1;
+  public static DoubleSolenoid TipperSolenoid1;
 
   // intake/eater stuff
   public static TalonSRX Intake;
@@ -83,7 +83,7 @@ public class RobotMap {
     // new ReleaseLift();
 
     //lift rocket
-    LiftActuatorSolenoid1 = new DoubleSolenoid(PortMap.LiftActuatorSolenoid1_Forward_Channel, PortMap.LiftActuatorSolenoid1_Reverse_Channel);
+    TipperSolenoid1 = new DoubleSolenoid(PortMap.TipperSolenoid1_Forward_Channel, PortMap.TipperSolenoid1_Reverse_Channel, 1);
 
     // intake stuff
     Intake = new TalonSRX(PortMap.Intake);

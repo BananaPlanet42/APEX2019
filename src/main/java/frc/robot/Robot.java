@@ -45,6 +45,7 @@ import edu.wpi.first.cameraserver.*;
 import frc.robot.utils.Booleans;
 import frc.robot.utils.CanScore;
 import frc.robot.utils.DriveHelper;
+import frc.robot.subsystems.Tipper;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -59,6 +60,7 @@ public class Robot extends TimedRobot {
     public static Crossbow crossbow;
     public static DriveTrain driveTrain;
     public static Lift lift;
+    public static Tipper tipper;
     public static Climber climber;
     public static Booleans booleans;
     // Command m_autonomousCommand;
@@ -254,13 +256,14 @@ public class Robot extends TimedRobot {
         if (OI.xbox1.getYButton() == true){
             limelightStuff.DriveByLimelight();
         }
+        
         Scheduler.getInstance().run();
         canScore.Scoreable();
         // SmartDashConfig.commands();
-        
+    
     }
 
-    /**
+   /**
      * This function is called periodically during test mode.
      */
     @Override
