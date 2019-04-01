@@ -39,12 +39,16 @@ public static int Climber1 = 6; //6 for climber 1, 7 for climber 2
 public static int Climber2 = 7;
 
 //climber lock solenoid ids
-public static int ClimberLockSolenoid1_Forward_Channel = 0;//0, 7 for limber lock
+public static int ClimberLockSolenoid1_Forward_Channel = 0;//0, 7 for climber lock
 public static int ClimberLockSolenoid1_Reverse_Channel = 7;
 public static int Pidgeon = 0;
 
 //level 2 rocket
 public static int TipperSolenoid1_Forward_Channel = 8;//need to change
 public static int TipperSolenoid1_Reverse_Channel = 9;
+
+//PCM IDS
+public static int PCM_1 = 0;
+public static int PCM_2 = 1;
 
 }
