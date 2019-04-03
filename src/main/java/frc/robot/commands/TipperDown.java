@@ -26,7 +26,11 @@ public class TipperDown extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.tipper.TipperDown();
+    if (Robot.booleans.IsLevel2 == true){
+      Robot.tipper.TipperDown();
+      Robot.booleans.IsLevel2 = false;
+    }
+    
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -44,5 +48,6 @@ public class TipperDown extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

@@ -97,12 +97,12 @@ public class OI {
 
     // Y2.whileHeld(new CrawlForward());
     Button LB2 = new JoystickButton(xbox2, 5);
-    LB2.whenPressed(new TipperDown());
+    LB2.whileActive(new TipperDown());
 
     // Button RB1=new JoystickButton(xbox2,6);
     // RB1.whileHeld(new SpitCargo());
     Button RB2 = new JoystickButton(xbox2, 6);
-    RB2.whenPressed(new TipperUp());
+    RB2.whileActive(new TipperUp());
 
     TriggerButton RT2 = new TriggerButton(xbox2, 3);
     RT2.whileActive(new SpitCargo());

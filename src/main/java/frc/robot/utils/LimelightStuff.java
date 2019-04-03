@@ -29,11 +29,7 @@ public class LimelightStuff {
     double m_LimeLightDriveCommand = 0.0;
     double m_LimeLightSteerComand = 0.0;
     DriveHelper helper = new DriveHelper();
-    public double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
-    public double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
-    public double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
-    public double ta = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0);
-
+   
 
 
     public void Update_Limelight_Tracking() {
@@ -44,6 +40,12 @@ public class LimelightStuff {
         final double MAX_DRIVE = 0.5; // Simple speed limit so we don't drive too fast
         double Kp = -0.1;
         double min_command = 0.5;
+
+        double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
+        double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
+        double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
+        double ta = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0);
+    
 
 
         if (tv == 0) {

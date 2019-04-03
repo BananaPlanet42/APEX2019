@@ -8,14 +8,22 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.Robot;
 
 public class LiftSetPointsActuationDown extends CommandGroup {
   /**
    * Add your docs here.
    */
   public LiftSetPointsActuationDown(int position) {
-    addSequential(new TipperDown());
-    addSequential(new MoveLift(position));
+    // addSequential(new TipperDown());
+    if (Robot.booleans.IsLevel2 == true){
+      addSequential(new TipperDown());
+      addSequential(new MoveLift(position));
+
+    }
+    else{
+      addSequential(new MoveLift(position));
+    }
 
     // Add Commands here:
     // e.g. addSequential(new Command1());
