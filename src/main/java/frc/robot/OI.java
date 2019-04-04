@@ -115,10 +115,10 @@ public class OI {
     LT2.whenInactive(new CargoIntakeCreep());
 
     POVTrigger DPAD_UP2 = new POVTrigger(xbox2, 0, 0);
-    DPAD_UP2.whenPressed(new LiftSetPointsActuationDown(21000));
+    DPAD_UP2.whenPressed(new LiftSetPointsActuationDown(20800));
 
     POVTrigger DPAD_RIGHT2 = new POVTrigger(xbox2, 0, 90);
-    DPAD_RIGHT2.whenPressed(new LiftSetPointsActuationDown(15000));
+    DPAD_RIGHT2.whenPressed(new LiftSetPointsActuationUp(20800));
 
     POVTrigger DPAD_LEFT2 = new POVTrigger(xbox2, 0, 270);
     DPAD_LEFT2.whenPressed(new LiftSetPointsActuationDown(15000));

@@ -99,6 +99,7 @@ public class Robot extends TimedRobot {
         // CameraServer.getInstance().startAutomaticCapture();
         Compressor compressor = new Compressor(0);
         booleans.LiftIsLocked = false;
+        booleans.IsLevel2 = false;
     
 
         m_chooser.setDefaultOption("Null Command", "Null Command");

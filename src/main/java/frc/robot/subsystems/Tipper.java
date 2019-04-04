@@ -19,10 +19,14 @@ public class Tipper extends Subsystem{
    
     public void TipperUp(){
         TipperSolenoid1.set(Value.kForward);
+        Robot.booleans.IsLevel2 = true;
+
     }
 
     public void TipperDown(){
         TipperSolenoid1.set(Value.kReverse);
+        Robot.booleans.IsLevel2 = false;
+
     }
 
 

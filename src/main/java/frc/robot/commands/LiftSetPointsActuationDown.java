@@ -16,14 +16,14 @@ public class LiftSetPointsActuationDown extends CommandGroup {
    */
   public LiftSetPointsActuationDown(int position) {
     // addSequential(new TipperDown());
-    if (Robot.booleans.IsLevel2 == true){
-      addSequential(new TipperDown());
+    // if (Robot.booleans.IsLevel2 == true){
+      addSequential(new TipperDown(), 0.0);
       addSequential(new MoveLift(position));
 
-    }
-    else{
-      addSequential(new MoveLift(position));
-    }
+    // }
+    // else if (Robot.booleans.IsLevel2 == false){
+    //   addSequential(new MoveLift(position));
+    // }
 
     // Add Commands here:
     // e.g. addSequential(new Command1());

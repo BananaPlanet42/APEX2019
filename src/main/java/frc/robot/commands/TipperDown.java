@@ -28,7 +28,6 @@ public class TipperDown extends Command {
   protected void execute() {
     if (Robot.booleans.IsLevel2 == true){
       Robot.tipper.TipperDown();
-      Robot.booleans.IsLevel2 = false;
     }
     
   }

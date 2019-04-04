@@ -27,7 +27,6 @@ public class TipperUp extends Command {
   protected void execute() {
     if(RobotMap.Lift1.getSelectedSensorPosition() >= 20000 && Robot.booleans.IsLevel2 == false){
       Robot.tipper.TipperUp();
-      Robot.booleans.IsLevel2 = true;
     }
 
    
