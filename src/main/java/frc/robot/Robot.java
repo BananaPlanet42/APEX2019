@@ -252,8 +252,8 @@ public class Robot extends TimedRobot {
         Scheduler.getInstance().run();
         // SmartDashConfig.commands();
         SmartDashConfig.Comp();
-        SmartDashboard.putNumber("L1 power", RobotMap.L1.getSelectedSensorVelocity());
-        SmartDashboard.putNumber("R1 power", RobotMap.R1.getSelectedSensorVelocity());
+        // SmartDashboard.putNumber("L1 power", RobotMap.L1.getSelectedSensorVelocity());
+        // SmartDashboard.putNumber("R1 power", RobotMap.R1.getSelectedSensorVelocity());
 
         if (OI.xbox1.getYButton() == true){
             limelightStuff.DriveByLimelight();

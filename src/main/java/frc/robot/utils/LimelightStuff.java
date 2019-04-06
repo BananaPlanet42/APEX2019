@@ -36,7 +36,7 @@ public class LimelightStuff {
         // These numbers must be tuned for your Robot! Be careful!
         final double STEER_K = 0.20; // how hard to turn toward the target
         final double DRIVE_K = 0.5; // how hard to drive fwd toward the target
-        final double DESIRED_TARGET_AREA = 12.27; // Area of the target when the robot reaches the wall
+        final double DESIRED_TARGET_AREA = 10.7; // Area of the target when the robot reaches the wall
         final double MAX_DRIVE = 0.5; // Simple speed limit so we don't drive too fast
         double Kp = -0.1;
         double min_command = 0.5;
@@ -77,14 +77,14 @@ public class LimelightStuff {
         double steer = OI.xbox1.getX(Hand.kRight);
         double drive = -OI.xbox1.getY(Hand.kLeft);
         boolean auto = OI.xbox1.getYButton();
-        System.out.println("targeting: " +m_LimeLightDriveCommand + "steer: " + m_LimeLightSteerComand);
+        // System.out.println("targeting: " +m_LimeLightDriveCommand + "steer: " + m_LimeLightSteerComand);
         steer *= 0.7;
         drive *= 0.7;
         if (auto == true) {
             if (m_LimeLightHasValidTarget == true) {
                 boolean quickTurn = frc.robot.Robot.driveTrain.quickTurnController();
                 // DriveSignal driveSignal = helper.cheesyDrive(0.0, 0.3 * m_LimeLightSteerComand, false, false);
-                DriveSignal driveSignal = helper.cheesyDrive(0.57 * m_LimeLightDriveCommand, 0.3 * m_LimeLightSteerComand, false, false); 
+                DriveSignal driveSignal = helper.cheesyDrive(0.40 * m_LimeLightDriveCommand, 0.3 * m_LimeLightSteerComand, false, false); 
                    frc.robot.Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
                          } 
          else {
