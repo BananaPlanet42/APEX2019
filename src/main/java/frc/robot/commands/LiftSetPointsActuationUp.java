@@ -14,6 +14,7 @@ public class LiftSetPointsActuationUp extends CommandGroup {
    * Add your docs here.
    */
   public LiftSetPointsActuationUp(int position) {
+    addSequential(new TipperDown(), 0.0);
     addSequential(new MoveLift(position));
     addSequential(new TipperUp(), 0.0);
     // Add Commands here:

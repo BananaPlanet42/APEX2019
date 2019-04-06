@@ -25,7 +25,7 @@ public class TipperUp extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(RobotMap.Lift1.getSelectedSensorPosition() >= 20000 && Robot.booleans.IsLevel2 == false){
+    if( Robot.booleans.IsLevel2 == false){
       Robot.tipper.TipperUp();
     }
 
