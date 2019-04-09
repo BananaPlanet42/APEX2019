@@ -125,8 +125,6 @@ public class OI {
 
     POVTrigger DPAD_DOWN2 = new POVTrigger(xbox2, 0, 180);
     DPAD_DOWN2.whenPressed(new LiftSetPointsActuationDown(0));
-
-  
   }
 
   public XboxController xbox1() {

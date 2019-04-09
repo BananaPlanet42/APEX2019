@@ -219,7 +219,10 @@ public class Robot extends TimedRobot {
         // SmartDashConfig.Testing();
         SmartDashConfig.Comp();
         if (OI.xbox1.getYButton() == true){
-            limelightStuff.DriveByLimelight();
+            limelightStuff.DriveByLimelight(9.5);//10.7
+        }
+        if (OI.xbox1.getAButton() == true){
+            limelightStuff.DriveByLimelight(6.7);
         }
         // canScore.Scoreable();
     }
@@ -256,9 +259,11 @@ public class Robot extends TimedRobot {
         // SmartDashboard.putNumber("R1 power", RobotMap.R1.getSelectedSensorVelocity());
 
         if (OI.xbox1.getYButton() == true){
-            limelightStuff.DriveByLimelight();
+            limelightStuff.DriveByLimelight(9.5);
         }
-        
+        if (OI.xbox1.getAButton() == true){
+            limelightStuff.DriveByLimelight(6.7);
+        }
         Scheduler.getInstance().run();
         // canScore.Scoreable();
         // SmartDashConfig.commands();

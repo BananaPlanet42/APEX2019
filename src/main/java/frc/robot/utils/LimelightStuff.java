@@ -32,11 +32,11 @@ public class LimelightStuff {
    
 
 
-    public void Update_Limelight_Tracking() {
+    public void Update_Limelight_Tracking(double DESIRED_TARGET_AREA) {
         // These numbers must be tuned for your Robot! Be careful!
         final double STEER_K = 0.20; // how hard to turn toward the target
         final double DRIVE_K = 0.5; // how hard to drive fwd toward the target
-        final double DESIRED_TARGET_AREA = 10.7; // Area of the target when the robot reaches the wall
+        //final double DESIRED_TARGET_AREA = 10.7; // Area of the target when the robot reaches the wall
         final double MAX_DRIVE = 0.5; // Simple speed limit so we don't drive too fast
         double Kp = -0.1;
         double min_command = 0.5;
@@ -72,11 +72,12 @@ public class LimelightStuff {
     }
 
 
-    public void DriveByLimelight() {
-        Update_Limelight_Tracking();
+    public void DriveByLimelight(double DESIRED_TARGET_AREA) {
+        Update_Limelight_Tracking(DESIRED_TARGET_AREA);
         double steer = OI.xbox1.getX(Hand.kRight);
         double drive = -OI.xbox1.getY(Hand.kLeft);
         boolean auto = OI.xbox1.getYButton();
+        
         // System.out.println("targeting: " +m_LimeLightDriveCommand + "steer: " + m_LimeLightSteerComand);
         steer *= 0.7;
         drive *= 0.7;
