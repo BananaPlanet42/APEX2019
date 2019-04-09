@@ -85,14 +85,14 @@ public class OI {
     DrA.whenPressed(new ClimberTimingExtend());
 
     Button DrB = new JoystickButton(xbox1, 2); // 2 is equal to B
-    DrB.whileHeld(new LiftLock());
+    
 
-    Button DrX = new JoystickButton(xbox1, 3); // 3 is equal to X
+    //Button DrX = new JoystickButton(xbox1, 3); // 3 is equal to X
     // RPB2.whenPressed(new ClimberPrep());
-    DrX.whileHeld(new LiftUnlock());  
+      
     // RPB2.whenInactive(new RetractClimber());
 
-    Button DrY = new JoystickButton(xbox1, 4); // 4 is equal to Y
+    //Button DrY = new JoystickButton(xbox1, 4); // 4 is equal to Y
     //DrY.whileHeld(new ClimberRelease());
 
     // Y2.whileHeld(new CrawlForward());
@@ -125,6 +125,12 @@ public class OI {
 
     POVTrigger DPAD_DOWN2 = new POVTrigger(xbox2, 0, 180);
     DPAD_DOWN2.whenPressed(new LiftSetPointsActuationDown(0));
+  
+    POVTrigger dPAD_DOWN1 = new POVTrigger(xbox1, 0, 180);
+    dPAD_DOWN1.whileHeld(new LiftLock());
+  
+    POVTrigger DPAD_UP1 = new POVTrigger(xbox1, 0, 0);
+    DPAD_UP1.whileHeld(new LiftUnlock());  
   }
 
   public XboxController xbox1() {
