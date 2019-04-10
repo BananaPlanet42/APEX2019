@@ -53,7 +53,7 @@ public class LimelightStuff {
         }
         // Start with proportional steering
         if(OI.xbox1.getXButton()){
-            tx -= 2.5;
+            tx += 2;//2.5
         }
         double steer_cmd = tx * STEER_K;
 
@@ -108,4 +108,5 @@ public class LimelightStuff {
         // new Drive();
         // }
     }
+{}
 }
