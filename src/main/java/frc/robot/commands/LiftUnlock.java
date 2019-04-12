@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class LiftUnlock extends Command {
   public LiftUnlock() {
@@ -24,6 +25,12 @@ public class LiftUnlock extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    RobotMap.Lift1.config_kP(0, 1.0, 0);
+    RobotMap.Lift1.config_kI(0, 0, 0);
+    RobotMap.Lift1.config_kD(0, 40, 0);
+    RobotMap.Lift1.config_kF(0, 0, 0);
+    RobotMap.Lift1.configMotionAcceleration(14000, 0); //3500 // 7000 //10500
+    RobotMap.Lift1.configMotionCruiseVelocity(14000, 0);
       Robot.lift.releaseLift();
     }
     

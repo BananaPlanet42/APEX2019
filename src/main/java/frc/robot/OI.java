@@ -126,11 +126,11 @@ public class OI {
     POVTrigger DPAD_DOWN2 = new POVTrigger(xbox2, 0, 180);
     DPAD_DOWN2.whenPressed(new LiftSetPointsActuationDown(0));
   
-    POVTrigger dPAD_DOWN1 = new POVTrigger(xbox1, 0, 180);
-    dPAD_DOWN1.whileHeld(new LiftLock());
+    POVTrigger DPAD_RIGHT1 = new POVTrigger(xbox1, 0, 90);
+    DPAD_RIGHT1.whileActive(new LiftLock());
   
-    POVTrigger DPAD_UP1 = new POVTrigger(xbox1, 0, 0);
-    DPAD_UP1.whileHeld(new LiftUnlock());  
+    POVTrigger DPAD_LEFT1 = new POVTrigger(xbox1, 0, 270);
+    DPAD_LEFT1.whileActive(new LiftUnlock());  
   }
 
   public XboxController xbox1() {

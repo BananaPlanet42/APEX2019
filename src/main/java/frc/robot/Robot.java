@@ -221,8 +221,8 @@ public class Robot extends TimedRobot {
         if (OI.xbox1.getYButton() == true){
             limelightStuff.DriveByLimelight(9.5);//10.7
         }
-        if (OI.xbox1.getAButton() == true){
-            limelightStuff.DriveByLimelight(6.7);
+        if (OI.xbox1.getXButton() == true){
+            limelightStuff.DriveByLimelight(11.01); //11.01 on practice rocket
         }
         // canScore.Scoreable();
     }
@@ -262,7 +262,7 @@ public class Robot extends TimedRobot {
             limelightStuff.DriveByLimelight(9.5 );
         }
         if (OI.xbox1.getXButton() == true){
-            limelightStuff.DriveByLimelight(6.9);//6.7
+            limelightStuff.DriveByLimelight(11.01); //11.01 on practice rocket
         }
         Scheduler.getInstance().run();
         // canScore.Scoreable();

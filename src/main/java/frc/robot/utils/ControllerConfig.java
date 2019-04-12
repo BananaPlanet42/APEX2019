@@ -103,8 +103,8 @@ public class ControllerConfig {
         currentSRX.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
         currentSRX.config_kP(0, 1.0, 0);
         currentSRX.config_kI(0, 0, 0);
-        currentSRX.config_kD(0, 10, 0);
-        currentSRX.config_kF(0, .9, 0);
+        currentSRX.config_kD(0, 40, 0);
+        currentSRX.config_kF(0, 0, 0);
         currentSRX.config_IntegralZone(0, 0, 0);
         currentSRX.setInverted(false);
         currentSRX.setSensorPhase(false);

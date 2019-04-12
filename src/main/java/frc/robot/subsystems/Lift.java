@@ -56,8 +56,10 @@ public DoubleSolenoid LiftSolenoid1 = RobotMap.LiftSolenoid1;
    
 
    public void lockLift(){
+       
     LiftSolenoid1.set(Value.kForward);
-    Robot.booleans.LiftIsLocked = true;   }
+    Robot.booleans.LiftIsLocked = true;   
+}
 
    public void releaseLift(){
     LiftSolenoid1.set(Value.kReverse);
