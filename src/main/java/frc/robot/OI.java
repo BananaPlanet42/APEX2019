@@ -31,6 +31,8 @@ import frc.robot.commands.ReleaseLift;
 import frc.robot.commands.RetractClimberBasic;
 import frc.robot.commands.CrossbowAcquire;
 import frc.robot.commands.SpitCargo;
+import frc.robot.commands.TipperDown;
+import frc.robot.commands.TipperUp;
 import frc.robot.commands.CrawlForward;
 import frc.robot.commands.CargoIntakeCreep;
 import frc.robot.commands.ClimberLock;
@@ -41,6 +43,10 @@ import frc.robot.commands.CrawlBack;
 import frc.robot.commands.ClimberTimingExtend;
 import frc.robot.commands.ClimberTimingRetract;
 import frc.robot.commands.ClimberCollect;
+import frc.robot.commands.LiftSetPointsActuationDown;
+import frc.robot.commands.LiftSetPointsActuationUp;
+
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -79,24 +85,24 @@ public class OI {
     DrA.whenPressed(new ClimberTimingExtend());
 
     Button DrB = new JoystickButton(xbox1, 2); // 2 is equal to B
-    DrB.whileHeld(new LiftLock());
+    
 
-    Button DrX = new JoystickButton(xbox1, 3); // 3 is equal to X
+    //Button DrX = new JoystickButton(xbox1, 3); // 3 is equal to X
     // RPB2.whenPressed(new ClimberPrep());
-    DrX.whileHeld(new LiftUnlock());  
+      
     // RPB2.whenInactive(new RetractClimber());
 
-    Button DrY = new JoystickButton(xbox1, 4); // 4 is equal to Y
+    //Button DrY = new JoystickButton(xbox1, 4); // 4 is equal to Y
     //DrY.whileHeld(new ClimberRelease());
 
     // Y2.whileHeld(new CrawlForward());
-    // Button LB2 = new JoystickButton(xbox2, 5);
-    // LB2.whenPressed(new CrawlForward());
+    Button LB2 = new JoystickButton(xbox2, 5);
+    LB2.whileActive(new TipperDown());
 
     // Button RB1=new JoystickButton(xbox2,6);
     // RB1.whileHeld(new SpitCargo());
-    // Button RB2 = new JoystickButton(xbox2, 6);
-    // RB2.whenPressed(new CrossbowBoop());
+    Button RB2 = new JoystickButton(xbox2, 6);
+    RB2.whileActive(new TipperUp());
 
     TriggerButton RT2 = new TriggerButton(xbox2, 3);
     RT2.whileActive(new SpitCargo());
@@ -109,16 +115,22 @@ public class OI {
     LT2.whenInactive(new CargoIntakeCreep());
 
     POVTrigger DPAD_UP2 = new POVTrigger(xbox2, 0, 0);
-    DPAD_UP2.whenPressed(new MoveLift(21000));
+    DPAD_UP2.whenPressed(new LiftSetPointsActuationDown(20800));
 
     POVTrigger DPAD_RIGHT2 = new POVTrigger(xbox2, 0, 90);
-    DPAD_RIGHT2.whenPressed(new MoveLift(4000));
+    DPAD_RIGHT2.whenPressed(new LiftSetPointsActuationUp(20800));
 
     POVTrigger DPAD_LEFT2 = new POVTrigger(xbox2, 0, 270);
-    DPAD_LEFT2.whenPressed(new MoveLift(15000));
+    DPAD_LEFT2.whenPressed(new LiftSetPointsActuationDown(15000));
 
     POVTrigger DPAD_DOWN2 = new POVTrigger(xbox2, 0, 180);
-    DPAD_DOWN2.whenPressed(new MoveLift(0));
+    DPAD_DOWN2.whenPressed(new LiftSetPointsActuationDown(0));
+  
+    POVTrigger DPAD_RIGHT1 = new POVTrigger(xbox1, 0, 90);
+    DPAD_RIGHT1.whileActive(new LiftLock());
+  
+    POVTrigger DPAD_LEFT1 = new POVTrigger(xbox1, 0, 270);
+    DPAD_LEFT1.whileActive(new LiftUnlock());  
   }
 
   public XboxController xbox1() {

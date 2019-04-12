@@ -43,7 +43,9 @@ import edu.wpi.first.cameraserver.*;
 // import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 // import frc.robot.commands.ReleaseLift;
 import frc.robot.utils.Booleans;
+// import frc.robot.utils.CanScore;
 import frc.robot.utils.DriveHelper;
+import frc.robot.subsystems.Tipper;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -58,6 +60,7 @@ public class Robot extends TimedRobot {
     public static Crossbow crossbow;
     public static DriveTrain driveTrain;
     public static Lift lift;
+    public static Tipper tipper;
     public static Climber climber;
     public static Booleans booleans;
     // Command m_autonomousCommand;
@@ -71,6 +74,7 @@ public class Robot extends TimedRobot {
     // private double m_LimeLightSteerComand = 0.0;
     DriveHelper helper;
     public static LimelightStuff limelightStuff;
+    // public static CanScore canScore;
 
     /**
      * This function is run when the robot is first started up and should be used
@@ -85,16 +89,17 @@ public class Robot extends TimedRobot {
         driveTrain = new DriveTrain();
         lift = new Lift();
         climber = new Climber();
+        tipper = new Tipper();
          oi = new OI();
          helper = new DriveHelper();
         Robot.driveTrain.pigeon.setYaw(0, 0);
         limelightStuff = new LimelightStuff();
+        // canScore = new CanScore();
         // booleans= false;
         // CameraServer.getInstance().startAutomaticCapture();
         Compressor compressor = new Compressor(0);
         booleans.LiftIsLocked = false;
-        booleans.AutoVision = false;
-        
+        booleans.IsLevel2 = false;
     
 
         m_chooser.setDefaultOption("Null Command", "Null Command");
@@ -130,17 +135,6 @@ public class Robot extends TimedRobot {
     public void robotPeriodic() {
         SmartDashConfig.Testing();
         SmartDashConfig.commands();
-        // System.out.println("AutoVision bool " + booleans.AutoVision);
-        if (OI.xbox1.getYButton() == true ){
-            // limelightStuff.DriveByLimelight();
-            booleans.AutoVision = true;
-        }
-        if (OI.xbox1.getYButtonReleased()) {
-            booleans.AutoVision = false;
-        }
-        if (booleans.AutoVision == true){
-            limelightStuff.DriveByLimelight();
-        }
     }
 
     /**
@@ -150,8 +144,6 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void disabledInit() {
-        booleans.AutoVision = false;
-
         // new ReleaseLift();
     }
 
@@ -226,11 +218,13 @@ public class Robot extends TimedRobot {
         Scheduler.getInstance().run();
         // SmartDashConfig.Testing();
         SmartDashConfig.Comp();
-        
-        // if (booleans.AutoVision == true){
-        //     System.out.println("In Vision Mode");
-        //     limelightStuff.DriveByLimelight();
-        // }
+        if (OI.xbox1.getYButton() == true){
+            limelightStuff.DriveByLimelight(9.5);//10.7
+        }
+        if (OI.xbox1.getXButton() == true){
+            limelightStuff.DriveByLimelight(11.01); //11.01 on practice rocket
+        }
+        // canScore.Scoreable();
     }
 
     @Override
@@ -251,7 +245,6 @@ public class Robot extends TimedRobot {
         new ReleaseLift();
         Robot.driveTrain.pigeon.setYaw(0, 0);
         lift.lift(ControlMode.PercentOutput, 0);
-        booleans.AutoVision = false;
     }
 
     /**
@@ -262,21 +255,22 @@ public class Robot extends TimedRobot {
         Scheduler.getInstance().run();
         // SmartDashConfig.commands();
         SmartDashConfig.Comp();
-        SmartDashboard.putNumber("L1 power", RobotMap.L1.getSelectedSensorVelocity());
-        SmartDashboard.putNumber("R1 power", RobotMap.R1.getSelectedSensorVelocity());
+        // SmartDashboard.putNumber("L1 power", RobotMap.L1.getSelectedSensorVelocity());
+        // SmartDashboard.putNumber("R1 power", RobotMap.R1.getSelectedSensorVelocity());
 
-       
-        // if (booleans.AutoVision == true){
-        //     System.out.println("In Vision Mode");
-        //     limelightStuff.DriveByLimelight();
-        // }
-      
+        if (OI.xbox1.getYButton() == true){
+            limelightStuff.DriveByLimelight(9.5 );
+        }
+        if (OI.xbox1.getXButton() == true){
+            limelightStuff.DriveByLimelight(11.01); //11.01 on practice rocket
+        }
         Scheduler.getInstance().run();
+        // canScore.Scoreable();
         // SmartDashConfig.commands();
-        
+    
     }
 
-    /**
+   /**
      * This function is called periodically during test mode.
      */
     @Override

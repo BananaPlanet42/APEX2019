@@ -103,8 +103,8 @@ public class ControllerConfig {
         currentSRX.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
         currentSRX.config_kP(0, 1.0, 0);
         currentSRX.config_kI(0, 0, 0);
-        currentSRX.config_kD(0, 10, 0);
-        currentSRX.config_kF(0, .9, 0);
+        currentSRX.config_kD(0, 40, 0);
+        currentSRX.config_kF(0, 0, 0);
         currentSRX.config_IntegralZone(0, 0, 0);
         currentSRX.setInverted(false);
         currentSRX.setSensorPhase(false);
@@ -121,8 +121,8 @@ public class ControllerConfig {
         currentSRX.configPeakCurrentLimit(15);
         currentSRX.configPeakCurrentDuration(0, 0);
         currentSRX.enableCurrentLimit(true);
-        currentSRX.configMotionAcceleration(3500, 0); 
-        currentSRX.configMotionCruiseVelocity(3500, 0); 
+        currentSRX.configMotionAcceleration(14000, 0); //3500 // 7000 //10500
+        currentSRX.configMotionCruiseVelocity(14000, 0); //3500 //7000 //10500
         currentSRX.setNeutralMode(NeutralMode.Coast);
     }
 

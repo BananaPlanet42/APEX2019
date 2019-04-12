@@ -38,6 +38,8 @@ public class RobotMap {
   public static VictorSPX Lift2;
   public static DoubleSolenoid LiftSolenoid1;
   public static DoubleSolenoid LiftSolenoid2;
+  public static DoubleSolenoid TipperSolenoid1;
+
   // intake/eater stuff
   public static TalonSRX Intake;
 
@@ -77,18 +79,19 @@ public class RobotMap {
     ControllerConfig.setLiftLead(Lift1);
     Lift2 = new VictorSPX(PortMap.Lift2);
     ControllerConfig.setLiftFollower(Lift2, Lift1, false);
-    LiftSolenoid1 = new DoubleSolenoid(PortMap.Lift_Solenoid1_Forward_Channel, PortMap.Lift_Solenoid1_Reverse_Channel);
+    LiftSolenoid1 = new DoubleSolenoid(PortMap.PCM_1, PortMap.Lift_Solenoid1_Forward_Channel, PortMap.Lift_Solenoid1_Reverse_Channel);
     // new ReleaseLift();
+
+    //lift rocket
+    TipperSolenoid1 = new DoubleSolenoid(PortMap.PCM_2, PortMap.TipperSolenoid1_Forward_Channel, PortMap.TipperSolenoid1_Reverse_Channel);
 
     // intake stuff
     Intake = new TalonSRX(PortMap.Intake);
     // //crossbow stuff
-    Crossbow1 = new DoubleSolenoid(PortMap.Crossbow1_Forward_Channel, PortMap.Crossbow1_Reverse_Channel);
+    Crossbow1 = new DoubleSolenoid(PortMap.PCM_1, PortMap.Crossbow1_Forward_Channel, PortMap.Crossbow1_Reverse_Channel);
     // //climber stuff
-    ClimberPneu1 = new DoubleSolenoid(PortMap.ClimberSolenoid1_Forward_Channel,
-        PortMap.ClimberSolenoid1_Reverse_Channel);
-    ClimberLock1 = new DoubleSolenoid(PortMap.ClimberLockSolenoid1_Forward_Channel,
-        PortMap.ClimberLockSolenoid1_Reverse_Channel);
+    ClimberPneu1 = new DoubleSolenoid(PortMap.PCM_1, PortMap.ClimberSolenoid1_Forward_Channel, PortMap.ClimberSolenoid1_Reverse_Channel);
+    ClimberLock1 = new DoubleSolenoid(PortMap.PCM_1, PortMap.ClimberLockSolenoid1_Forward_Channel, PortMap.ClimberLockSolenoid1_Reverse_Channel);
     Climber1 = new TalonSRX(PortMap.Climber1);
     ControllerConfig.setClimbLead(Climber1);
     Climber2 = new VictorSPX(PortMap.Climber2);

@@ -17,8 +17,6 @@ import frc.robot.utils.DriveHelper;
 import frc.robot.OI;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import frc.robot.Robot;
-
 
 /**
  * Add your docs here.
@@ -29,18 +27,16 @@ public class LimelightStuff {
     double m_LimeLightDriveCommand = 0.0;
     double m_LimeLightSteerComand = 0.0;
     DriveHelper helper = new DriveHelper();
-    
 
-
-    public void Update_Limelight_Tracking() {
+    public void Update_Limelight_Tracking(double DESIRED_TARGET_AREA) {
         // These numbers must be tuned for your Robot! Be careful!
-        final double STEER_K = 0.20; // how hard to turn toward the target
-        final double DRIVE_K = 0.5; // how hard to drive fwd toward the target
-        final double DESIRED_TARGET_AREA = 13.90; // Area of the target when the robot reaches the wall for cargo - 12.07 works
-        // final double DESIRED_TARGET_AREA_ROCKET = 13.87;// Area of the target when the robot reaches the wall for rocket - 9.08 might work
+        final double STEER_K = 0.4; // how hard to turn toward the target
+        final double DRIVE_K = 0.9; // how hard to drive fwd toward the target
+        // final double DESIRED_TARGET_AREA = 10.7; // Area of the target when the robot
+        // reaches the wall
         final double MAX_DRIVE = 0.5; // Simple speed limit so we don't drive too fast
-        double Kp = -0.1;
-        double min_command = 0.5;
+        // double Kp = -0.1;
+        // double min_command = 0.5;
 
         double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
         double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
@@ -53,12 +49,15 @@ public class LimelightStuff {
             m_LimeLightDriveCommand = 0.0;
             m_LimeLightSteerComand = 0.0;
             return;
+        } else {
+            m_LimeLightHasValidTarget = true;
         }
-        else  {
-             m_LimeLightHasValidTarget = true;
-        } 
         // Start with proportional steering
+        if(OI.xbox1.getXButton()){
+            tx += 6.5;//2.5 // 8.5
+        }
         double steer_cmd = tx * STEER_K;
+
         m_LimeLightSteerComand = steer_cmd;
 
         // try to drive forward until the target area reaches our desired area
@@ -81,15 +80,19 @@ public class LimelightStuff {
        
     }
 
-
-    public void DriveByLimelight() {
-        Update_Limelight_Tracking();
+    public void DriveByLimelight(double DESIRED_TARGET_AREA) {
+        Update_Limelight_Tracking(DESIRED_TARGET_AREA);
         double steer = OI.xbox1.getX(Hand.kRight);
         double drive = -OI.xbox1.getY(Hand.kLeft);
-        double Drive_Percentage = 0.5;
-        boolean auto = Robot.booleans.AutoVision;
-        // boolean auto = false;
-        // System.out.println("targeting: " +m_LimeLightDriveCommand + "steer: " + m_LimeLightSteerComand);
+        boolean auto = true;
+        
+        // if(OI.xbox1.getYButton() || OI.xbox1.getXButton()){
+        // auto = true;
+        // }
+        // else auto = false;
+
+        // System.out.println("targeting: " +m_LimeLightDriveCommand + "steer: " +
+        // m_LimeLightSteerComand);
         steer *= 0.7;
         drive *= 0.7;
         // if (OI.xbox1.getYButton()){
@@ -119,33 +122,26 @@ public class LimelightStuff {
         if (auto == true) {
             if (m_LimeLightHasValidTarget == true) {
                 boolean quickTurn = frc.robot.Robot.driveTrain.quickTurnController();
-                // DriveSignal driveSignal = helper.cheesyDrive(0.0, 0.3 * m_LimeLightSteerComand, false, false);
-                DriveSignal driveSignal = helper.cheesyDrive(Drive_Percentage * m_LimeLightDriveCommand, 0.3 * m_LimeLightSteerComand, false, false); 
-                   Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
-                //    System.out.println("Targeting" + 0.3 * m_LimeLightSteerComand + "Driving" + Drive_Percentage * m_LimeLightDriveCommand);
-                         } 
-             else {
-                Robot.driveTrain.drive(ControlMode.PercentOutput, 0, 0);
+                // DriveSignal driveSignal = helper.cheesyDrive(0.0, 0.3 *
+                // m_LimeLightSteerComand, false, false);
+                DriveSignal driveSignal = helper.cheesyDrive(0.40 * m_LimeLightDriveCommand,
+                        0.3 * m_LimeLightSteerComand, false, false);
+                // System.out.println("targeting: " + m_LimeLightDriveCommand + "steer: " + m_LimeLightSteerComand);
+
+                frc.robot.Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
+            } else {
+                // System.out.println("STOOOOOOOOPPPPPP");
+                frc.robot.Robot.driveTrain.drive(ControlMode.PercentOutput, 0, 0);
             }
-        } 
-        // else if (autoRocket == true) {
-        //     if (m_LimeLightHasValidTarget == true) {
-        //         boolean quickTurn = Robot.driveTrain.quickTurnController();
-        //         // DriveSignal driveSignal = helper.cheesyDrive(0.0, 0.3 * m_LimeLightSteerComand, false, false);
-        //         DriveSignal driveSignal = helper.cheesyDrive(0.65 * m_LimeLightDriveCommandRocket, 0.3 * m_LimeLightSteerComand, false, false); 
-        //            Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
-        //                  } 
-        //         else {
-        //             Robot.driveTrain.drive(ControlMode.PercentOutput, 0, 0);
-        //             }
-         
-        // } 
+        }
         // else {
-            // DriveTrain.arcadeDrive(drive,steer);
-            // boolean quickTurn2 = driveTrain.quickTurnController();
-            // DriveSignal driveSignal2 = helper.cheesyDrive(1.0 * -drive, 0.3 * steer, quickTurn2, false);
-            // driveTrain.drive(ControlMode.PercentOutput, driveSignal2);
-            // new Drive();
+        // DriveTrain.arcadeDrive(drive,steer);
+        // boolean quickTurn2 = driveTrain.quickTurnController();
+        // DriveSignal driveSignal2 = helper.cheesyDrive(1.0 * -drive, 0.3 * steer,
+        // quickTurn2, false);
+        // driveTrain.drive(ControlMode.PercentOutput, driveSignal2);
+        // new Drive();
         // }
     }
+{}
 }

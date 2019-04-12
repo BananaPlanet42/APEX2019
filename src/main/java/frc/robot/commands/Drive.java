@@ -57,13 +57,13 @@ public class Drive extends Command {
 
 
 
-    if (OI.xbox1.getYButton() == false && Robot.booleans.AutoVision == false){
+    if (OI.xbox1.getYButton() == false && OI.xbox1.getXButton() == false){
         if (OI.xbox1.getBumper(Hand.kLeft) == true || OI.xbox1.getBumper(Hand.kRight) == true) {
         double move = OI.xbox1.getY(Hand.kLeft);
         double rotate = OI.xbox1.getX(Hand.kRight);
         boolean quickTurn = Robot.driveTrain.quickTurnController();
         // DriveSignal driveSignal = helper.cheesyDrive(1.0 * -move, 0.15 * rotate, quickTurn, false);
-        DriveSignal driveSignal = helper.cheesyDrive(0.5 * -move, 0.5 * rotate, quickTurn, false);
+        DriveSignal driveSignal = helper.cheesyDrive(0.7 * -move, 0.65 * rotate, quickTurn, false);
         Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
     } else {
         double move = OI.xbox1.getY(Hand.kLeft);

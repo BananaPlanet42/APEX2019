@@ -41,9 +41,11 @@ public class SmartDashConfig {
 
     public static void Comp() {
         // SmartDashboard.putData("Auto mode", chooser);
-        SmartDashboard.putData("ZeroLift", new ZeroLiftEncoder());
+        // SmartDashboard.putData("ZeroLift", new ZeroLiftEncoder());
         // SmartDashboard.putBoolean("LiftLocked?", Robot.booleans.LiftIsLocked);
-        SmartDashboard.putNumber("Lift1 encoder position", RobotMap.Lift1.getSelectedSensorPosition(0));
-        SmartDashboard.putBoolean("Vision Auto", Robot.booleans.AutoVision);
+        // SmartDashboard.putNumber("Lift1 encoder position", RobotMap.Lift1.getSelectedSensorPosition(0));
+        // SmartDashboard.putBoolean("Centered?", Robot.booleans.CanScore);
+        SmartDashboard.putBoolean("Level 2?", Robot.booleans.IsLevel2);
+
     }
 }
