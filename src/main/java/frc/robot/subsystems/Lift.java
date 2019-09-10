@@ -36,20 +36,20 @@ public DoubleSolenoid LiftSolenoid1 = RobotMap.LiftSolenoid1;
    
    }
 
-   public void lift(double power){
-    // if (IsEndGame == false && position <= 0){
-    //     Lift1.set(ControlMode.MotionMagic, 1);
-    // }
-    // else{
-    //     Lift1.set(ControlMode.PercentOutput, power); 
-    // 
-     if(OI.xbox2.getY(Hand.kRight) >= 0.2 || OI.xbox2.getY(Hand.kRight) <= -0.2) {
-    Lift1.set(ControlMode.PercentOutput, power);
-     }
-     else{
-         end();
-     }
-   }
+//    public void lift(double power){
+//     // if (IsEndGame == false && position <= 0){
+//     //     Lift1.set(ControlMode.MotionMagic, 1);
+//     // }
+//     // else{
+//     //     Lift1.set(ControlMode.PercentOutput, power); 
+//     // 
+//      if(OI.xbox2.getY(Hand.kRight) >= 0.2 || OI.xbox2.getY(Hand.kRight) <= -0.2) {
+//     Lift1.set(ControlMode.PercentOutput, power);
+//      }
+//      else{
+//          end();
+//      }
+//    }
 
 
 

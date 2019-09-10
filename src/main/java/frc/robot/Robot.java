@@ -24,9 +24,9 @@ import frc.robot.subsystems.CargoIntake;
 import frc.robot.models.DriveSignal;
 import frc.robot.subsystems.Crossbow;
 import frc.robot.subsystems.Climber;
-import frc.robot.subsystems.DriveTrain;
+// import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.Compressor;
-import frc.robot.commands.Drive;
+// import frc.robot.commands.Drive;
 import frc.robot.commands.ReleaseLift;
 import frc.robot.commands.PrintAutos.PrintAuto1;
 import frc.robot.commands.PrintAutos.PrintAuto2;
@@ -58,7 +58,7 @@ public class Robot extends TimedRobot {
      public static OI oi;
     public static CargoIntake cargoIntake;
     public static Crossbow crossbow;
-    public static DriveTrain driveTrain;
+    // public static DriveTrain driveTrain;
     public static Lift lift;
     public static Tipper tipper;
     public static Climber climber;
@@ -86,13 +86,13 @@ public class Robot extends TimedRobot {
         booleans = new Booleans();
         cargoIntake = new CargoIntake();
         crossbow = new Crossbow();
-        driveTrain = new DriveTrain();
+        // driveTrain = new DriveTrain();
         lift = new Lift();
         climber = new Climber();
         tipper = new Tipper();
          oi = new OI();
          helper = new DriveHelper();
-        Robot.driveTrain.pigeon.setYaw(0, 0);
+        // Robot.driveTrain.pigeon.setYaw(0, 0);
         limelightStuff = new LimelightStuff();
         // canScore = new CanScore();
         // booleans= false;
@@ -111,10 +111,10 @@ public class Robot extends TimedRobot {
         compressor.setClosedLoopControl(true);
         // compressor.setClosedLoopControl(true);
 
-        driveTrain.L1.setSelectedSensorPosition(0, 0, 0);
-        driveTrain.R1.setSelectedSensorPosition(0, 0, 0);
+        // driveTrain.L1.setSelectedSensorPosition(0, 0, 0);
+        // driveTrain.R1.setSelectedSensorPosition(0, 0, 0);
         lift.Lift1.setSelectedSensorPosition(0);
-        driveTrain.pigeon.setYaw(0, 0);
+        // driveTrain.pigeon.setYaw(0, 0);
         // new ReleaseLift();
 
         // autoChooser = SendableChooser<String>();
@@ -191,11 +191,11 @@ public class Robot extends TimedRobot {
         // INITIALIZE ALL SENSORS TO START AT ZERO
         // RobotMap.Lift1.setSelectedSensorPosition(0);
         RobotMap.R1.setSelectedSensorPosition(0);
-        driveTrain.L1.setSelectedSensorPosition(0);
-        driveTrain.R1.setNeutralMode(NeutralMode.Brake);
+        // driveTrain.L1.setSelectedSensorPosition(0);
+        // driveTrain.R1.setNeutralMode(NeutralMode.Brake);
         RobotMap.L1.setNeutralMode(NeutralMode.Brake);
         RobotMap.Lift1.setSelectedSensorPosition(0);
-        driveTrain.pigeon.setYaw(0, 0);
+        // driveTrain.pigeon.setYaw(0, 0);
 
         /*
          * String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
@@ -240,10 +240,10 @@ public class Robot extends TimedRobot {
             m_autonomousCommand.cancel();
         }
         // RobotMap.Lift1.setSelectedSensorPosition(0);
-        driveTrain.R1.setSelectedSensorPosition(0);
-        driveTrain.L1.setSelectedSensorPosition(0);
+        // driveTrain.R1.setSelectedSensorPosition(0);
+        // driveTrain.L1.setSelectedSensorPosition(0);
         new ReleaseLift();
-        Robot.driveTrain.pigeon.setYaw(0, 0);
+        // Robot.driveTrain.pigeon.setYaw(0, 0);
         lift.lift(ControlMode.PercentOutput, 0);
     }
 

@@ -13,7 +13,7 @@ import frc.robot.Robot;
 
 public class LeftFrontCargo extends CommandGroup{
     public LeftFrontCargo(){
-        addSequential(new FollowArc(Robot.driveTrain, new LeftFrontCargoArc()));
+        // addSequential(new FollowArc(Robot.driveTrain, new LeftFrontCargoArc()));
     }
 
 }

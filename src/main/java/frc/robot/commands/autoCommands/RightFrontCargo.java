@@ -14,7 +14,7 @@ import frc.robot.Robot;
 
 public class RightFrontCargo extends CommandGroup{
     public RightFrontCargo(){
-        addSequential(new FollowArc(Robot.driveTrain, new RightFrontCargoArc()));
+        // addSequential(new FollowArc(Robot.driveTrain, new RightFrontCargoArc()));
     }
 
 }

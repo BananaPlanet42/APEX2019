@@ -24,7 +24,7 @@ public class MoveLiftManual extends Command {
 
     protected void execute() {
         int position = RobotMap.Lift1.getSelectedSensorPosition(0);
-        double targetPosition=position+(-1400*OI.xbox2.getY(Hand.kLeft));
+        double targetPosition=(position+(-1400*OI.xbox2.getY(Hand.kLeft)));
         // Robot.lift.lift(ControlMode.PercentOutput, 0.5);
         // Robot.lift.lift();
 
