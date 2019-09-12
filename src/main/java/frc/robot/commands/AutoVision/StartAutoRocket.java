@@ -26,7 +26,7 @@ public class StartAutoRocket extends Command {
   @Override
   protected void execute() {
     
-    Robot.booleans.AutoVision = true;
+    // Robot.booleans.AutoVision = true;
     // Robot.limelightStsuff.DriveByLimelight();
 
   }
@@ -34,10 +34,11 @@ public class StartAutoRocket extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if (Robot.booleans.AutoVision == true){
-      return true;
-    }
-    else return false;
+    // if (Robot.booleans.AutoVision == true){
+    //   return true;
+    // }
+    // else
+     return false;
   }
 
   // Called once after isFinished returns true

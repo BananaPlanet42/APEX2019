@@ -5,14 +5,14 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.AutoVision;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.CONSTANTS;
 
-
-public class StartAutoCargo extends Command {
-  public StartAutoCargo() {
+public class CargoClimbSpeed extends Command {
+  public CargoClimbSpeed() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -25,26 +25,14 @@ public class StartAutoCargo extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-  // if(Robot.booleans.AutoVision == false){
-  //   Robot.booleans.AutoVision = true;
-  //   System.out.println("AutoCargoStarted");
-  // }
-
-    
-    // Robot.limelightStuff.DriveByLimelight();
-
+    Robot.cargoIntake.IntakeCustom(CONSTANTS.STATIC_INTAKE_SPEED);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    // if (Robot.booleans.AutoVision == true){
-    //   return true;
-    // }
-    // else return false;
- 
-  return false;
-   }
+    return false;
+  }
 
   // Called once after isFinished returns true
   @Override

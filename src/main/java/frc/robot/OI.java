@@ -45,6 +45,7 @@ import frc.robot.commands.ClimberTimingRetract;
 import frc.robot.commands.ClimberCollect;
 import frc.robot.commands.LiftSetPointsActuationDown;
 import frc.robot.commands.LiftSetPointsActuationUp;
+import frc.robot.commands.CargoClimbSpeed;
 
 
 
@@ -59,6 +60,9 @@ public class OI {
   public OI() {
     xbox1 = new XboxController(0);
     xbox2 = new XboxController(1);
+
+    Button OpStart = new JoystickButton(xbox2, 8);
+    OpStart.whileHeld(new CargoClimbSpeed());
 
     Button OpA = new JoystickButton(xbox2, 1); // 1 is equal to A
     OpA.whileHeld(new MoveLiftManual());

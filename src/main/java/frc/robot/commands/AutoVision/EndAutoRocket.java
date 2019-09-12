@@ -25,16 +25,17 @@ public class EndAutoRocket extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.booleans.AutoVision = false;
+    // Robot.booleans.AutoVision = false;
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if (Robot.booleans.AutoVision == false){
-      return true;
-    }
-    else return false;
+    // if (Robot.booleans.AutoVision == false){
+    //   return true;
+    // }
+    // else 
+    return false;
   }
 
   // Called once after isFinished returns true

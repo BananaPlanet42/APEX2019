@@ -24,9 +24,9 @@ public class EndAutoCargo extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Robot.booleans.AutoVision == true){
-      Robot.booleans.AutoVision = false;
-    }
+    // if(Robot.booleans.AutoVision == true){
+      // Robot.booleans.AutoVision = false;
+    // }
     
   }
 
