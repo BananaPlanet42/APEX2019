@@ -61,6 +61,10 @@ public class Climber extends Subsystem {
 
     }
 
+    public void ClimberCustom(double speed){
+        Climber1.set(ControlMode.PercentOutput, speed);
+    }
+
     @Override
     public void initDefaultCommand() {
 

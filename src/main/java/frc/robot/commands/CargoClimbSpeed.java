@@ -25,9 +25,8 @@ public class CargoClimbSpeed extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.cargoIntake.IntakeCustom(CONSTANTS.STATIC_INTAKE_SPEED);
+    Robot.climber.ClimberCustom(CONSTANTS.STATIC_CLIMBER_SPEED);
   }
-
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
