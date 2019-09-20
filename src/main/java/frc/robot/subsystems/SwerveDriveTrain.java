@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
-import frc.robot.common.robot.commands.HolonomicDriveCommand;
+// import frc.robot.common.robot.commands.HolonomicDriveCommand;
 import frc.robot.common.drivers.Mk2SwerveModule;
 import frc.robot.common.control.*;
 import frc.robot.common.drivers.Gyroscope;
@@ -24,6 +24,8 @@ import frc.robot.common.robot.subsystems.SwerveDrivetrain;
 import frc.robot.common.util.DrivetrainFeedforwardConstants;
 import frc.robot.common.util.HolonomicDriveSignal;
 import frc.robot.common.util.HolonomicFeedforward;
+import frc.robot.PortMap;
+import frc.robot.commands.HolonomicDriveCommand;
 
 import java.util.Optional;
 
@@ -74,41 +76,41 @@ public class SwerveDriveTrain extends SwerveDrivetrain {
     private SwerveDriveTrain() {
       
         
-        }
+        
 
         SwerveModule frontLeftModule = new Mk2SwerveModule(
                 new Vector2(-TRACKWIDTH / 2.0, WHEELBASE / 2.0),
                 FRONT_LEFT_ANGLE_OFFSET_COMPETITION,
-                new Spark(RobotMap.DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR),
-                new CANSparkMax(RobotMap.DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushless),
-                new AnalogInput(RobotMap.DRIVETRAIN_FRONT_LEFT_ANGLE_ENCODER)
+                new Spark(PortMap.DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR),
+                new CANSparkMax(PortMap.DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushless),
+                new AnalogInput(PortMap.DRIVETRAIN_FRONT_LEFT_ANGLE_ENCODER)
         );
         frontLeftModule.setName("Front Left");
 
         SwerveModule frontRightModule = new Mk2SwerveModule(
                 new Vector2(TRACKWIDTH / 2.0, WHEELBASE / 2.0),
                 FRONT_RIGHT_ANGLE_OFFSET_COMPETITION,
-                new Spark(RobotMap.DRIVETRAIN_FRONT_RIGHT_ANGLE_MOTOR),
-                new CANSparkMax(RobotMap.DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushless),
-                new AnalogInput(RobotMap.DRIVETRAIN_FRONT_RIGHT_ANGLE_ENCODER)
+                new Spark(PortMap.DRIVETRAIN_FRONT_RIGHT_ANGLE_MOTOR),
+                new CANSparkMax(PortMap.DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushless),
+                new AnalogInput(PortMap.DRIVETRAIN_FRONT_RIGHT_ANGLE_ENCODER)
         );
         frontRightModule.setName("Front Right");
 
         SwerveModule backLeftModule = new Mk2SwerveModule(
                 new Vector2(-TRACKWIDTH / 2.0, -WHEELBASE / 2.0),
                 BACK_LEFT_ANGLE_OFFSET_COMPETITION,
-                new Spark(RobotMap.DRIVETRAIN_BACK_LEFT_ANGLE_MOTOR),
-                new CANSparkMax(RobotMap.DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushless),
-                new AnalogInput(RobotMap.DRIVETRAIN_BACK_LEFT_ANGLE_ENCODER)
+                new Spark(PortMap.DRIVETRAIN_BACK_LEFT_ANGLE_MOTOR),
+                new CANSparkMax(PortMap.DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushless),
+                new AnalogInput(PortMap.DRIVETRAIN_BACK_LEFT_ANGLE_ENCODER)
         );
         backLeftModule.setName("Back Left");
 
         SwerveModule backRightModule = new Mk2SwerveModule(
                 new Vector2(TRACKWIDTH / 2.0, -WHEELBASE / 2.0),
                 BACK_RIGHT_ANGLE_OFFSET_COMPETITION,
-                new Spark(RobotMap.DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR),
-                new CANSparkMax(RobotMap.DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushless),
-                new AnalogInput(RobotMap.DRIVETRAIN_BACK_RIGHT_ANGLE_ENCODER)
+                new Spark(PortMap.DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR),
+                new CANSparkMax(PortMap.DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushless),
+                new AnalogInput(PortMap.DRIVETRAIN_BACK_RIGHT_ANGLE_ENCODER)
         );
         backRightModule.setName("Back Right");
 

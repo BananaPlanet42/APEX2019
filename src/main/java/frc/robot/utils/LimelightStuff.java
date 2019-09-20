@@ -121,17 +121,17 @@ public class LimelightStuff {
         
         if (auto == true) {
             if (m_LimeLightHasValidTarget == true) {
-                boolean quickTurn = frc.robot.Robot.driveTrain.quickTurnController();
+                // boolean quickTurn = frc.robot.Robot.driveTrain.quickTurnController();
                 // DriveSignal driveSignal = helper.cheesyDrive(0.0, 0.3 *
                 // m_LimeLightSteerComand, false, false);
                 DriveSignal driveSignal = helper.cheesyDrive(0.40 * m_LimeLightDriveCommand,
                         0.3 * m_LimeLightSteerComand, false, false);
                 // System.out.println("targeting: " + m_LimeLightDriveCommand + "steer: " + m_LimeLightSteerComand);
 
-                frc.robot.Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
+                // frc.robot.Robot.driveTrain.drive(ControlMode.PercentOutput, driveSignal);
             } else {
                 // System.out.println("STOOOOOOOOPPPPPP");
-                frc.robot.Robot.driveTrain.drive(ControlMode.PercentOutput, 0, 0);
+                // frc.robot.Robot.driveTrain.drive(ControlMode.PercentOutput, 0, 0);
             }
         }
         // else {
