@@ -31,8 +31,8 @@ import java.util.Optional;
 
 //updated name to match our file names
 public class SwerveDriveTrain extends SwerveDrivetrain {
-    private static final double TRACKWIDTH = 19.5;
-    private static final double WHEELBASE = 23.5;
+    private static final double TRACKWIDTH = 28.5;
+    private static final double WHEELBASE = 17.5;
 
     public static final ITrajectoryConstraint[] CONSTRAINTS = {
             new MaxVelocityConstraint(12.0 * 12.0),
