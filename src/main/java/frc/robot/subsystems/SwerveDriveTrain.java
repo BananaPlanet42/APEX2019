@@ -81,36 +81,36 @@ public class SwerveDriveTrain extends SwerveDrivetrain {
         SwerveModule frontLeftModule = new Mk2SwerveModule(
                 new Vector2(-TRACKWIDTH / 2.0, WHEELBASE / 2.0),
                 FRONT_LEFT_ANGLE_OFFSET_COMPETITION,
-                new Spark(PortMap.DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR),
-                new CANSparkMax(PortMap.DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushless),
-                new AnalogInput(PortMap.DRIVETRAIN_FRONT_LEFT_ANGLE_ENCODER)
+                new Spark(PortMap.LT1),
+                new CANSparkMax(PortMap.LD1, CANSparkMaxLowLevel.MotorType.kBrushless),
+                new AnalogInput(PortMap.LFEncoder)
         );
         frontLeftModule.setName("Front Left");
 
         SwerveModule frontRightModule = new Mk2SwerveModule(
                 new Vector2(TRACKWIDTH / 2.0, WHEELBASE / 2.0),
                 FRONT_RIGHT_ANGLE_OFFSET_COMPETITION,
-                new Spark(PortMap.DRIVETRAIN_FRONT_RIGHT_ANGLE_MOTOR),
-                new CANSparkMax(PortMap.DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushless),
-                new AnalogInput(PortMap.DRIVETRAIN_FRONT_RIGHT_ANGLE_ENCODER)
+                new Spark(PortMap.RT1),
+                new CANSparkMax(PortMap.RD1, CANSparkMaxLowLevel.MotorType.kBrushless),
+                new AnalogInput(PortMap.RFEncoder)
         );
         frontRightModule.setName("Front Right");
 
         SwerveModule backLeftModule = new Mk2SwerveModule(
                 new Vector2(-TRACKWIDTH / 2.0, -WHEELBASE / 2.0),
                 BACK_LEFT_ANGLE_OFFSET_COMPETITION,
-                new Spark(PortMap.DRIVETRAIN_BACK_LEFT_ANGLE_MOTOR),
-                new CANSparkMax(PortMap.DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushless),
-                new AnalogInput(PortMap.DRIVETRAIN_BACK_LEFT_ANGLE_ENCODER)
+                new Spark(PortMap.LT2),
+                new CANSparkMax(PortMap.LD2, CANSparkMaxLowLevel.MotorType.kBrushless),
+                new AnalogInput(PortMap.LBEncoder)
         );
         backLeftModule.setName("Back Left");
 
         SwerveModule backRightModule = new Mk2SwerveModule(
                 new Vector2(TRACKWIDTH / 2.0, -WHEELBASE / 2.0),
                 BACK_RIGHT_ANGLE_OFFSET_COMPETITION,
-                new Spark(PortMap.DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR),
-                new CANSparkMax(PortMap.DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushless),
-                new AnalogInput(PortMap.DRIVETRAIN_BACK_RIGHT_ANGLE_ENCODER)
+                new Spark(PortMap.RT2),
+                new CANSparkMax(PortMap.LD2, CANSparkMaxLowLevel.MotorType.kBrushless),
+                new AnalogInput(PortMap.RBEncoder)
         );
         backRightModule.setName("Back Right");
 

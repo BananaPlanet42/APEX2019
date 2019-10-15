@@ -53,23 +53,23 @@ public static int PCM_2 = 1;
 
 //Swerve drive IDs
 
-//PCMs 
-public static int DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR = 9;
-public static int DRIVETRAIN_FRONT_RIGHT_ANGLE_MOTOR = 10;
-public static int DRIVETRAIN_BACK_LEFT_ANGLE_MOTOR = 11;
-public static int DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR = 12;
+//Spark Max angle cAN
+public static int LT1 = 2;
+public static int RT1 = 4;
+public static int LT2 = 6;
+public static int RT2 = 8;
 
-// SparkMax CAN
-public static int DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR = 1;
-public static int DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR = 2;
-public static int DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR = 3;
-public static int DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR = 4;
+// SparkMax drive CAN
+public static int LD1 = 1;
+public static int RD1 = 3;
+public static int LD2 = 5;
+public static int RD2 = 7;
 
 //ENCODERS/DIGITAL INPUT
-public static int DRIVETRAIN_FRONT_LEFT_ANGLE_ENCODER = 1;
-public static int DRIVETRAIN_FRONT_RIGHT_ANGLE_ENCODER = 2;
-public static int DRIVETRAIN_BACK_LEFT_ANGLE_ENCODER = 3;
-public static int DRIVETRAIN_BACK_RIGHT_ANGLE_ENCODER = 4;
+public static int LFEncoder = 1;
+public static int RFEncoder = 2;
+public static int LBEncoder = 3;
+public static int RBEncoder = 4;
 
 
 
