@@ -67,9 +67,9 @@ public static int RD2 = 7;
 
 //ENCODERS/DIGITAL INPUT
 public static int LFEncoder = 1;
-public static int RFEncoder = 2;
+public static int RFEncoder = 0;
 public static int LBEncoder = 3;
-public static int RBEncoder = 4;
+public static int RBEncoder = 2;
 
 
 
