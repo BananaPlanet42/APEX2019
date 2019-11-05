@@ -108,7 +108,7 @@ public class Robot extends TimedRobot {
         m_chooser.addOption("R to RC Cargo", "R to RC Cargo");
         SmartDashboard.putData("Auto mode", m_chooser);
 
-        compressor.setClosedLoopControl(true);
+        // compressor.setClosedLoopControl(true);
         // compressor.setClosedLoopControl(true);
 
         // driveTrain.L1.setSelectedSensorPosition(0, 0, 0);

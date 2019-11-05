@@ -81,7 +81,7 @@ public class SwerveDriveTrain extends SwerveDrivetrain {
         SwerveModule frontLeftModule = new Mk2SwerveModule(
                 new Vector2(-TRACKWIDTH / 2.0, WHEELBASE / 2.0),
                 FRONT_LEFT_ANGLE_OFFSET_COMPETITION,
-                new Spark(PortMap.LT1),
+                new CANSparkMax(PortMap.LT1, CANSparkMaxLowLevel.MotorType.kBrushless),
                 new CANSparkMax(PortMap.LD1, CANSparkMaxLowLevel.MotorType.kBrushless),
                 new AnalogInput(PortMap.LFEncoder)
         );
@@ -90,7 +90,7 @@ public class SwerveDriveTrain extends SwerveDrivetrain {
         SwerveModule frontRightModule = new Mk2SwerveModule(
                 new Vector2(TRACKWIDTH / 2.0, WHEELBASE / 2.0),
                 FRONT_RIGHT_ANGLE_OFFSET_COMPETITION,
-                new Spark(PortMap.RT1),
+                new CANSparkMax(PortMap.RT1, CANSparkMaxLowLevel.MotorType.kBrushless),
                 new CANSparkMax(PortMap.RD1, CANSparkMaxLowLevel.MotorType.kBrushless),
                 new AnalogInput(PortMap.RFEncoder)
         );
@@ -99,7 +99,7 @@ public class SwerveDriveTrain extends SwerveDrivetrain {
         SwerveModule backLeftModule = new Mk2SwerveModule(
                 new Vector2(-TRACKWIDTH / 2.0, -WHEELBASE / 2.0),
                 BACK_LEFT_ANGLE_OFFSET_COMPETITION,
-                new Spark(PortMap.LT2),
+                new CANSparkMax(PortMap.LT2, CANSparkMaxLowLevel.MotorType.kBrushless),
                 new CANSparkMax(PortMap.LD2, CANSparkMaxLowLevel.MotorType.kBrushless),
                 new AnalogInput(PortMap.LBEncoder)
         );
@@ -108,7 +108,7 @@ public class SwerveDriveTrain extends SwerveDrivetrain {
         SwerveModule backRightModule = new Mk2SwerveModule(
                 new Vector2(TRACKWIDTH / 2.0, -WHEELBASE / 2.0),
                 BACK_RIGHT_ANGLE_OFFSET_COMPETITION,
-                new Spark(PortMap.RT2),
+                new CANSparkMax(PortMap.RT2, CANSparkMaxLowLevel.MotorType.kBrushless),
                 new CANSparkMax(PortMap.LD2, CANSparkMaxLowLevel.MotorType.kBrushless),
                 new AnalogInput(PortMap.RBEncoder)
         );

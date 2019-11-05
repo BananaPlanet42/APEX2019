@@ -54,16 +54,16 @@ public static int PCM_2 = 1;
 //Swerve drive IDs
 
 //Spark Max angle cAN
-public static int LT1 = 2;
-public static int RT1 = 4;
-public static int LT2 = 6;
-public static int RT2 = 8;
+public static int LT1 = 22;
+public static int RT1 = 24;
+public static int LT2 = 26;
+public static int RT2 = 28;
 
 // SparkMax drive CAN
-public static int LD1 = 1;
+public static int LD1 = 21;
 public static int RD1 = 3;
-public static int LD2 = 5;
-public static int RD2 = 7;
+public static int LD2 = 25;
+public static int RD2 = 27;
 
 //ENCODERS/DIGITAL INPUT
 public static int LFEncoder = 1;
