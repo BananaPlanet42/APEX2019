@@ -1,16 +1,16 @@
-package frc.robot.commands;
+// package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.Robot;
-import frc.robot.commands.ClimberLock;
-import frc.robot.commands.ClimberRelease;
+// import edu.wpi.first.wpilibj.command.CommandGroup;
+// import frc.robot.Robot;
+// import frc.robot.commands.ClimberLock;
+// import frc.robot.commands.ClimberRelease;
 
-public class ClimberTimingRetract extends CommandGroup {
-    public ClimberTimingRetract() {
-       // Robot.booleans.ClimberIsLocked = true;
-       addSequential(new ExtendClimberBasic(), .1);
-        addSequential(new ClimberRelease(), .3);
-        addSequential(new RetractClimberBasic(), .2);
-        // addSequential(new ClimberLock(), .1);
-    }
-}
+// public class ClimberTimingRetract extends CommandGroup {
+//     public ClimberTimingRetract() {
+//        // Robot.booleans.ClimberIsLocked = true;
+//        addSequential(new ExtendClimberBasic(), .1);
+//         addSequential(new ClimberRelease(), .3);
+//         addSequential(new RetractClimberBasic(), .2);
+//         // addSequential(new ClimberLock(), .1);
+//     }
+// }

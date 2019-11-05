@@ -19,15 +19,15 @@ import frc.robot.commands.autoCommands.DistanceTuningArc;
 import frc.robot.commands.autoCommands.LeftFrontCargo;
 import frc.robot.commands.autoCommands.NullCommand;
 import frc.robot.commands.autoCommands.RightFrontCargo;
-import frc.robot.subsystems.Lift;
-import frc.robot.subsystems.CargoIntake;
+// import frc.robot.subsystems.Lift;
+// import frc.robot.subsystems.CargoIntake;
 import frc.robot.models.DriveSignal;
-import frc.robot.subsystems.Crossbow;
-import frc.robot.subsystems.Climber;
+// import frc.robot.subsystems.Crossbow;
+// import frc.robot.subsystems.Climber;
 // import frc.robot.subsystems.DriveTrain;
-import edu.wpi.first.wpilibj.Compressor;
+// import edu.wpi.first.wpilibj.Compressor;
 // import frc.robot.commands.Drive;
-import frc.robot.commands.ReleaseLift;
+// import frc.robot.commands.ReleaseLift;
 import frc.robot.commands.PrintAutos.PrintAuto1;
 import frc.robot.commands.PrintAutos.PrintAuto2;
 import frc.robot.commands.PrintAutos.PrintAuto3;
@@ -45,7 +45,7 @@ import edu.wpi.first.cameraserver.*;
 import frc.robot.utils.Booleans;
 // import frc.robot.utils.CanScore;
 import frc.robot.utils.DriveHelper;
-import frc.robot.subsystems.Tipper;
+// import frc.robot.subsystems.Tipper;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -56,12 +56,12 @@ import frc.robot.subsystems.Tipper;
  */
 public class Robot extends TimedRobot {
      public static OI oi;
-    public static CargoIntake cargoIntake;
-    public static Crossbow crossbow;
+    // public static CargoIntake cargoIntake;
+    // public static Crossbow crossbow;
     // public static DriveTrain driveTrain;
-    public static Lift lift;
-    public static Tipper tipper;
-    public static Climber climber;
+    // public static Lift lift;
+    // public static Tipper tipper;
+    // public static Climber climber;
     public static Booleans booleans;
     // Command m_autonomousCommand;
     // SendableChooser<String> m_chooser = new SendableChooser<>();
@@ -73,7 +73,7 @@ public class Robot extends TimedRobot {
     // private double m_LimeLightDriveCommand = 0.0;
     // private double m_LimeLightSteerComand = 0.0;
     DriveHelper helper;
-    public static LimelightStuff limelightStuff;
+    // public static LimelightStuff limelightStuff;
     // public static CanScore canScore;
 
     /**
@@ -84,20 +84,20 @@ public class Robot extends TimedRobot {
     public void robotInit() {
         RobotMap.init();
         booleans = new Booleans();
-        cargoIntake = new CargoIntake();
-        crossbow = new Crossbow();
+        // cargoIntake = new CargoIntake();
+        // crossbow = new Crossbow();
         // driveTrain = new DriveTrain();
-        lift = new Lift();
-        climber = new Climber();
-        tipper = new Tipper();
+        // lift = new Lift();
+        // climber = new Climber();
+        // tipper = new Tipper();
          oi = new OI();
          helper = new DriveHelper();
         // Robot.driveTrain.pigeon.setYaw(0, 0);
-        limelightStuff = new LimelightStuff();
+        // limelightStuff = new LimelightStuff();
         // canScore = new CanScore();
         // booleans= false;
         // CameraServer.getInstance().startAutomaticCapture();
-        Compressor compressor = new Compressor(0);
+        // Compressor compressor = new Compressor(0);
         booleans.LiftIsLocked = false;
         booleans.IsLevel2 = false;
     
@@ -113,7 +113,7 @@ public class Robot extends TimedRobot {
 
         // driveTrain.L1.setSelectedSensorPosition(0, 0, 0);
         // driveTrain.R1.setSelectedSensorPosition(0, 0, 0);
-        lift.Lift1.setSelectedSensorPosition(0);
+        // lift.Lift1.setSelectedSensorPosition(0);
         // driveTrain.pigeon.setYaw(0, 0);
         // new ReleaseLift();
 
@@ -190,11 +190,11 @@ public class Robot extends TimedRobot {
         // m_autonomousCommand = new DistanceTuningArc();
         // INITIALIZE ALL SENSORS TO START AT ZERO
         // RobotMap.Lift1.setSelectedSensorPosition(0);
-        RobotMap.R1.setSelectedSensorPosition(0);
+        // RobotMap.R1.setSelectedSensorPosition(0);
         // driveTrain.L1.setSelectedSensorPosition(0);
         // driveTrain.R1.setNeutralMode(NeutralMode.Brake);
-        RobotMap.L1.setNeutralMode(NeutralMode.Brake);
-        RobotMap.Lift1.setSelectedSensorPosition(0);
+        // RobotMap.L1.setNeutralMode(NeutralMode.Brake);
+        // RobotMap.Lift1.setSelectedSensorPosition(0);
         // driveTrain.pigeon.setYaw(0, 0);
 
         /*
@@ -219,10 +219,10 @@ public class Robot extends TimedRobot {
         // SmartDashConfig.Testing();
         SmartDashConfig.Comp();
         if (OI.xbox1.getYButton() == true){
-            limelightStuff.DriveByLimelight(9.5);//10.7
+            // limelightStuff.DriveByLimelight(9.5);//10.7
         }
         if (OI.xbox1.getXButton() == true){
-            limelightStuff.DriveByLimelight(11.01); //11.01 on practice rocket
+            // limelightStuff.DriveByLimelight(11.01); //11.01 on practice rocket
         }
         // canScore.Scoreable();
     }
@@ -233,8 +233,8 @@ public class Robot extends TimedRobot {
         // teleop starts running. If you want the autonomous to
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        RobotMap.R1.setNeutralMode(NeutralMode.Coast);
-        RobotMap.L1.setNeutralMode(NeutralMode.Coast);
+        // RobotMap.R1.setNeutralMode(NeutralMode.Coast);
+        // RobotMap.L1.setNeutralMode(NeutralMode.Coast);
 
         if (m_autonomousCommand != null) {
             m_autonomousCommand.cancel();
@@ -242,9 +242,9 @@ public class Robot extends TimedRobot {
         // RobotMap.Lift1.setSelectedSensorPosition(0);
         // driveTrain.R1.setSelectedSensorPosition(0);
         // driveTrain.L1.setSelectedSensorPosition(0);
-        new ReleaseLift();
+        // new ReleaseLift();
         // Robot.driveTrain.pigeon.setYaw(0, 0);
-        lift.lift(ControlMode.PercentOutput, 0);
+        // lift.lift(ControlMode.PercentOutput, 0);
     }
 
     /**
@@ -259,10 +259,10 @@ public class Robot extends TimedRobot {
         // SmartDashboard.putNumber("R1 power", RobotMap.R1.getSelectedSensorVelocity());
 
         if (OI.xbox1.getYButton() == true){
-            limelightStuff.DriveByLimelight(9.5 );
+            // limelightStuff.DriveByLimelight(9.5 );
         }
         if (OI.xbox1.getXButton() == true){
-            limelightStuff.DriveByLimelight(11.01); //11.01 on practice rocket
+            // limelightStuff.DriveByLimelight(11.01); //11.01 on practice rocket
         }
         Scheduler.getInstance().run();
         // canScore.Scoreable();
