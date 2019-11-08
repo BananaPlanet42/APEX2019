@@ -1,13 +1,13 @@
 package frc.robot.utils;
 
 import frc.robot.RobotMap;
-import frc.robot.commands.ZeroLiftEncoder;
-import frc.robot.commands.MoveLift;
+// import frc.robot.commands.ZeroLiftEncoder;
+// import frc.robot.commands.MoveLift;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
-import frc.robot.commands.ClimberPrep;
-import frc.robot.commands.LockElevator;
+// import frc.robot.commands.ClimberPrep;
+// import frc.robot.commands.LockElevator;
 // import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
 public class SmartDashConfig {

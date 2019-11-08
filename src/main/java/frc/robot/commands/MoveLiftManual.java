@@ -1,65 +1,65 @@
-package frc.robot.commands;
+// package frc.robot.commands;
 
-import frc.robot.OI;
-import frc.robot.Robot;
-import frc.robot.subsystems.Lift;
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
-// import edu.wpi.first.wpilibj.command.*;
-import frc.robot.RobotMap;
-import edu.wpi.first.wpilibj.command.Command;
+// import frc.robot.OI;
+// import frc.robot.Robot;
+// import frc.robot.subsystems.Lift;
+// import com.ctre.phoenix.motorcontrol.ControlMode;
+// import edu.wpi.first.wpilibj.GenericHID.Hand;
+// // import edu.wpi.first.wpilibj.command.*;
+// import frc.robot.RobotMap;
+// import edu.wpi.first.wpilibj.command.Command;
 
-public class MoveLiftManual extends Command {
-    // double position;
-    // public TalonSRX Lift1 = RobotMap.Lift1;
+// public class MoveLiftManual extends Command {
+//     // double position;
+//     // public TalonSRX Lift1 = RobotMap.Lift1;
 
-    public MoveLiftManual() {
-        requires(Robot.lift);
-        // this.position = RobotMap.Lift1.getSelectedSensorPosition(0);
-    }
+//     public MoveLiftManual() {
+//         requires(Robot.lift);
+//         // this.position = RobotMap.Lift1.getSelectedSensorPosition(0);
+//     }
 
-    protected void initialize() {
+//     protected void initialize() {
 
-    }
+//     }
 
-    protected void execute() {
-        int position = RobotMap.Lift1.getSelectedSensorPosition(0);
-        double targetPosition=(position+(-1400*OI.xbox2.getY(Hand.kLeft)));
-        // Robot.lift.lift(ControlMode.PercentOutput, 0.5);
-        // Robot.lift.lift();
+//     protected void execute() {
+//         int position = RobotMap.Lift1.getSelectedSensorPosition(0);
+//         double targetPosition=(position+(-1400*OI.xbox2.getY(Hand.kLeft)));
+//         // Robot.lift.lift(ControlMode.PercentOutput, 0.5);
+//         // Robot.lift.lift();
 
-        if (OI.xbox2.getY(Hand.kLeft) >= 0.2 || OI.xbox2.getY(Hand.kLeft) <= -0.2) {
-            if (targetPosition >= 20800){
-                Robot.lift.lift(ControlMode.MotionMagic, 20800);
-            }
-            else if (targetPosition <= -100){
-                Robot.lift.lift(ControlMode.MotionMagic, -100);
-            }
-            else{
-                Robot.lift.lift(ControlMode.MotionMagic, targetPosition);
-            }
+//         if (OI.xbox2.getY(Hand.kLeft) >= 0.2 || OI.xbox2.getY(Hand.kLeft) <= -0.2) {
+//             if (targetPosition >= 20800){
+//                 Robot.lift.lift(ControlMode.MotionMagic, 20800);
+//             }
+//             else if (targetPosition <= -100){
+//                 Robot.lift.lift(ControlMode.MotionMagic, -100);
+//             }
+//             else{
+//                 Robot.lift.lift(ControlMode.MotionMagic, targetPosition);
+//             }
 
            
-            // System.out.println("moving manual to " + targetPosition);
-            // Robot.lift.lift(ControlMode.PercentOutput, -0.7 * OI.xbox2.getY(Hand.kLeft));
-        }
-        else {
-            end();
-        }
-    }
+//             // System.out.println("moving manual to " + targetPosition);
+//             // Robot.lift.lift(ControlMode.PercentOutput, -0.7 * OI.xbox2.getY(Hand.kLeft));
+//         }
+//         else {
+//             end();
+//         }
+//     }
 
-    protected boolean isFinished() {
-        return false;
+//     protected boolean isFinished() {
+//         return false;
 
-    }
+//     }
 
-    protected void end() {
-        //Robot.lift.lift(ControlMode.PercentOutput, 0.0);
-        new LiftHoldPosition();
-    }
+//     protected void end() {
+//         //Robot.lift.lift(ControlMode.PercentOutput, 0.0);
+//         new LiftHoldPosition();
+//     }
 
-    protected void interrupted() {
-        end();
-    }
+//     protected void interrupted() {
+//         end();
+//     }
 
-}
+// }

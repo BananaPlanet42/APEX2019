@@ -26,32 +26,32 @@ import frc.robot.models.*;
 public class RobotMap {
 
   // drive train stuff
-  public static BobTalonSRX R1;
-  public static BobTalonSRX L1;
+  // public static BobTalonSRX R1;
+  // public static BobTalonSRX L1;
 
-  public static VictorSPX R2;
-  public static VictorSPX R3;
-  public static VictorSPX L2;
-  public static VictorSPX L3;
-  // lift stuff
-  public static TalonSRX Lift1;
-  public static VictorSPX Lift2;
-  public static DoubleSolenoid LiftSolenoid1;
-  public static DoubleSolenoid LiftSolenoid2;
-  public static DoubleSolenoid TipperSolenoid1;
+  // public static VictorSPX R2;
+  // public static VictorSPX R3;
+  // public static VictorSPX L2;
+  // public static VictorSPX L3;
+  // // lift stuff
+  // public static TalonSRX Lift1;
+  // public static VictorSPX Lift2;
+  // public static DoubleSolenoid LiftSolenoid1;
+  // public static DoubleSolenoid LiftSolenoid2;
+  // public static DoubleSolenoid TipperSolenoid1;
 
-  // intake/eater stuff
-  public static TalonSRX Intake;
+  // // intake/eater stuff
+  // public static TalonSRX Intake;
 
-  // crossbow stuff
-  public static DoubleSolenoid Crossbow1;
-  public static DoubleSolenoid Crossbow2;
+  // // crossbow stuff
+  // public static DoubleSolenoid Crossbow1;
+  // public static DoubleSolenoid Crossbow2;
 
-  // Ramp (climber) stuff
-  public static DoubleSolenoid ClimberPneu1;
-  public static DoubleSolenoid ClimberLock1;
-  public static TalonSRX Climber1;
-  public static VictorSPX Climber2;
+  // // Ramp (climber) stuff
+  // public static DoubleSolenoid ClimberPneu1;
+  // public static DoubleSolenoid ClimberLock1;
+  // public static TalonSRX Climber1;
+  // public static VictorSPX Climber2;
 
   // Gyro
   public static PigeonIMU pigeon;
@@ -75,29 +75,29 @@ public class RobotMap {
     // R3 = new VictorSPX(PortMap.R3);
     // ControllerConfig.setDriveFollower(R3, R1, R1.getInverted());
     // lift stuff
-    Lift1 = new TalonSRX(PortMap.Lift1);
-    ControllerConfig.setLiftLead(Lift1);
-    Lift2 = new VictorSPX(PortMap.Lift2);
-    ControllerConfig.setLiftFollower(Lift2, Lift1, false);
-    LiftSolenoid1 = new DoubleSolenoid(PortMap.PCM_1, PortMap.Lift_Solenoid1_Forward_Channel, PortMap.Lift_Solenoid1_Reverse_Channel);
-    // new ReleaseLift();
+    // Lift1 = new TalonSRX(PortMap.Lift1);
+    // ControllerConfig.setLiftLead(Lift1);
+    // Lift2 = new VictorSPX(PortMap.Lift2);
+    // ControllerConfig.setLiftFollower(Lift2, Lift1, false);
+    // LiftSolenoid1 = new DoubleSolenoid(PortMap.PCM_1, PortMap.Lift_Solenoid1_Forward_Channel, PortMap.Lift_Solenoid1_Reverse_Channel);
+    // // new ReleaseLift();
 
-    //lift rocket
-    TipperSolenoid1 = new DoubleSolenoid(PortMap.PCM_2, PortMap.TipperSolenoid1_Forward_Channel, PortMap.TipperSolenoid1_Reverse_Channel);
+    // //lift rocket
+    // TipperSolenoid1 = new DoubleSolenoid(PortMap.PCM_2, PortMap.TipperSolenoid1_Forward_Channel, PortMap.TipperSolenoid1_Reverse_Channel);
 
-    // intake stuff
-    Intake = new TalonSRX(PortMap.Intake);
-    // //crossbow stuff
-    Crossbow1 = new DoubleSolenoid(PortMap.PCM_1, PortMap.Crossbow1_Forward_Channel, PortMap.Crossbow1_Reverse_Channel);
-    // //climber stuff
-    ClimberPneu1 = new DoubleSolenoid(PortMap.PCM_1, PortMap.ClimberSolenoid1_Forward_Channel, PortMap.ClimberSolenoid1_Reverse_Channel);
-    ClimberLock1 = new DoubleSolenoid(PortMap.PCM_1, PortMap.ClimberLockSolenoid1_Forward_Channel, PortMap.ClimberLockSolenoid1_Reverse_Channel);
-    Climber1 = new TalonSRX(PortMap.Climber1);
-    ControllerConfig.setClimbLead(Climber1);
-    Climber2 = new VictorSPX(PortMap.Climber2);
-    ControllerConfig.setClimbFollower(Climber2, Climber1);
+    // // intake stuff
+    // Intake = new TalonSRX(PortMap.Intake);
+    // // //crossbow stuff
+    // Crossbow1 = new DoubleSolenoid(PortMap.PCM_1, PortMap.Crossbow1_Forward_Channel, PortMap.Crossbow1_Reverse_Channel);
+    // // //climber stuff
+    // ClimberPneu1 = new DoubleSolenoid(PortMap.PCM_1, PortMap.ClimberSolenoid1_Forward_Channel, PortMap.ClimberSolenoid1_Reverse_Channel);
+    // ClimberLock1 = new DoubleSolenoid(PortMap.PCM_1, PortMap.ClimberLockSolenoid1_Forward_Channel, PortMap.ClimberLockSolenoid1_Reverse_Channel);
+    // Climber1 = new TalonSRX(PortMap.Climber1);
+    // ControllerConfig.setClimbLead(Climber1);
+    // Climber2 = new VictorSPX(PortMap.Climber2);
+    // ControllerConfig.setClimbFollower(Climber2, Climber1);
 
-    Climber2.setInverted(true);
+    // Climber2.setInverted(true);
     pigeon = new PigeonIMU(PortMap.Pidgeon);
   }
 

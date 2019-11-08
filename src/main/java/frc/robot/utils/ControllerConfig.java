@@ -59,8 +59,8 @@ public class ControllerConfig {
        leaderSRX.configOpenloopRamp(.1);
         // currentSRX.configMotionCruiseVelocity(1000, 0);
 
-        leaderSRX.configRemoteFeedbackFilter(RobotMap.L1.getDeviceID(), RemoteSensorSource.TalonSRX_SelectedSensor, 0,
-                0);
+        // leaderSRX.configRemoteFeedbackFilter(RobotMap.L1.getDeviceID(), RemoteSensorSource.TalonSRX_SelectedSensor, 0,
+                // 0);
         leaderSRX.configRemoteFeedbackFilter(0, RemoteSensorSource.Pigeon_Yaw, 1, 0);
         leaderSRX.setSensorPhase(true);
         // System.out.println("yo im actually working R1");
